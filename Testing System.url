@@ -1,0 +1,52 @@
+﻿CREATE TABLE [dbo].[users]
+(
+	
+	
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [firstName] NCHAR(10) NULL
+)
+
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DELIVERIES](
+	[DELIVERID] [varchar](50) NULL,
+	[IDOFDELIVER] [varchar](50) NULL,
+	[IDOFCUSTUMER] [varchar](50) NULL,
+	[DATE] [date] NULL,
+	[RESPOND] [int] NULL,
+	[SOURSEADRESS] [varchar](50) NULL,
+	[DESTINATIONADRESS] [varchar](50) NULL,
+	[DONE] [int] NULL
+) ON [PRIMARY]
+
+
+
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[POSSIBLEDRIVE](
+	[KODOFDRIVE] [varchar](50) NULL,
+	[IDOFDELIVER] [varchar](50) NULL,
+	[DATE] [date] NULL,
+	[HOUR] [time](7) NULL,
+	[KODSOURSE] [varchar](50) NULL,
+	[KODDESTINITION] [varchar](50) NULL
+) ON [PRIMARY]
+
+
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[RATING](
+	[KODRATING] [varchar](50) NULL,
+	[DELIVERYID] [varchar](50) NULL,
+	[INTEGRITYDELIVER] [varchar](50) NULL,
+	[LATE] [int] NULL,
+	[SERVISE] [int] NULL,
+	[GENERAL] [int] NULL
+) ON [PRIMARY]
+GO
