@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sedingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DELIVERIES">
+          <Key>
+            <PropertyRef Name="DELIVERID" />
+          </Key>
+          <Property Name="DELIVERID" Type="bigint" Nullable="false" />
+          <Property Name="IDOFDELIVER" Type="bigint" />
+          <Property Name="IDOFCUSTUMER" Type="bigint" />
+          <Property Name="DATE" Type="date" />
+          <Property Name="RESPOND" Type="int" />
+          <Property Name="SOURSEADRESS" Type="varchar" MaxLength="50" />
+          <Property Name="DESTINATIONADRESS" Type="varchar" MaxLength="50" />
+          <Property Name="DONE" Type="int" />
+        </EntityType>
+        <EntityType Name="POSSIBLEDRIVE">
+          <Key>
+            <PropertyRef Name="KODOFDRIVE" />
+          </Key>
+          <Property Name="KODOFDRIVE" Type="bigint" Nullable="false" />
+          <Property Name="IDOFDELIVER" Type="bigint" />
+          <Property Name="DATE" Type="date" />
+          <Property Name="HOUR" Type="time" Precision="7" />
+          <Property Name="SOURSEADRESS" Type="varchar" MaxLength="50" />
+          <Property Name="DESTINATIONADRESS" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RATING">
+          <Key>
+            <PropertyRef Name="KODRATING" />
+          </Key>
+          <Property Name="KODRATING" Type="bigint" Nullable="false" />
+          <Property Name="DELIVERYID" Type="bigint" />
+          <Property Name="INTEGRITYDELIVER" Type="varchar" MaxLength="50" />
+          <Property Name="LATE" Type="int" />
+          <Property Name="SERVISE" Type="int" />
+          <Property Name="GENERAL" Type="int" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="FirsteName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__DELIVERIE__IDOFC__2B3F6F97">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="DELIVERIES" Type="Self.DELIVERIES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DELIVERIES">
+              <PropertyRef Name="IDOFCUSTUMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DELIVERIE__IDOFD__2A4B4B5E">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="DELIVERIES" Type="Self.DELIVERIES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DELIVERIES">
+              <PropertyRef Name="IDOFDELIVER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSSIBLED__IDOFD__2E1BDC42">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="POSSIBLEDRIVE" Type="Self.POSSIBLEDRIVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="POSSIBLEDRIVE">
+              <PropertyRef Name="IDOFDELIVER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RATING__DELIVERY__2F10007B">
+          <End Role="DELIVERIES" Type="Self.DELIVERIES" Multiplicity="0..1" />
+          <End Role="RATING" Type="Self.RATING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DELIVERIES">
+              <PropertyRef Name="DELIVERID" />
+            </Principal>
+            <Dependent Role="RATING">
+              <PropertyRef Name="DELIVERYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sedingModelStoreContainer">
+          <EntitySet Name="DELIVERIES" EntityType="Self.DELIVERIES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POSSIBLEDRIVE" EntityType="Self.POSSIBLEDRIVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RATING" EntityType="Self.RATING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DELIVERIE__IDOFC__2B3F6F97" Association="Self.FK__DELIVERIE__IDOFC__2B3F6F97">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="DELIVERIES" EntitySet="DELIVERIES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DELIVERIE__IDOFD__2A4B4B5E" Association="Self.FK__DELIVERIE__IDOFD__2A4B4B5E">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="DELIVERIES" EntitySet="DELIVERIES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSSIBLED__IDOFD__2E1BDC42" Association="Self.FK__POSSIBLED__IDOFD__2E1BDC42">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="POSSIBLEDRIVE" EntitySet="POSSIBLEDRIVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RATING__DELIVERY__2F10007B" Association="Self.FK__RATING__DELIVERY__2F10007B">
+            <End Role="DELIVERIES" EntitySet="DELIVERIES" />
+            <End Role="RATING" EntitySet="RATING" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sedingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DELIVERy">
+          <Key>
+            <PropertyRef Name="DELIVERID" />
+          </Key>
+          <Property Name="DELIVERID" Type="Int64" Nullable="false" />
+          <Property Name="IDOFDELIVER" Type="Int64" />
+          <Property Name="IDOFCUSTUMER" Type="Int64" />
+          <Property Name="DATE" Type="DateTime" Precision="0" />
+          <Property Name="RESPOND" Type="Int32" />
+          <Property Name="SOURSEADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESTINATIONADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DONE" Type="Int32" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__DELIVERIE__IDOFC__2B3F6F97" FromRole="DELIVERIES" ToRole="USERS" />
+          <NavigationProperty Name="USER1" Relationship="Self.FK__DELIVERIE__IDOFD__2A4B4B5E" FromRole="DELIVERIES" ToRole="USERS" />
+          <NavigationProperty Name="RATINGs" Relationship="Self.FK__RATING__DELIVERY__2F10007B" FromRole="DELIVERIES" ToRole="RATING" />
+        </EntityType>
+        <EntityType Name="POSSIBLEDRIVE">
+          <Key>
+            <PropertyRef Name="KODOFDRIVE" />
+          </Key>
+          <Property Name="KODOFDRIVE" Type="Int64" Nullable="false" />
+          <Property Name="IDOFDELIVER" Type="Int64" />
+          <Property Name="DATE" Type="DateTime" Precision="0" />
+          <Property Name="HOUR" Type="Time" Precision="7" />
+          <Property Name="SOURSEADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESTINATIONADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__POSSIBLED__IDOFD__2E1BDC42" FromRole="POSSIBLEDRIVE" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="RATING">
+          <Key>
+            <PropertyRef Name="KODRATING" />
+          </Key>
+          <Property Name="KODRATING" Type="Int64" Nullable="false" />
+          <Property Name="DELIVERYID" Type="Int64" />
+          <Property Name="INTEGRITYDELIVER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LATE" Type="Int32" />
+          <Property Name="SERVISE" Type="Int32" />
+          <Property Name="GENERAL" Type="Int32" />
+          <NavigationProperty Name="DELIVERy" Relationship="Self.FK__RATING__DELIVERY__2F10007B" FromRole="RATING" ToRole="DELIVERIES" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="FirsteName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="DELIVERIES" Relationship="Self.FK__DELIVERIE__IDOFC__2B3F6F97" FromRole="USERS" ToRole="DELIVERIES" />
+          <NavigationProperty Name="DELIVERIES1" Relationship="Self.FK__DELIVERIE__IDOFD__2A4B4B5E" FromRole="USERS" ToRole="DELIVERIES" />
+          <NavigationProperty Name="POSSIBLEDRIVEs" Relationship="Self.FK__POSSIBLED__IDOFD__2E1BDC42" FromRole="USERS" ToRole="POSSIBLEDRIVE" />
+        </EntityType>
+        <Association Name="FK__DELIVERIE__IDOFC__2B3F6F97">
+          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="DELIVERIES" Type="Self.DELIVERy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DELIVERIES">
+              <PropertyRef Name="IDOFCUSTUMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DELIVERIE__IDOFD__2A4B4B5E">
+          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="DELIVERIES" Type="Self.DELIVERy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DELIVERIES">
+              <PropertyRef Name="IDOFDELIVER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RATING__DELIVERY__2F10007B">
+          <End Role="DELIVERIES" Type="Self.DELIVERy" Multiplicity="0..1" />
+          <End Role="RATING" Type="Self.RATING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DELIVERIES">
+              <PropertyRef Name="DELIVERID" />
+            </Principal>
+            <Dependent Role="RATING">
+              <PropertyRef Name="DELIVERYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSSIBLED__IDOFD__2E1BDC42">
+          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="POSSIBLEDRIVE" Type="Self.POSSIBLEDRIVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="POSSIBLEDRIVE">
+              <PropertyRef Name="IDOFDELIVER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sedingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DELIVERIES" EntityType="Self.DELIVERy" />
+          <EntitySet Name="POSSIBLEDRIVEs" EntityType="Self.POSSIBLEDRIVE" />
+          <EntitySet Name="RATINGs" EntityType="Self.RATING" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <AssociationSet Name="FK__DELIVERIE__IDOFC__2B3F6F97" Association="Self.FK__DELIVERIE__IDOFC__2B3F6F97">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="DELIVERIES" EntitySet="DELIVERIES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DELIVERIE__IDOFD__2A4B4B5E" Association="Self.FK__DELIVERIE__IDOFD__2A4B4B5E">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="DELIVERIES" EntitySet="DELIVERIES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RATING__DELIVERY__2F10007B" Association="Self.FK__RATING__DELIVERY__2F10007B">
+            <End Role="DELIVERIES" EntitySet="DELIVERIES" />
+            <End Role="RATING" EntitySet="RATINGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSSIBLED__IDOFD__2E1BDC42" Association="Self.FK__POSSIBLED__IDOFD__2E1BDC42">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="POSSIBLEDRIVE" EntitySet="POSSIBLEDRIVEs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sedingModelStoreContainer" CdmEntityContainer="sedingEntities">
+          <EntitySetMapping Name="DELIVERIES">
+            <EntityTypeMapping TypeName="sedingModel.DELIVERy">
+              <MappingFragment StoreEntitySet="DELIVERIES">
+                <ScalarProperty Name="DELIVERID" ColumnName="DELIVERID" />
+                <ScalarProperty Name="IDOFDELIVER" ColumnName="IDOFDELIVER" />
+                <ScalarProperty Name="IDOFCUSTUMER" ColumnName="IDOFCUSTUMER" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="RESPOND" ColumnName="RESPOND" />
+                <ScalarProperty Name="SOURSEADRESS" ColumnName="SOURSEADRESS" />
+                <ScalarProperty Name="DESTINATIONADRESS" ColumnName="DESTINATIONADRESS" />
+                <ScalarProperty Name="DONE" ColumnName="DONE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POSSIBLEDRIVEs">
+            <EntityTypeMapping TypeName="sedingModel.POSSIBLEDRIVE">
+              <MappingFragment StoreEntitySet="POSSIBLEDRIVE">
+                <ScalarProperty Name="KODOFDRIVE" ColumnName="KODOFDRIVE" />
+                <ScalarProperty Name="IDOFDELIVER" ColumnName="IDOFDELIVER" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="HOUR" ColumnName="HOUR" />
+                <ScalarProperty Name="SOURSEADRESS" ColumnName="SOURSEADRESS" />
+                <ScalarProperty Name="DESTINATIONADRESS" ColumnName="DESTINATIONADRESS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RATINGs">
+            <EntityTypeMapping TypeName="sedingModel.RATING">
+              <MappingFragment StoreEntitySet="RATING">
+                <ScalarProperty Name="KODRATING" ColumnName="KODRATING" />
+                <ScalarProperty Name="DELIVERYID" ColumnName="DELIVERYID" />
+                <ScalarProperty Name="INTEGRITYDELIVER" ColumnName="INTEGRITYDELIVER" />
+                <ScalarProperty Name="LATE" ColumnName="LATE" />
+                <ScalarProperty Name="SERVISE" ColumnName="SERVISE" />
+                <ScalarProperty Name="GENERAL" ColumnName="GENERAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="sedingModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirsteName" ColumnName="FirsteName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
