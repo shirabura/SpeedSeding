@@ -10,6 +10,9 @@ namespace trial
     {
         static void Main(string[] args)
         {
+            calculate calculate = new calculate();
+            calculate.a();
+            Console.ReadLine();
         }
     }
 }
