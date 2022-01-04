@@ -29,6 +29,19 @@ namespace ClassLibrary1
             this.DESTINATIONADRESS = p.DESTINATIONADRESS;
 
         }
+        public  POSSIBLEDRIVE FromdtoToTable(dtoPOSSIBLEDRIVE p)
+        {
+            POSSIBLEDRIVE pos = new POSSIBLEDRIVE();
+            pos.KODOFDRIVE = KODOFDRIVE;
+            pos.IDOFDELIVER =IDOFDELIVER;
+            pos.DATE =DATE;
+            pos.HOUR =HOUR;
+            pos.SOURSEADRESS =SOURSEADRESS;
+            pos.DESTINATIONADRESS =DESTINATIONADRESS;
+            return pos;
+
+        }
+
         public static List<dtoPOSSIBLEDRIVE> CreateDtoList(List<POSSIBLEDRIVE> LIST)
         {
             List<dtoPOSSIBLEDRIVE> dtolist = new List<dtoPOSSIBLEDRIVE>();

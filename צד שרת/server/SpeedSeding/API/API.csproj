@@ -155,8 +155,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\DELIVERyController.cs" />
+    <Compile Include="Controllers\POSSIBLEDRIVEController.cs" />
+    <Compile Include="Controllers\RATINGController.cs" />
+    <Compile Include="Controllers\USERController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -245,16 +248,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{9c2d6145-e292-4520-90aa-b2279a64e9cf}</Project>
-      <Name>BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary1\DTOclass.csproj">
-      <Project>{4d13e4ba-2e4c-43da-a0e5-b143c7e624fa}</Project>
-      <Name>DTOclass</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -33,7 +33,20 @@ namespace ClassLibrary1
             this.DONE = (int)d.DONE;
 
         }
-        public static List<dtoDELIVERy> CreateDtoList(List<DELIVERy> LIST)
+        public   DELIVERy FROMdtoToTable(dtoDELIVERy d)
+        {
+            DELIVERy del = new DELIVERy();
+            del.DELIVERID = DELIVERID;
+            del.IDOFDELIVER = IDOFDELIVER;
+            del.IDOFCUSTUMER = IDOFCUSTUMER;
+            del.DATE = DATE;
+            del.RESPOND = RESPOND;
+            del.SOURSEADRESS =SOURSEADRESS;
+            del.DESTINATIONADRESS =DESTINATIONADRESS;
+            del.DONE = DONE;
+            return del;
+        }
+            public static List<dtoDELIVERy> CreateDtoList(List<DELIVERy> LIST)
         {
             List<dtoDELIVERy> dtolist = new List<dtoDELIVERy>();
             foreach (var p in LIST)
@@ -44,6 +57,7 @@ namespace ClassLibrary1
             }
             return dtolist;
         }
+
 
     }
 

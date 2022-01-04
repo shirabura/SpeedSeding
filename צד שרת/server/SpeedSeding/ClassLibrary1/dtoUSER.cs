@@ -28,7 +28,16 @@ namespace ClassLibrary1
             this.distance = u.distance;
             this.Status = u.Status;
         }
-
+        public USER FromdtoToTable(dtoUSER u)
+        {
+            USER us = new USER();
+            us.Id =Id;
+            us.FirsteName =FirsteName;
+            us.LastName =LastName;
+            us.distance =distance;
+            us.Status = Status;
+            return us;
+        }
         public static List<dtoUSER> CreateDtoList(List<USER> LIST)
         {
             List<dtoUSER> dtolist = new List<dtoUSER>();

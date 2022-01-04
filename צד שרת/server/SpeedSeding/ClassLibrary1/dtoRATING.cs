@@ -32,6 +32,17 @@ namespace ClassLibrary1
 
 
         }
+        public RATING FROMdtoToTable(dtoRATING u)
+        {
+            RATING ra = new RATING();
+            ra.KODRATING =KODRATING;
+            ra.DELIVERYID = DELIVERYID;
+            ra.INTEGRITYDELIVER =INTEGRITYDELIVER;
+            ra.LATE = LATE;
+            ra.SERVISE =SERVISE;
+            ra.GENERAL = GENERAL;
+            return ra;
+        }
         public static List<dtoRATING> CreateDtoList(List<RATING> LIST)
         {
             List<dtoRATING> dtolist = new List<dtoRATING>();
