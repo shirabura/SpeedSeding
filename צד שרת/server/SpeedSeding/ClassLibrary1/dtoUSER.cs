@@ -5,17 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary1
+namespace DTOClass
 {
     public class dtoUSER
     {
         public long Id { get; set; }
         public string FirsteName { get; set; }
         public string LastName { get; set; }
-        public long distance { get; set; }
         public string Status { get; set; }
+        public string PHONE { get; set; }
 
-       public dtoUSER()
+        public dtoUSER()
         {
 
         }
@@ -25,7 +25,7 @@ namespace ClassLibrary1
             this.Id = u.Id;
             this.FirsteName = u.FirsteName;
             this.LastName = u.LastName;
-            this.distance = u.distance;
+            this.PHONE = u.PHONE;
             this.Status = u.Status;
         }
         public USER FromdtoToTable(dtoUSER u)
@@ -34,7 +34,7 @@ namespace ClassLibrary1
             us.Id =Id;
             us.FirsteName =FirsteName;
             us.LastName =LastName;
-            us.distance =distance;
+            us.PHONE =PHONE;
             us.Status = Status;
             return us;
         }

@@ -25,9 +25,10 @@ namespace DAL
         public long Id { get; set; }
         public string FirsteName { get; set; }
         public string LastName { get; set; }
-        public long distance { get; set; }
         public string Status { get; set; }
-    
+        public string PHONE { get; set; }
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DELIVERy> DELIVERIES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

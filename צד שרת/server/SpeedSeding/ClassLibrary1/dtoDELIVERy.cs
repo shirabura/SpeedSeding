@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary1
+namespace DTOClass
 {
     public class dtoDELIVERy
     {
@@ -16,7 +16,8 @@ namespace ClassLibrary1
         public int RESPOND { get; set; }
         public string SOURSEADRESS { get; set; }
         public string DESTINATIONADRESS { get; set; }
-        public int DONE { get; set; }
+        public Boolean DONE { get; set; }
+        public Nullable<System.TimeSpan> HOUR { get; set; }
 
         public dtoDELIVERy()
         {
@@ -30,8 +31,8 @@ namespace ClassLibrary1
             this.RESPOND = (int)d.RESPOND;
             this.SOURSEADRESS = d.SOURSEADRESS;
             this.DESTINATIONADRESS = d.DESTINATIONADRESS;
-            this.DONE = (int)d.DONE;
-
+            this.DONE = Convert.ToBoolean(d.DONE);
+            this.HOUR = d.HOUR;
         }
         public   DELIVERy FROMdtoToTable(dtoDELIVERy d)
         {
@@ -44,6 +45,7 @@ namespace ClassLibrary1
             del.SOURSEADRESS =SOURSEADRESS;
             del.DESTINATIONADRESS =DESTINATIONADRESS;
             del.DONE = DONE;
+            del.HOUR = HOUR;
             return del;
         }
             public static List<dtoDELIVERy> CreateDtoList(List<DELIVERy> LIST)
