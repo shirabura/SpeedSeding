@@ -14,9 +14,9 @@ namespace DAL
     
     public partial class RATING
     {
-        public long KODRATING { get; set; }
-        public Nullable<long> DELIVERYID { get; set; }
-        public string INTEGRITYDELIVER { get; set; }
+        public long DELIVERYID { get; set; }
+        public Nullable<long> IDOFDELIVER { get; set; }
+        public Nullable<int> INTEGRITYDELIVER { get; set; }
         public Nullable<int> LATE { get; set; }
         public Nullable<int> SERVISE { get; set; }
         public Nullable<int> GENERAL { get; set; }

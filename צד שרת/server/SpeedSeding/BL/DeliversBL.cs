@@ -12,11 +12,14 @@ namespace BL
         static DBConection db = new DBConection();
         public static List<dtoDELIVERy> GetAllOpenRequest()
         {
-            List<dtoDELIVERy> AllOpenRequest = db.GetDbSet<DELIVERy>().Where(r => r.DONE==false).tolist();
+            List<dtoDELIVERy> AllOpenRequest = CreateDtoList((db.GetDbSet<DELIVERy>().Where(r => r.DONE == false).ToList()));
 
             return AllOpenRequest;
         }
-        public static List<dtoDELIVERy> GetRequestbyDateHour(List<dtoDELIVERy> AllOpenRequest , dtoPOSSIBLEDRIVE p)
+
+
+
+        public static List<dtoDELIVERy> GetRequestbyDateHour(List<dtoDELIVERy> AllOpenRequest, dtoPOSSIBLEDRIVE p)
         {
             List<dtoDELIVERy> RequestbyDateHour = new List<dtoDELIVERy>();
 
@@ -28,8 +31,20 @@ namespace BL
                 }
 
             }
-           return RequestbyDateHour;
+            return RequestbyDateHour;
         }
 
+        //כאן יהיה פונקציה של גוגל מפס שבודקת את המרחקים האם הם מתאימים
+        //התוצאה מכל הפונקציות הנל תהיה רשימה של נהגים שמתאימים לבקשה מסוימת ששלחתי לפי התאמה בסיסית(מקום שעה ותאריך ולא נעשו)
+        //li זה הרשימה שאני מקבלת מהפונקציה הקודמת
+        public static DELIVERy ChooseDeliver(List<dtoDELIVERy> li)
+        {
+
+
+
+        }
     }
+
+
+
 }

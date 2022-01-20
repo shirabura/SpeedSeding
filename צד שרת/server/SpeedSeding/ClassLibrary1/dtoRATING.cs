@@ -9,9 +9,9 @@ namespace DTOClass
 {
     public class dtoRATING
     {
-        public long KODRATING { get; set; }
         public long DELIVERYID { get; set; }
-        public string INTEGRITYDELIVER { get; set; }
+        public long IDOFDELIVER { get; set; }
+        public int INTEGRITYDELIVER { get; set; }
         public int LATE { get; set; }
         public int SERVISE { get; set; }
         public int GENERAL { get; set; }
@@ -22,9 +22,10 @@ namespace DTOClass
         }
         public dtoRATING(RATING r)
         {
-            this.KODRATING = r.KODRATING;
-            this.DELIVERYID = (long)r.DELIVERYID;
-            this.INTEGRITYDELIVER = r.INTEGRITYDELIVER;
+         
+            this.DELIVERYID = r.DELIVERYID;
+            this.IDOFDELIVER = (long)r.IDOFDELIVER;
+            this.INTEGRITYDELIVER = (int)r.INTEGRITYDELIVER;
             this.LATE = (int)r.LATE;
             this.SERVISE = (int)r.SERVISE;
             this.GENERAL =(int)r.GENERAL;
@@ -35,7 +36,7 @@ namespace DTOClass
         public RATING FROMdtoToTable(dtoRATING u)
         {
             RATING ra = new RATING();
-            ra.KODRATING =KODRATING;
+            ra.IDOFDELIVER = IDOFDELIVER;
             ra.DELIVERYID = DELIVERYID;
             ra.INTEGRITYDELIVER =INTEGRITYDELIVER;
             ra.LATE = LATE;
