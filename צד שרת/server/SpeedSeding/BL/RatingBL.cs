@@ -10,20 +10,26 @@ namespace BL
     class RatingBL
     {
         static DBConection db = new DBConection();
-        public static int CalculatePoint(long tz)
+        public static long CalculatePoint(long tz)
         {
-            int point = 0;
+            long point = 0;
             List<RATING> AllRating =db.GetDbSet<RATING>().Where(m => m.IDOFDELIVER == tz).ToList();
             foreach (var i in AllRating)
             {
-                point +=(int) i.INTEGRITYDELIVER;
-                point += (int)i.LATE;
-                point += (int)i.SERVISE;
-                point += (int)i.GENERAL;
+                point +=(long) i.INTEGRITYDELIVER;
+                point += (long)i.LATE;
+                point += (long)i.SERVISE;
+                point += (long)i.GENERAL;
+                i.SamPoint = point;
 
             }
+            foreach (var i in AllRating)
+            {
+                db.Execute<RATING>(i, DBConection.ExecuteActions.Update);
+            }
             return point;
-            // איך מכניסים את שקלול הריטינג פויינט לטבלה ואז לשאול על העמודה הזאת מי המקסימום 
+
+            //  ואז לשאול על העמודה הזאת מי המקסימום עי תור עדיפיות 
 
         }
     }

@@ -15,7 +15,7 @@ namespace DTOClass
         public int LATE { get; set; }
         public int SERVISE { get; set; }
         public int GENERAL { get; set; }
-
+        public long SamPoint { get; set; }
         public dtoRATING()
         {
 
@@ -29,6 +29,7 @@ namespace DTOClass
             this.LATE = (int)r.LATE;
             this.SERVISE = (int)r.SERVISE;
             this.GENERAL =(int)r.GENERAL;
+            this.SamPoint = (long)r.SamPoint;
 
 
 
@@ -42,6 +43,7 @@ namespace DTOClass
             ra.LATE = LATE;
             ra.SERVISE =SERVISE;
             ra.GENERAL = GENERAL;
+            ra.SamPoint = (long)SamPoint;
             return ra;
         }
         public static List<dtoRATING> CreateDtoList(List<RATING> LIST)
