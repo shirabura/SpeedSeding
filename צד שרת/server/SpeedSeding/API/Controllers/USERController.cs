@@ -1,24 +1,23 @@
-﻿using System;
+﻿using DTOClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
+
 namespace API.Controllers
 {
     public class USERController : ApiController
     {
         // GET: api/USER
-        public IEnumerable<string> Get()
+        public List<dtoUSER> GetallUsers()
         {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET: api/USER/5
-        public string Get(int id)
-        {
-            return "value";
+            List<dtoUSER> list = BL.UserBL.GetallUsers();
+            return list;
         }
 
         // POST: api/USER

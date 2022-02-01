@@ -14,6 +14,8 @@ namespace DTOClass
         public string LastName { get; set; }
         public string Status { get; set; }
         public string PHONE { get; set; }
+        public string Password { get; set; }
+
 
         public dtoUSER()
         {
@@ -27,7 +29,14 @@ namespace DTOClass
             this.LastName = u.LastName;
             this.PHONE = u.PHONE;
             this.Status = u.Status;
+            this.Password = u.Password;
         }
+
+        public USER FromdtoToTable()
+        {
+            throw new NotImplementedException();
+        }
+
         public USER FromdtoToTable(dtoUSER u)
         {
             USER us = new USER();
@@ -36,6 +45,7 @@ namespace DTOClass
             us.LastName =LastName;
             us.PHONE =PHONE;
             us.Status = Status;
+            us.Password = Password;
             return us;
         }
         public static List<dtoUSER> CreateDtoList(List<USER> LIST)

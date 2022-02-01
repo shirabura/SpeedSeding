@@ -37,12 +37,12 @@ namespace BL
         //כאן יהיה פונקציה של גוגל מפס שבודקת את המרחקים האם הם מתאימים
         //התוצאה מכל הפונקציות הנל תהיה רשימה של נהגים שמתאימים לבקשה מסוימת ששלחתי לפי התאמה בסיסית(מקום שעה ותאריך ולא נעשו)
         //li זה הרשימה שאני מקבלת מהפונקציה הקודמת
-        public static DELIVERy ChooseDeliver(List<dtoDELIVERy> li)
-        {
+        //public static DELIVERy ChooseDeliver(List<dtoDELIVERy> li)
+        //{
 
+        //    return li;
 
-
-        }
+        //}
     }
 
 

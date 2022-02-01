@@ -29,5 +29,10 @@ namespace DAL
         public virtual DbSet<POSSIBLEDRIVE> POSSIBLEDRIVEs { get; set; }
         public virtual DbSet<RATING> RATINGs { get; set; }
         public virtual DbSet<USER> USERS { get; set; }
+        public DbSet<T> GetDbSet<T>() where T : class
+        {
+            return this.Set<T>();
+        }
+
     }
 }
