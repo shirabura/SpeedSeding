@@ -12,26 +12,20 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class DELIVERy
+    public partial class DELIVERIES
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DELIVERy()
-        {
-            this.RATINGs = new HashSet<RATING>();
-        }
-    
         public long DELIVERID { get; set; }
         public Nullable<long> IDOFDELIVER { get; set; }
         public Nullable<long> IDOFCUSTUMER { get; set; }
         public Nullable<System.DateTime> DATE { get; set; }
-        public Nullable<int> RESPOND { get; set; }
+        public Nullable<bool> RESPOND { get; set; }
         public string SOURSEADRESS { get; set; }
         public string DESTINATIONADRESS { get; set; }
         public Nullable<bool> DONE { get; set; }
         public Nullable<System.TimeSpan> HOUR { get; set; }
-        public virtual USER USER { get; set; }
-        public virtual USER USER1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RATING> RATINGs { get; set; }
+    
+        public virtual USERS USERS { get; set; }
+        public virtual USERS USERS1 { get; set; }
+        public virtual RATING RATING { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace BL
         static DBConection db = new DBConection();
         public static List<dtoDELIVERy> GetAllOpenRequest()
         {
-            List<dtoDELIVERy> AllOpenRequest = CreateDtoList((db.GetDbSet<DELIVERy>().Where(r => r.DONE == false).ToList()));
+            List<dtoDELIVERy> AllOpenRequest =dtoDELIVERy.CreateDtoList((db.GetDbSet<DELIVERIES>().Where(r => r.DONE == false).ToList()));
 
             return AllOpenRequest;
         }

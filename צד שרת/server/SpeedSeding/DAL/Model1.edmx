@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="sedingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="sedingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DELIVERIES">
           <Key>
             <PropertyRef Name="DELIVERID" />
@@ -13,10 +13,11 @@
           <Property Name="IDOFDELIVER" Type="bigint" />
           <Property Name="IDOFCUSTUMER" Type="bigint" />
           <Property Name="DATE" Type="date" />
-          <Property Name="RESPOND" Type="int" />
+          <Property Name="RESPOND" Type="bit" />
           <Property Name="SOURSEADRESS" Type="varchar" MaxLength="50" />
           <Property Name="DESTINATIONADRESS" Type="varchar" MaxLength="50" />
           <Property Name="DONE" Type="bit" />
+          <Property Name="HOUR" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="POSSIBLEDRIVE">
           <Key>
@@ -31,14 +32,15 @@
         </EntityType>
         <EntityType Name="RATING">
           <Key>
-            <PropertyRef Name="KODRATING" />
+            <PropertyRef Name="DELIVERYID" />
           </Key>
-          <Property Name="KODRATING" Type="bigint" Nullable="false" />
-          <Property Name="DELIVERYID" Type="bigint" />
-          <Property Name="INTEGRITYDELIVER" Type="varchar" MaxLength="50" />
+          <Property Name="DELIVERYID" Type="bigint" Nullable="false" />
+          <Property Name="IDOFDELIVER" Type="bigint" />
+          <Property Name="INTEGRITYDELIVER" Type="int" />
           <Property Name="LATE" Type="int" />
           <Property Name="SERVISE" Type="int" />
           <Property Name="GENERAL" Type="int" />
+          <Property Name="SamPoint" Type="bigint" />
         </EntityType>
         <EntityType Name="USERS">
           <Key>
@@ -47,7 +49,9 @@
           <Property Name="Id" Type="bigint" Nullable="false" />
           <Property Name="FirsteName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
-          <Property Name="Status" Type="nchar" MaxLength="10" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="int" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__DELIVERIE__IDOFC__2B3F6F97">
           <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
@@ -85,9 +89,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RATING__DELIVERY__2F10007B">
-          <End Role="DELIVERIES" Type="Self.DELIVERIES" Multiplicity="0..1" />
-          <End Role="RATING" Type="Self.RATING" Multiplicity="*" />
+        <Association Name="FK__RATING__DELIVERY__36B12243">
+          <End Role="DELIVERIES" Type="Self.DELIVERIES" Multiplicity="1" />
+          <End Role="RATING" Type="Self.RATING" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="DELIVERIES">
               <PropertyRef Name="DELIVERID" />
@@ -114,16 +118,17 @@
             <End Role="USERS" EntitySet="USERS" />
             <End Role="POSSIBLEDRIVE" EntitySet="POSSIBLEDRIVE" />
           </AssociationSet>
-          <AssociationSet Name="FK__RATING__DELIVERY__2F10007B" Association="Self.FK__RATING__DELIVERY__2F10007B">
+          <AssociationSet Name="FK__RATING__DELIVERY__36B12243" Association="Self.FK__RATING__DELIVERY__36B12243">
             <End Role="DELIVERIES" EntitySet="DELIVERIES" />
             <End Role="RATING" EntitySet="RATING" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sedingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="DELIVERy">
+        <EntityType Name="DELIVERIES">
           <Key>
             <PropertyRef Name="DELIVERID" />
           </Key>
@@ -131,13 +136,14 @@
           <Property Name="IDOFDELIVER" Type="Int64" />
           <Property Name="IDOFCUSTUMER" Type="Int64" />
           <Property Name="DATE" Type="DateTime" Precision="0" />
-          <Property Name="RESPOND" Type="Int32" />
+          <Property Name="RESPOND" Type="Boolean" />
           <Property Name="SOURSEADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DESTINATIONADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DONE" Type="Int32" />
-          <NavigationProperty Name="USER" Relationship="Self.FK__DELIVERIE__IDOFC__2B3F6F97" FromRole="DELIVERIES" ToRole="USERS" />
-          <NavigationProperty Name="USER1" Relationship="Self.FK__DELIVERIE__IDOFD__2A4B4B5E" FromRole="DELIVERIES" ToRole="USERS" />
-          <NavigationProperty Name="RATINGs" Relationship="Self.FK__RATING__DELIVERY__2F10007B" FromRole="DELIVERIES" ToRole="RATING" />
+          <Property Name="DONE" Type="Boolean" />
+          <Property Name="HOUR" Type="Time" Precision="7" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__DELIVERIE__IDOFC__2B3F6F97" FromRole="DELIVERIES" ToRole="USERS" />
+          <NavigationProperty Name="USERS1" Relationship="Self.FK__DELIVERIE__IDOFD__2A4B4B5E" FromRole="DELIVERIES" ToRole="USERS" />
+          <NavigationProperty Name="RATING" Relationship="Self.FK__RATING__DELIVERY__36B12243" FromRole="DELIVERIES" ToRole="RATING" />
         </EntityType>
         <EntityType Name="POSSIBLEDRIVE">
           <Key>
@@ -149,35 +155,38 @@
           <Property Name="HOUR" Type="Time" Precision="7" />
           <Property Name="SOURSEADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DESTINATIONADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="USER" Relationship="Self.FK__POSSIBLED__IDOFD__2E1BDC42" FromRole="POSSIBLEDRIVE" ToRole="USERS" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__POSSIBLED__IDOFD__2E1BDC42" FromRole="POSSIBLEDRIVE" ToRole="USERS" />
         </EntityType>
         <EntityType Name="RATING">
           <Key>
-            <PropertyRef Name="KODRATING" />
+            <PropertyRef Name="DELIVERYID" />
           </Key>
-          <Property Name="KODRATING" Type="Int64" Nullable="false" />
-          <Property Name="DELIVERYID" Type="Int64" />
-          <Property Name="INTEGRITYDELIVER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DELIVERYID" Type="Int64" Nullable="false" />
+          <Property Name="IDOFDELIVER" Type="Int64" />
+          <Property Name="INTEGRITYDELIVER" Type="Int32" />
           <Property Name="LATE" Type="Int32" />
           <Property Name="SERVISE" Type="Int32" />
           <Property Name="GENERAL" Type="Int32" />
-          <NavigationProperty Name="DELIVERy" Relationship="Self.FK__RATING__DELIVERY__2F10007B" FromRole="RATING" ToRole="DELIVERIES" />
+          <Property Name="SamPoint" Type="Int64" />
+          <NavigationProperty Name="DELIVERIES" Relationship="Self.FK__RATING__DELIVERY__36B12243" FromRole="RATING" ToRole="DELIVERIES" />
         </EntityType>
-        <EntityType Name="USER">
+        <EntityType Name="USERS">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" />
           <Property Name="FirsteName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="Int32" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DELIVERIES" Relationship="Self.FK__DELIVERIE__IDOFC__2B3F6F97" FromRole="USERS" ToRole="DELIVERIES" />
           <NavigationProperty Name="DELIVERIES1" Relationship="Self.FK__DELIVERIE__IDOFD__2A4B4B5E" FromRole="USERS" ToRole="DELIVERIES" />
-          <NavigationProperty Name="POSSIBLEDRIVEs" Relationship="Self.FK__POSSIBLED__IDOFD__2E1BDC42" FromRole="USERS" ToRole="POSSIBLEDRIVE" />
+          <NavigationProperty Name="POSSIBLEDRIVE" Relationship="Self.FK__POSSIBLED__IDOFD__2E1BDC42" FromRole="USERS" ToRole="POSSIBLEDRIVE" />
         </EntityType>
         <Association Name="FK__DELIVERIE__IDOFC__2B3F6F97">
-          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="DELIVERIES" Type="Self.DELIVERy" Multiplicity="*" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="DELIVERIES" Type="Self.DELIVERIES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USERS">
               <PropertyRef Name="Id" />
@@ -188,8 +197,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__DELIVERIE__IDOFD__2A4B4B5E">
-          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="DELIVERIES" Type="Self.DELIVERy" Multiplicity="*" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="DELIVERIES" Type="Self.DELIVERIES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USERS">
               <PropertyRef Name="Id" />
@@ -199,9 +208,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RATING__DELIVERY__2F10007B">
-          <End Role="DELIVERIES" Type="Self.DELIVERy" Multiplicity="0..1" />
-          <End Role="RATING" Type="Self.RATING" Multiplicity="*" />
+        <Association Name="FK__RATING__DELIVERY__36B12243">
+          <End Role="DELIVERIES" Type="Self.DELIVERIES" Multiplicity="1" />
+          <End Role="RATING" Type="Self.RATING" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="DELIVERIES">
               <PropertyRef Name="DELIVERID" />
@@ -212,7 +221,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__POSSIBLED__IDOFD__2E1BDC42">
-          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
           <End Role="POSSIBLEDRIVE" Type="Self.POSSIBLEDRIVE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USERS">
@@ -224,10 +233,10 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="sedingEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="DELIVERIES" EntityType="Self.DELIVERy" />
-          <EntitySet Name="POSSIBLEDRIVEs" EntityType="Self.POSSIBLEDRIVE" />
-          <EntitySet Name="RATINGs" EntityType="Self.RATING" />
-          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <EntitySet Name="DELIVERIES" EntityType="Self.DELIVERIES" />
+          <EntitySet Name="POSSIBLEDRIVE" EntityType="Self.POSSIBLEDRIVE" />
+          <EntitySet Name="RATING" EntityType="Self.RATING" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" />
           <AssociationSet Name="FK__DELIVERIE__IDOFC__2B3F6F97" Association="Self.FK__DELIVERIE__IDOFC__2B3F6F97">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="DELIVERIES" EntitySet="DELIVERIES" />
@@ -236,13 +245,13 @@
             <End Role="USERS" EntitySet="USERS" />
             <End Role="DELIVERIES" EntitySet="DELIVERIES" />
           </AssociationSet>
-          <AssociationSet Name="FK__RATING__DELIVERY__2F10007B" Association="Self.FK__RATING__DELIVERY__2F10007B">
+          <AssociationSet Name="FK__RATING__DELIVERY__36B12243" Association="Self.FK__RATING__DELIVERY__36B12243">
             <End Role="DELIVERIES" EntitySet="DELIVERIES" />
-            <End Role="RATING" EntitySet="RATINGs" />
+            <End Role="RATING" EntitySet="RATING" />
           </AssociationSet>
           <AssociationSet Name="FK__POSSIBLED__IDOFD__2E1BDC42" Association="Self.FK__POSSIBLED__IDOFD__2E1BDC42">
             <End Role="USERS" EntitySet="USERS" />
-            <End Role="POSSIBLEDRIVE" EntitySet="POSSIBLEDRIVEs" />
+            <End Role="POSSIBLEDRIVE" EntitySet="POSSIBLEDRIVE" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -252,7 +261,7 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="sedingModelStoreContainer" CdmEntityContainer="sedingEntities">
           <EntitySetMapping Name="DELIVERIES">
-            <EntityTypeMapping TypeName="sedingModel.DELIVERy">
+            <EntityTypeMapping TypeName="sedingModel.DELIVERIES">
               <MappingFragment StoreEntitySet="DELIVERIES">
                 <ScalarProperty Name="DELIVERID" ColumnName="DELIVERID" />
                 <ScalarProperty Name="IDOFDELIVER" ColumnName="IDOFDELIVER" />
@@ -262,10 +271,11 @@
                 <ScalarProperty Name="SOURSEADRESS" ColumnName="SOURSEADRESS" />
                 <ScalarProperty Name="DESTINATIONADRESS" ColumnName="DESTINATIONADRESS" />
                 <ScalarProperty Name="DONE" ColumnName="DONE" />
+                <ScalarProperty Name="HOUR" ColumnName="HOUR" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="POSSIBLEDRIVEs">
+          <EntitySetMapping Name="POSSIBLEDRIVE">
             <EntityTypeMapping TypeName="sedingModel.POSSIBLEDRIVE">
               <MappingFragment StoreEntitySet="POSSIBLEDRIVE">
                 <ScalarProperty Name="KODOFDRIVE" ColumnName="KODOFDRIVE" />
@@ -277,25 +287,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RATINGs">
+          <EntitySetMapping Name="RATING">
             <EntityTypeMapping TypeName="sedingModel.RATING">
               <MappingFragment StoreEntitySet="RATING">
-                <ScalarProperty Name="KODRATING" ColumnName="KODRATING" />
                 <ScalarProperty Name="DELIVERYID" ColumnName="DELIVERYID" />
+                <ScalarProperty Name="IDOFDELIVER" ColumnName="IDOFDELIVER" />
                 <ScalarProperty Name="INTEGRITYDELIVER" ColumnName="INTEGRITYDELIVER" />
                 <ScalarProperty Name="LATE" ColumnName="LATE" />
                 <ScalarProperty Name="SERVISE" ColumnName="SERVISE" />
                 <ScalarProperty Name="GENERAL" ColumnName="GENERAL" />
+                <ScalarProperty Name="SamPoint" ColumnName="SamPoint" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USERS">
-            <EntityTypeMapping TypeName="sedingModel.USER">
+            <EntityTypeMapping TypeName="sedingModel.USERS">
               <MappingFragment StoreEntitySet="USERS">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirsteName" ColumnName="FirsteName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -313,7 +326,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

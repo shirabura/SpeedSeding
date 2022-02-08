@@ -13,7 +13,7 @@ namespace DTOClass
         public string FirsteName { get; set; }
         public string LastName { get; set; }
         public string Status { get; set; }
-        public string PHONE { get; set; }
+        public int phone { get; set; }
         public string Password { get; set; }
 
 
@@ -22,33 +22,33 @@ namespace DTOClass
 
         }
 
-        public dtoUSER(USER u )
+        public dtoUSER(USERS u )
         {
             this.Id = u.Id;
             this.FirsteName = u.FirsteName;
             this.LastName = u.LastName;
-            this.PHONE = u.PHONE;
+            this.phone = u.phone;
             this.Status = u.Status;
             this.Password = u.Password;
         }
 
-        public USER FromdtoToTable()
+        public USERS FromdtoToTable()
         {
             throw new NotImplementedException();
         }
 
-        public USER FromdtoToTable(dtoUSER u)
+        public USERS FromdtoToTable(dtoUSER u)
         {
-            USER us = new USER();
+            USERS us = new USERS();
             us.Id =Id;
             us.FirsteName =FirsteName;
             us.LastName =LastName;
-            us.PHONE =PHONE;
+            us.phone = phone;
             us.Status = Status;
             us.Password = Password;
             return us;
         }
-        public static List<dtoUSER> CreateDtoList(List<USER> LIST)
+        public static List<dtoUSER> CreateDtoList(List<USERS> LIST)
         {
             List<dtoUSER> dtolist = new List<dtoUSER>();
             foreach (var p in LIST)

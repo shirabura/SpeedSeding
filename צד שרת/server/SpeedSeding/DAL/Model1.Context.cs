@@ -25,10 +25,12 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<DELIVERy> DELIVERIES { get; set; }
-        public virtual DbSet<POSSIBLEDRIVE> POSSIBLEDRIVEs { get; set; }
-        public virtual DbSet<RATING> RATINGs { get; set; }
-        public virtual DbSet<USER> USERS { get; set; }
+        public virtual DbSet<DELIVERIES> DELIVERIES { get; set; }
+        public virtual DbSet<POSSIBLEDRIVE> POSSIBLEDRIVE { get; set; }
+        public virtual DbSet<RATING> RATING { get; set; }
+        public virtual DbSet<USERS> USERS { get; set; }
+
+
         public DbSet<T> GetDbSet<T>() where T : class
         {
             return this.Set<T>();

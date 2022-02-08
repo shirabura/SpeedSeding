@@ -12,29 +12,28 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class USER
+    public partial class USERS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USER()
+        public USERS()
         {
-            this.DELIVERIES = new HashSet<DELIVERy>();
-            this.DELIVERIES1 = new HashSet<DELIVERy>();
-            this.POSSIBLEDRIVEs = new HashSet<POSSIBLEDRIVE>();
+            this.DELIVERIES = new HashSet<DELIVERIES>();
+            this.DELIVERIES1 = new HashSet<DELIVERIES>();
+            this.POSSIBLEDRIVE = new HashSet<POSSIBLEDRIVE>();
         }
     
         public long Id { get; set; }
         public string FirsteName { get; set; }
         public string LastName { get; set; }
         public string Status { get; set; }
-        public string PHONE { get; set; }
+        public int phone { get; set; }
         public string Password { get; set; }
-
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DELIVERy> DELIVERIES { get; set; }
+        public virtual ICollection<DELIVERIES> DELIVERIES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DELIVERy> DELIVERIES1 { get; set; }
+        public virtual ICollection<DELIVERIES> DELIVERIES1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<POSSIBLEDRIVE> POSSIBLEDRIVEs { get; set; }
+        public virtual ICollection<POSSIBLEDRIVE> POSSIBLEDRIVE { get; set; }
     }
 }

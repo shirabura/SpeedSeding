@@ -19,10 +19,9 @@ namespace DAL
         public Nullable<int> INTEGRITYDELIVER { get; set; }
         public Nullable<int> LATE { get; set; }
         public Nullable<int> SERVISE { get; set; }
-        public Nullable<long> SamPoint { get; set; }
         public Nullable<int> GENERAL { get; set; }
-
+        public Nullable<long> SamPoint { get; set; }
     
-        public virtual DELIVERy DELIVERy { get; set; }
+        public virtual DELIVERIES DELIVERIES { get; set; }
     }
 }

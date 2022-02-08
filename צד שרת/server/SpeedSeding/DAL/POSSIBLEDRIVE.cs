@@ -21,6 +21,6 @@ namespace DAL
         public string SOURSEADRESS { get; set; }
         public string DESTINATIONADRESS { get; set; }
     
-        public virtual USER USER { get; set; }
+        public virtual USERS USERS { get; set; }
     }
 }
