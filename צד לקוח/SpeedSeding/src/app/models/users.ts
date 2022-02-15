@@ -6,7 +6,7 @@ export interface Users{
     FirsteName:string;
     LastName:string;
     Status:string;
-    phone:number;
+    phone:string;
     Password:string;
 
 

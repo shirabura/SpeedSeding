@@ -11,10 +11,11 @@ export class DbService {
   constructor(private httpClient:HttpClient) { }
 
   getUserDetails():Observable<Users[]>{
-    return this.httpClient.get<Users[]>('http://localhost:51067/api/USERS/GetallUsers');
+    return this.httpClient.get<Users[]>('http://localhost:51067/api/USER/GetallUsers');
   }
 
-  getUserSignUp(){
+  getUserSignUp(user:Users):Observable<Users>{
+    return this.httpClient.post<Users>('http://localhost:51067/api/USER/GetallUsers',user);
 
   }
 }

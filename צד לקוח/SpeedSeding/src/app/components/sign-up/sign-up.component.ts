@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Users } from 'src/app/models/users';
 
 @Component({
   selector: 'app-sign-up',
@@ -24,6 +25,20 @@ export class SignUpComponent implements OnInit {
   
       }
     )
+  }
+  DoSingUp(){
+   const user:Users={
+
+    id:this.SignUpForm.controls.id.value, 
+    FirsteName:this.SignUpForm.controls.firstname.value,
+    LastName:this.SignUpForm.controls.LastName.value,
+    Status:this.SignUpForm.controls.Status.value,
+    phone:this.SignUpForm.controls.phone.value,
+    Password:this.SignUpForm.controls.Password.value,
+
+   }
+   console.log(user);
+
   }
 
 }
