@@ -20,9 +20,13 @@ namespace BL
                 point += (long)i.LATE;
                 point += (long)i.SERVISE;
                 point += (long)i.GENERAL;
-                i.SamPoint = point;
-
             }
+
+            foreach (var i in AllRating)
+            {
+                i.SamPoint = point;
+            }
+
             foreach (var i in AllRating)
             {
                 db.Execute<RATING>(i, DBConection.ExecuteActions.Update);

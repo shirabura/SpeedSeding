@@ -20,7 +20,8 @@ namespace DAL
         public Nullable<System.TimeSpan> HOUR { get; set; }
         public string SOURSEADRESS { get; set; }
         public string DESTINATIONADRESS { get; set; }
-    
+        public int CountOfDeliveries { get; set; }
+
         public virtual USERS USERS { get; set; }
     }
 }

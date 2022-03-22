@@ -15,6 +15,7 @@ namespace DTOClass
         public TimeSpan HOUR { get; set; }
         public string SOURSEADRESS { get; set; }
         public string DESTINATIONADRESS { get; set; }
+        public int CountOfDeliveries { get; set; }
 
         public dtoPOSSIBLEDRIVE()
         {
@@ -27,7 +28,7 @@ namespace DTOClass
             this.HOUR = (TimeSpan)p.HOUR;
             this.SOURSEADRESS = p.SOURSEADRESS;
             this.DESTINATIONADRESS = p.DESTINATIONADRESS;
-
+            this.CountOfDeliveries = p.CountOfDeliveries;
         }
         public  POSSIBLEDRIVE FromdtoToTable(dtoPOSSIBLEDRIVE p)
         {
@@ -38,6 +39,7 @@ namespace DTOClass
             pos.HOUR =HOUR;
             pos.SOURSEADRESS =SOURSEADRESS;
             pos.DESTINATIONADRESS =DESTINATIONADRESS;
+            pos.CountOfDeliveries = CountOfDeliveries;
             return pos;
 
         }
