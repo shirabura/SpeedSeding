@@ -35,20 +35,47 @@ namespace BL
        
         //התוצאה מכל הפונקציות הנל תהיה רשימה של משלוחים שמתאימים לנסיעה מסוימת ששלחתי לפי התאמה בסיסית(מקום שעה ותאריך ולא נעשו)
         //li זה הרשימה שאני מקבלת מהפונקציה הקודמת
-        public static DELIVERy ChooseDeliver(List<dtoDELIVERy> li, dtoPOSSIBLEDRIVE p)
+        public static dtoDELIVERy ChooseDeliver(List<dtoDELIVERy> li, dtoPOSSIBLEDRIVE p)
         {
-            //בודקת האם המשלוחן קיבל כבר משלוחים לנסיעה זו
-            if (p.CountOfDeliveries == 0)
+            //רשימה של משלוחים שמתאימים לרשימת הנסיעות הספציפית
+            List<dtoPOSSIBLEDRIVE> allPossibleshippers = new List<dtoPOSSIBLEDRIVE>();
+            allPossibleshippers= PossibleDriveBL.GetAllOpenRequest(li[0]);
+            //בודקת את המשלוחן המינימלי מבין כולם
+            Min mincounter = new Min();
+            mincounter.counter = allPossibleshippers[0].CountOfDeliveries;
+            foreach (var i in allPossibleshippers)
             {
-              //אם לא קיבל אז הוא מקבל את כל הרשימה המתאימה וצריך לאשר את המשלוחים שרוצה
-                return li;
+                if (i.CountOfDeliveries < mincounter.counter)
+                {
+                    mincounter = new Min();
+                    mincounter.counter = i.CountOfDeliveries;
+                }
+                //אם הוא שווה למינימלי הוא יכניס אותו לרשימה של מינימלי 
+                if (i.CountOfDeliveries == mincounter.counter)
+                {
+                    mincounter.alldeliveries.Add(i);
+                }
             }
-            foreach (var i in li)
+            //בודקת את הריטינג הגבוה מבין כל המשלוחנים עם מספר המשלוחים המינימלי
+            Max maxrating = new Max();
+            foreach (var i in mincounter.alldeliveries)
             {
-                PossibleDriveBL.GetAllOpenRequest(i);
+                if (RatingBL.CalculatePoint(i.IDOFDELIVER) > maxrating.counter)
+                {
+                    maxrating = new Max();
+                    maxrating.counter++;
+                    maxrating.point = RatingBL.CalculatePoint(i.IDOFDELIVER);
+                }
+                //אם הריטינג שווה המשלוחן יכנס לרשימה של ריטיג מקסימלי (מקרה קצה ונעשה הגרלה בינהם
+                if (RatingBL.CalculatePoint(i.IDOFDELIVER) == maxrating.counter)
+                {
+                    maxrating.counter++;
+                    maxrating.allratings.Add(i);
+                }
+                Random r = new Random();
+                r.Next(maxrating.counter);
+                return r;
             }
-           return li;
-
         }
     }
 
