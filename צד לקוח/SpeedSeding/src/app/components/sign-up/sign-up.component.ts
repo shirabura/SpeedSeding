@@ -14,30 +14,30 @@ export class SignUpComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.SignUpForm = new FormGroup(
-      {
-        tz: new FormControl(''),
-        firstname: new FormControl(''),
-        lastname: new FormControl(''),
-        status: new FormControl(''),
-        phone: new FormControl(''),
-        pass: new FormControl('')
+  //   this.SignUpForm = new FormGroup(
+  //     {
+  //       tz: new FormControl(''),
+  //       firstname: new FormControl(''),
+  //       lastname: new FormControl(''),
+  //       status: new FormControl(''),
+  //       phone: new FormControl(''),
+  //       pass: new FormControl('')
   
-      }
-    )
-  }
-  DoSingUp(){
-   const user:Users={
+  //     }
+  //   )
+  // }
+  // DoSingUp(){
+  //  const user:Users={
 
-    id:this.SignUpForm.controls.id.value, 
-    FirsteName:this.SignUpForm.controls.firstname.value,
-    LastName:this.SignUpForm.controls.LastName.value,
-    Status:this.SignUpForm.controls.Status.value,
-    phone:this.SignUpForm.controls.phone.value,
-    Password:this.SignUpForm.controls.Password.value,
+  //   id:this.SignUpForm.controls.id.value, 
+  //   FirsteName:this.SignUpForm.controls.firstname.value,
+  //   LastName:this.SignUpForm.controls.LastName.value,
+  //   Status:this.SignUpForm.controls.Status.value,
+  //   phone:this.SignUpForm.controls.phone.value,
+  //   Password:this.SignUpForm.controls.Password.value,
 
-   }
-   console.log(user);
+  //  }
+  //  console.log(user);
 
   }
 

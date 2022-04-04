@@ -1,8 +1,9 @@
 #menu{
-    display: block;
+
+    display: flex;
  
 }
-label{
+/* label{
     display: block;
- 
-}
+    /* display: flex; */
+
