@@ -12,12 +12,12 @@ export class SingInComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // this.SignInForm = new FormGroup(
-    //   {
-    //     firstname: new FormControl(''),
-    //     pass: new FormControl('')
-    //   }
-    // )
+     this.SignInForm = new FormGroup(
+       {
+         firstname: new FormControl(''),
+         pass: new FormControl('')
+       }
+     )
   }
 
 }

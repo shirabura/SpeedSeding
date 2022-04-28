@@ -1,6 +1,20 @@
-<!-- <form [formGroup]="SignInForm">
-    <label for="firstname">שם פרטי </label>
-    <input class="form-control" type="text" id="name" placeholder="chayaAbu">
-    <label for="pass">סיסמא</label>
-    <input class="form-control" type="password" id="pass" placeholder="">
-</form> -->
+<br>
+<div class=" center" style=" width: 30rem;height: fit-content; margin-top: 200px;">
+<form [formGroup]="SignInForm" class="dropdown-menu p-4 row card fs-6">
+<div>
+    <div class="mb-3">
+        <label for="firstname" >שם פרטי</label>
+        <input class="form-control " type="text" id="firstname" placeholder="">
+      </div>
+
+      <div class="mb-3">
+        <label for="pass" class="form-label">סיסמא</label>
+        <input type="password" class="form-control" id="pass" placeholder="">
+      </div>
+      <br>
+      <div>
+        <input class="btn btn-seconday nav-link- active form-control" style="background-color:rgba(255, 68, 0, 0.904); color: white;border-color: orangered;" type="submit" (click)="ngOnInit()" value="אישור">
+      </div>
+</div>  
+</form>
+ </div>
