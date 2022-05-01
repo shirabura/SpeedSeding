@@ -42,6 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
+=======
+    <Compile Include="CalculateDistanceBL.cs" />
+    <Compile Include="deafult.cs" />
+>>>>>>> Stashed changes
     <Compile Include="DeliversBL.cs" />
     <Compile Include="Max.cs" />
     <Compile Include="Min.cs" />
