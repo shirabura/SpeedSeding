@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Users } from 'src/app/models/users';
+import { DbService } from 'src/app/service/db.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +12,7 @@ export class SignUpComponent implements OnInit {
   SignUpForm:any;
 
 
-  constructor() { }
+  constructor(private db: DbService) { }
 
   ngOnInit(): void {
     this.SignUpForm = new FormGroup(
@@ -36,7 +37,15 @@ export class SignUpComponent implements OnInit {
      Password:this.SignUpForm.controls.pass.value
     }
     console.log(user);
+    this.db.getUserSignUp(user).subscribe(res => {
+      console.log(res)
 
+      if (res == null)
+        alert("שגיאת שרת")
+      else
+        alert("נוסף בהצלחה")
+    })
   }
+  
 
 }
