@@ -37,6 +37,7 @@ namespace BL
         //li זה הרשימה שאני מקבלת מהפונקציה הקודמת
         public static dtoDELIVERy ChooseDeliver(List<dtoDELIVERy> li, dtoPOSSIBLEDRIVE p)
         {
+<<<<<<< Updated upstream
             //רשימה של משלוחים שמתאימים לרשימת הנסיעות הספציפית
             List<dtoPOSSIBLEDRIVE> allPossibleshippers = new List<dtoPOSSIBLEDRIVE>();
             allPossibleshippers= PossibleDriveBL.GetAllOpenRequest(li[0]);
@@ -76,6 +77,11 @@ namespace BL
                 r.Next(maxrating.counter);
                 return r;
             }
+=======
+            
+
+
+>>>>>>> Stashed changes
         }
     }
 
