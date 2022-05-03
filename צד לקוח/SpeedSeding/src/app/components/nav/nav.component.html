@@ -9,39 +9,28 @@
     </button>
     <div class="  navbar-dark" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li (click)="changeabout()"class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
             אודות
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">אודות החברה</a></li>
-            <li><a class="dropdown-item" href="#"> איך זה עובד?</a></li>
-          </ul>
         </li>
-        <li (click)="changetottrue()" class="nav-item dropdown">
+        <li (click)="changedeliver()" class="nav-item dropdown">
           <div class="nav-link dropdown-toggle " style="color:white" href="#" id="navbarDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
             משלוחן
           </div>
-           
         </li>
-        <li class="nav-item">
+        <li  (click)="changecustomer()"class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
             לקוח
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">הכנס בקשה למשלוח</a></li>
-            <li><a class="dropdown-item" href="#">הגב על משלוח </a></li>
-          </ul>
         </li>
         <li>
           <div style="width: 140vh;"></div>
         </li>
-
         <li>
-
           <button type="button" class="btn btn-seconday nav-link-dark active" style="border-color: white;" href="#"
             routerLink="SignIn">התחברות</button>
         </li>
@@ -60,4 +49,12 @@
   <li><a class=" dropdown-item " href="#">הכנס נסיעה אפשרית</a></li>
   <li><a class="dropdown-item" href="#"> היסטורית המשלוחים שלי</a></li>
   <li><a class="dropdown-item" href="#">הרייטינג שלי</a></li>
+</ul>
+<ul *ngIf="customer==true"class="dropdown-menu" aria-labelledby="navbarDropdown">
+  <li><a class="dropdown-item" href="#">הכנס בקשה למשלוח</a></li>
+  <li><a class="dropdown-item" href="#">הגב על משלוח </a></li>
+</ul>
+<ul *ngIf="about==true"class="dropdown-menu" aria-labelledby="navbarDropdown">
+  <li><a class="dropdown-item" href="#">אודות החברה</a></li>
+  <li><a class="dropdown-item" href="#"> איך זה עובד?</a></li>
 </ul>

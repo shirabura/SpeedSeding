@@ -14,11 +14,23 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  changetottrue() {
+  changedeliver() {
     this.deliver = !this.deliver;
     this.about=false;
     this.customer=false
     console.log("deliver:" + this.deliver);
+
+  }
+  changeabout(){
+    this.deliver = false;
+    this.about=!this.about;
+    this.customer=false
+
+  }
+  changecustomer(){
+    this.deliver = false;
+    this.about=false;
+    this.customer=!this.customer;
 
   }
 }
