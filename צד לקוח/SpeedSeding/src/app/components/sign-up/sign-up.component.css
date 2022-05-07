@@ -17,3 +17,10 @@
     width: 50%;
 
 }
+.home{
+    display:flex;
+   text-align: center;
+   display: block;
+    width: 50%;
+
+}

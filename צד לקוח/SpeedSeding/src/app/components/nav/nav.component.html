@@ -2,18 +2,20 @@
   <div class=" container-  ">
     <a class="navbar-brand" style="color:#ffffff" href="#"></a>
 
-      <img src="/src/assets/11.jpg" style="height: 50px;width: 50px; " alt="">
+      <img src="/src/assets/11.jpg" style="height:30px;width: 50px; " alt="">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="  navbar-dark" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li (click)="changeabout()"class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDropdown" role="button"
+        <div style="width: 5vh;"> </div>
+        <li (click)="changeabout()" class="nav-item dropdown">
+          <div class="nav-link dropdown-toggle " style="color:white " href="#" id="navbarDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
             אודות
-          </a>
+           </div>  
         </li>
         <li (click)="changedeliver()" class="nav-item dropdown">
           <div class="nav-link dropdown-toggle " style="color:white" href="#" id="navbarDropdown" role="button"
@@ -22,13 +24,13 @@
           </div>
         </li>
         <li  (click)="changecustomer()"class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDropdown" role="button"
+          <div class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
             לקוח
-          </a>
+          </div>
         </li>
         <li>
-          <div style="width: 140vh;"></div>
+          <div style="width: 135vh;"></div>
         </li>
         <li>
           <button type="button" class="btn btn-seconday nav-link-dark active" style="border-color: white;" href="#"
@@ -50,11 +52,11 @@
   <li><a class="dropdown-item" href="#"> היסטורית המשלוחים שלי</a></li>
   <li><a class="dropdown-item" href="#">הרייטינג שלי</a></li>
 </ul>
-<ul *ngIf="customer==true"class="dropdown-menu" aria-labelledby="navbarDropdown">
+<ul *ngIf="customer==true"  class="deliver" aria-labelledby="navbarDropdown" style="background-color: white;">
   <li><a class="dropdown-item" href="#">הכנס בקשה למשלוח</a></li>
   <li><a class="dropdown-item" href="#">הגב על משלוח </a></li>
 </ul>
-<ul *ngIf="about==true"class="dropdown-menu" aria-labelledby="navbarDropdown">
+<ul *ngIf="about==true"class="deliver" aria-labelledby="navbarDropdown"style="background-color: white;">
   <li><a class="dropdown-item" href="#">אודות החברה</a></li>
   <li><a class="dropdown-item" href="#"> איך זה עובד?</a></li>
 </ul>
