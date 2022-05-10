@@ -16,7 +16,7 @@ namespace API.Controllers
         public List<dtoUSER> GetallUsers()
         {
 
-            List<dtoUSER> list = BL.UserBL.GetallUsers();
+            List<dtoUSER> list = BLL.UserBL.GetallUsers();
             return list;
         }
 
