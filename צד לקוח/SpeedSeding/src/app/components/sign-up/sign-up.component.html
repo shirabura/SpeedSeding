@@ -1,24 +1,27 @@
-
-
 <div class="center" style=" width: 30rem;height: fit-content; margin-top: 200px;">
- <form [formGroup]="SignUpForm"  class="dropdown-menu p-4 row card fs-6">
-    <div class="form control">
-        <label for="tz">תעודת זהות</label>
-        <input class="form-control" type="text" id="tz" placeholder="">
-        <label for="firstname">שם פרטי </label>
-        <input class="form-control" type="text" id="firstname" placeholder="">
-        <label for="lastname">שם משפחה </label>
-        <input class="form-control" type="text" id="LastName" placeholder="">
-        <label for="status">סטטוס</label>
-        <input class="form-control" type="text" id="Status">
-        <label for="phone">מספר טלפון </label>
-        <input class="form-control" type="text" id="phone">
-        <label for="pass">סיסמא</label>
-        <input class="form-control" type="password" id="pass" placeholder="">
-        <label for="validationpass">אימות סיסמא</label>
-        <input class="form-control" type="password" id="validationpass" placeholder="">
-        <br>
-        <input class="btn  form-control" style="background-color:rgba(0, 0, 0, 0.836);color :white" type="submit" (click)="DoSingUp()" value="אישור">
-    </div>
-</form> 
-</div>
+    <form [formGroup]="SignUpForm"  class="dropdown-menu p-4 row card fs-6">
+       <div class="form control">
+           <label for="tz">תעודת זהות</label>
+           <input class="form-control" type="text" id="tz" placeholder="">
+           <label for="firstname">שם פרטי </label>
+           <input class="form-control" type="text" id="firstname" placeholder="">
+           <label for="lastname">שם משפחה </label>
+           <input class="form-control" type="text" id="LastName" placeholder="">
+           <label for="status">סטטוס</label>
+           <select class="form-select" aria-label="סוג משתמש" placeholder="סטטוס">
+       
+            <option value="1">משלוחן</option>
+            <option value="2">לקוח</option>
+           
+          </select>
+           <label for="phone">מספר טלפון </label>
+           <input class="form-control" type="text" id="phone">
+           <label for="pass">סיסמא</label>
+           <input class="form-control" type="password" id="pass" placeholder="">
+           <label for="validationpass">אימות סיסמא</label>
+           <input class="form-control" type="password" id="validationpass" placeholder="">
+           <br>
+           <input class="btn  form-control" style="background-color:rgba(0, 0, 0, 0.836);color :white" type="submit" (click)="DoSingUp()" value="אישור">
+       </div>
+   </form> 
+   </div>
