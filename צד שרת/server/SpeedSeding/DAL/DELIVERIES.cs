@@ -14,6 +14,12 @@ namespace DAL
     
     public partial class DELIVERIES
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DELIVERIES()
+        {
+            this.NOTCONFIRM = new HashSet<NOTCONFIRM>();
+        }
+    
         public long DELIVERID { get; set; }
         public Nullable<long> IDOFDELIVER { get; set; }
         public Nullable<long> IDOFCUSTUMER { get; set; }
@@ -27,5 +33,7 @@ namespace DAL
         public virtual USERS USERS { get; set; }
         public virtual USERS USERS1 { get; set; }
         public virtual RATING RATING { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NOTCONFIRM> NOTCONFIRM { get; set; }
     }
 }

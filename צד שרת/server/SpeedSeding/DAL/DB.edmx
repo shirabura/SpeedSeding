@@ -19,6 +19,14 @@
           <Property Name="DONE" Type="bit" />
           <Property Name="HOUR" Type="time" Precision="7" />
         </EntityType>
+        <EntityType Name="NOTCONFIRM">
+          <Key>
+            <PropertyRef Name="NotConfirmID" />
+          </Key>
+          <Property Name="DeliveryId" Type="bigint" Nullable="false" />
+          <Property Name="PossibleDriveId" Type="bigint" Nullable="false" />
+          <Property Name="NotConfirmID" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="POSSIBLEDRIVE">
           <Key>
             <PropertyRef Name="KODOFDRIVE" />
@@ -29,6 +37,7 @@
           <Property Name="HOUR" Type="time" Precision="7" />
           <Property Name="SOURSEADRESS" Type="varchar" MaxLength="50" />
           <Property Name="DESTINATIONADRESS" Type="varchar" MaxLength="50" />
+          <Property Name="CountOfDeliveries" Type="int" />
         </EntityType>
         <EntityType Name="RATING">
           <Key>
@@ -50,7 +59,7 @@
           <Property Name="FirsteName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
           <Property Name="Status" Type="varchar" MaxLength="50" />
-          <Property Name="phone" Type="int" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__DELIVERIE__IDOFC__2B3F6F97">
@@ -101,8 +110,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_T1">
+          <End Role="DELIVERIES" Type="Self.DELIVERIES" Multiplicity="1" />
+          <End Role="NOTCONFIRM" Type="Self.NOTCONFIRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DELIVERIES">
+              <PropertyRef Name="DELIVERID" />
+            </Principal>
+            <Dependent Role="NOTCONFIRM">
+              <PropertyRef Name="DeliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T2">
+          <End Role="POSSIBLEDRIVE" Type="Self.POSSIBLEDRIVE" Multiplicity="1" />
+          <End Role="NOTCONFIRM" Type="Self.NOTCONFIRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSSIBLEDRIVE">
+              <PropertyRef Name="KODOFDRIVE" />
+            </Principal>
+            <Dependent Role="NOTCONFIRM">
+              <PropertyRef Name="PossibleDriveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="sedingModelStoreContainer">
           <EntitySet Name="DELIVERIES" EntityType="Self.DELIVERIES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOTCONFIRM" EntityType="Self.NOTCONFIRM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="POSSIBLEDRIVE" EntityType="Self.POSSIBLEDRIVE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RATING" EntityType="Self.RATING" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
@@ -121,6 +155,14 @@
           <AssociationSet Name="FK__RATING__DELIVERY__36B12243" Association="Self.FK__RATING__DELIVERY__36B12243">
             <End Role="DELIVERIES" EntitySet="DELIVERIES" />
             <End Role="RATING" EntitySet="RATING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T1" Association="Self.FK_T1">
+            <End Role="DELIVERIES" EntitySet="DELIVERIES" />
+            <End Role="NOTCONFIRM" EntitySet="NOTCONFIRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T2" Association="Self.FK_T2">
+            <End Role="POSSIBLEDRIVE" EntitySet="POSSIBLEDRIVE" />
+            <End Role="NOTCONFIRM" EntitySet="NOTCONFIRM" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -144,6 +186,17 @@
           <NavigationProperty Name="USERS" Relationship="Self.FK__DELIVERIE__IDOFC__2B3F6F97" FromRole="DELIVERIES" ToRole="USERS" />
           <NavigationProperty Name="USERS1" Relationship="Self.FK__DELIVERIE__IDOFD__2A4B4B5E" FromRole="DELIVERIES" ToRole="USERS" />
           <NavigationProperty Name="RATING" Relationship="Self.FK__RATING__DELIVERY__36B12243" FromRole="DELIVERIES" ToRole="RATING" />
+          <NavigationProperty Name="NOTCONFIRM" Relationship="Self.FK_T1" FromRole="DELIVERIES" ToRole="NOTCONFIRM" />
+        </EntityType>
+        <EntityType Name="NOTCONFIRM">
+          <Key>
+            <PropertyRef Name="NotConfirmID" />
+          </Key>
+          <Property Name="DeliveryId" Type="Int64" Nullable="false" />
+          <Property Name="PossibleDriveId" Type="Int64" Nullable="false" />
+          <Property Name="NotConfirmID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="DELIVERIES" Relationship="Self.FK_T1" FromRole="NOTCONFIRM" ToRole="DELIVERIES" />
+          <NavigationProperty Name="POSSIBLEDRIVE" Relationship="Self.FK_T2" FromRole="NOTCONFIRM" ToRole="POSSIBLEDRIVE" />
         </EntityType>
         <EntityType Name="POSSIBLEDRIVE">
           <Key>
@@ -155,6 +208,8 @@
           <Property Name="HOUR" Type="Time" Precision="7" />
           <Property Name="SOURSEADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DESTINATIONADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountOfDeliveries" Type="Int32" />
+          <NavigationProperty Name="NOTCONFIRM" Relationship="Self.FK_T2" FromRole="POSSIBLEDRIVE" ToRole="NOTCONFIRM" />
           <NavigationProperty Name="USERS" Relationship="Self.FK__POSSIBLED__IDOFD__2E1BDC42" FromRole="POSSIBLEDRIVE" ToRole="USERS" />
         </EntityType>
         <EntityType Name="RATING">
@@ -178,7 +233,7 @@
           <Property Name="FirsteName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="phone" Type="Int32" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DELIVERIES" Relationship="Self.FK__DELIVERIE__IDOFC__2B3F6F97" FromRole="USERS" ToRole="DELIVERIES" />
           <NavigationProperty Name="DELIVERIES1" Relationship="Self.FK__DELIVERIE__IDOFD__2A4B4B5E" FromRole="USERS" ToRole="DELIVERIES" />
@@ -220,6 +275,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_T1">
+          <End Role="DELIVERIES" Type="Self.DELIVERIES" Multiplicity="1" />
+          <End Role="NOTCONFIRM" Type="Self.NOTCONFIRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DELIVERIES">
+              <PropertyRef Name="DELIVERID" />
+            </Principal>
+            <Dependent Role="NOTCONFIRM">
+              <PropertyRef Name="DeliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T2">
+          <End Role="POSSIBLEDRIVE" Type="Self.POSSIBLEDRIVE" Multiplicity="1" />
+          <End Role="NOTCONFIRM" Type="Self.NOTCONFIRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSSIBLEDRIVE">
+              <PropertyRef Name="KODOFDRIVE" />
+            </Principal>
+            <Dependent Role="NOTCONFIRM">
+              <PropertyRef Name="PossibleDriveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__POSSIBLED__IDOFD__2E1BDC42">
           <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
           <End Role="POSSIBLEDRIVE" Type="Self.POSSIBLEDRIVE" Multiplicity="*" />
@@ -234,6 +313,7 @@
         </Association>
         <EntityContainer Name="sedingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DELIVERIES" EntityType="Self.DELIVERIES" />
+          <EntitySet Name="NOTCONFIRM" EntityType="Self.NOTCONFIRM" />
           <EntitySet Name="POSSIBLEDRIVE" EntityType="Self.POSSIBLEDRIVE" />
           <EntitySet Name="RATING" EntityType="Self.RATING" />
           <EntitySet Name="USERS" EntityType="Self.USERS" />
@@ -248,6 +328,14 @@
           <AssociationSet Name="FK__RATING__DELIVERY__36B12243" Association="Self.FK__RATING__DELIVERY__36B12243">
             <End Role="DELIVERIES" EntitySet="DELIVERIES" />
             <End Role="RATING" EntitySet="RATING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T1" Association="Self.FK_T1">
+            <End Role="DELIVERIES" EntitySet="DELIVERIES" />
+            <End Role="NOTCONFIRM" EntitySet="NOTCONFIRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T2" Association="Self.FK_T2">
+            <End Role="POSSIBLEDRIVE" EntitySet="POSSIBLEDRIVE" />
+            <End Role="NOTCONFIRM" EntitySet="NOTCONFIRM" />
           </AssociationSet>
           <AssociationSet Name="FK__POSSIBLED__IDOFD__2E1BDC42" Association="Self.FK__POSSIBLED__IDOFD__2E1BDC42">
             <End Role="USERS" EntitySet="USERS" />
@@ -275,6 +363,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="NOTCONFIRM">
+            <EntityTypeMapping TypeName="sedingModel.NOTCONFIRM">
+              <MappingFragment StoreEntitySet="NOTCONFIRM">
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+                <ScalarProperty Name="PossibleDriveId" ColumnName="PossibleDriveId" />
+                <ScalarProperty Name="NotConfirmID" ColumnName="NotConfirmID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="POSSIBLEDRIVE">
             <EntityTypeMapping TypeName="sedingModel.POSSIBLEDRIVE">
               <MappingFragment StoreEntitySet="POSSIBLEDRIVE">
@@ -284,6 +381,7 @@
                 <ScalarProperty Name="HOUR" ColumnName="HOUR" />
                 <ScalarProperty Name="SOURSEADRESS" ColumnName="SOURSEADRESS" />
                 <ScalarProperty Name="DESTINATIONADRESS" ColumnName="DESTINATIONADRESS" />
+                <ScalarProperty Name="CountOfDeliveries" ColumnName="CountOfDeliveries" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

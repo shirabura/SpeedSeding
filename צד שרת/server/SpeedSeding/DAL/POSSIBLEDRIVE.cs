@@ -14,14 +14,22 @@ namespace DAL
     
     public partial class POSSIBLEDRIVE
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public POSSIBLEDRIVE()
+        {
+            this.NOTCONFIRM = new HashSet<NOTCONFIRM>();
+        }
+    
         public long KODOFDRIVE { get; set; }
         public Nullable<long> IDOFDELIVER { get; set; }
         public Nullable<System.DateTime> DATE { get; set; }
         public Nullable<System.TimeSpan> HOUR { get; set; }
         public string SOURSEADRESS { get; set; }
         public string DESTINATIONADRESS { get; set; }
-        public int CountOfDeliveries { get; set; }
-
+        public Nullable<int> CountOfDeliveries { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NOTCONFIRM> NOTCONFIRM { get; set; }
         public virtual USERS USERS { get; set; }
     }
 }
