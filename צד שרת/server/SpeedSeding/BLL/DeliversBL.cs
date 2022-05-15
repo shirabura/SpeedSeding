@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BL.Model;
+using BLL;
 using DAL;
 using DTOClass;
 namespace BLL
@@ -11,55 +11,80 @@ namespace BLL
     public class DeliversBL
     {
         static DBConection db = new DBConection();
-        //חיפוש כל החבילות שמתאימות למשלוחן
-        public static List<dtoDELIVERy> GetAllOpenRequest(dtoPOSSIBLEDRIVE p)
+        //בשלב הראשון מתבצע סינון של המשלוחנים שכבר סירבו לבקשה ( אם קיימים)
+        public static List<dtoPOSSIBLEDRIVE> GetAllOpenRequest(dtoDELIVERy p)
         {
-            List<dtoDELIVERy> AllOpenRequest =dtoDELIVERy.CreateDtoList((db.GetDbSet<DELIVERIES>().Where(r => r.DONE == false).ToList()));
-            List<dtoDELIVERy> RequestbyDateHour = new List<dtoDELIVERy>();
-            List<dtoDELIVERy> allPossiblerequest = new List<dtoDELIVERy>();
-
+            List<dtoPOSSIBLEDRIVE> AllOpenRequest = dtoPOSSIBLEDRIVE.CreateDtoList((db.GetDbSet<POSSIBLEDRIVE>().ToList()));
+            List<NOTCONFIRM> NOTCONFIRMs =db.GetDbSet<NOTCONFIRM>();
+            List<dtoPOSSIBLEDRIVE> reqest=new List<dtoPOSSIBLEDRIVE>();
+            bool flag=false;
             foreach (var i in AllOpenRequest)
-            {
-                if (i.DATE == p.DATE && i.HOUR == p.HOUR)
-                {
-                    RequestbyDateHour.Add(i);
-                }
-
+            {     foreach (var item in NOTCONFIRMs)
+                    { 
+                        if(item.PossibleDriveId==i.KODOFDRIVE&&item.DeliveryId==p.DELIVERID)
+                        flag=true;
+                    }
+                  if(flag==false)
+                    reqest.Add(i);
             }
-            foreach (var i in RequestbyDateHour)
-            {
-                //כאן יהיה סינון נוסף של גוגל מפס שבודקת את המרחקים האם הם מתאימים
-            }
-            return allPossiblerequest;
+            return reqest;
         }
-       
-        //התוצאה מכל הפונקציות הנל תהיה רשימה של משלוחים שמתאימים לנסיעה מסוימת ששלחתי לפי התאמה בסיסית(מקום שעה ותאריך ולא נעשו)
-        //li זה הרשימה שאני מקבלת מהפונקציה הקודמת
-        public static dtoDELIVERy ChooseDeliver(List<dtoDELIVERy> li, dtoPOSSIBLEDRIVE p)
+        //בשלב השני מתבצע חיפוש המשלוחן המתאים ביותר:
+        //ראשית,תתבצע בדיקת התאמה מוחלטת
+        public static List<dtoPOSSIBLEDRIVE> Absolutefit(List<dtoPOSSIBLEDRIVE> reqest,dtoDELIVERy p)
         {
-<<<<<<< Updated upstream
-            //רשימה של משלוחנים שמתאימים לרשימת הנסיעות הספציפית
-            List<dtoPOSSIBLEDRIVE> allPossibleshippers = new List<dtoPOSSIBLEDRIVE>();
-            allPossibleshippers= PossibleDriveBL.GetAllOpenRequest(li[0]);
-            //בודקת את המשלוחן המינימלי מבין כולם
+            List<dtoPOSSIBLEDRIVE> AllOpenRequest=new List<dtoPOSSIBLEDRIVE>();
+            foreach (var item in reqest)
+            { 
+                if(item.DATE==p.DATE&&item.HOUR==p.HOUR)
+                    //if() כאן תהיה פונקצייה של גוגל מפות שתבדוק את התאמת המקומות של כתובות המקור אל מול כתובות היעד
+                        AllOpenRequest.Add(item);
+            }
+            //if(AllOpenRequest.Count>1)
+            //    //הפעל פונקציית בדיקת הסתברות
+            //if(AllOpenRequest.Count==1)
+            //   //יתבצע השיבוץ
+            //if(AllOpenRequest.Count==0)
+            //   //הפעל פונקציית התאמה חלקית
+            return AllOpenRequest;
+        }
+        //שנית תתבצע בדיקת התאמה חלקית
+        public static List<dtoPOSSIBLEDRIVE> Partialfit(List<dtoPOSSIBLEDRIVE> AllOpenRequest, dtoDELIVERy p)
+        {
+            List<dtoPOSSIBLEDRIVE> Partialfitlist = new List<dtoPOSSIBLEDRIVE>();
+            foreach(var item in AllOpenRequest)
+            {
+                //כאן תהיה פונקצצית חישוב מרחקים של גוגל מפות
+                //  נכניס לרשימה של Partialfitlist את כל הנסיעות המתאימות עם המרחק המינימלי
+            }
+            return Partialfitlist;
+
+        }
+        //במידה ולאחר ההתאמה המוחלטת או החלקית נשיג כמה משלוחנים באותה רמה -נבצע בדיקת הסתברות
+        //חיפוש כל הנסיעות עם מספר משלוחים מינימלי
+        public static List<dtoPOSSIBLEDRIVE> Minimumnumber(List<dtoPOSSIBLEDRIVE> Partialfitlist)
+        {
             Min mincounter = new Min();
-            mincounter.counter = allPossibleshippers[0].CountOfDeliveries;
-            foreach (var i in allPossibleshippers)
+            foreach (var i in Partialfitlist)
             {
                 if (i.CountOfDeliveries < mincounter.counter)
                 {
                     mincounter = new Min();
                     mincounter.counter = i.CountOfDeliveries;
                 }
-                //אם הוא שווה למינימלי הוא יכניס אותו לרשימה של מינימלי 
                 if (i.CountOfDeliveries == mincounter.counter)
                 {
                     mincounter.alldeliveries.Add(i);
                 }
             }
-            //בודקת את הריטינג הגבוה מבין כל המשלוחנים עם מספר המשלוחים המינימלי
+            return mincounter.alldeliveries;
+        }
+        //חישוב רייטינג מקסימלי מבין כל הנסיעות עם מספר המשלוחים המינימלי
+        public static dtoPOSSIBLEDRIVE calculatemaxrating(List<dtoPOSSIBLEDRIVE> mincounter)
+        {
             Max maxrating = new Max();
-            foreach (var i in mincounter.alldeliveries)
+            int w;
+            foreach (var i in mincounter)
             {
                 if (RatingBL.CalculatePoint(i.IDOFDELIVER) > maxrating.counter)
                 {
@@ -67,24 +92,30 @@ namespace BLL
                     maxrating.counter++;
                     maxrating.point = RatingBL.CalculatePoint(i.IDOFDELIVER);
                 }
-                //אם הריטינג שווה המשלוחן יכנס לרשימה של ריטיג מקסימלי (מקרה קצה ונעשה הגרלה בינהם
                 if (RatingBL.CalculatePoint(i.IDOFDELIVER) == maxrating.counter)
                 {
                     maxrating.counter++;
                     maxrating.allratings.Add(i);
                 }
-                Random r = new Random();
-                r.Next(maxrating.counter);
-                return r;
+               
             }
-=======
-            
-
-
->>>>>>> Stashed changes
+            //במידה וגם לאחר כל הסינונים הנל ישארו מספר נסיעות באותה הרמה-תתבצע בינהם הגרלה
+            if (maxrating.counter > 1)
+            {
+                Random r = new Random();
+                w = r.Next(maxrating.counter);
+                return maxrating.allratings[w];
+            }
+            return maxrating.allratings[0];
+        }
+        //פונקציית השיבוץ(מעדכנים אצל הבקשה את התז של המשלוחן המתאים)
+         public static void updatematch(dtoDELIVERy p, dtoPOSSIBLEDRIVE match)
+        {
+            DELIVERIES d = new DELIVERIES();
+            d=p.FROMdtoToTable(p);
+            p.IDOFDELIVER =match.IDOFDELIVER;
+            db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
         }
     }
-
-
-
-}
+} 
+    

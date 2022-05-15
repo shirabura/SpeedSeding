@@ -10,7 +10,7 @@ namespace BLL
     class Max
     {
         public int counter { get; set; }
-        public int point { get; set; } = 0;
+        public long point { get; set; } = 0;
         public List<dtoPOSSIBLEDRIVE> allratings { get; set; }
     }
 }

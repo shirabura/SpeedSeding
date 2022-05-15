@@ -1,4 +1,4 @@
-﻿using BL.Model;
+﻿using BLL;
 using DAL;
 using DTOClass;
 using System;
