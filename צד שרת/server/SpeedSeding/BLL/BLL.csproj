@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculateDistanceBL.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="DeliversBL.cs" />
     <Compile Include="Max.cs" />
     <Compile Include="Min.cs" />
