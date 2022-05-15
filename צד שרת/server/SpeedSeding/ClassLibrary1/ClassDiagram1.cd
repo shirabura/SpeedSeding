@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DTOClass.dtoDELIVERy">
+    <Position X="7.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAABAAgAAgAAGAAEAAAAAQABAIAAAAAEAAAAAAAA=</HashCode>
+      <FileName>dtoDELIVERy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTOClass.dtoPOSSIBLEDRIVE">
+    <Position X="1.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAgAAHAAAAEAAAAABAAAAAAAEAAAAAAgA=</HashCode>
+      <FileName>dtoPOSSIBLEDRIVE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTOClass.dtoRATING">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAghIQCAAEAAAAAACAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>dtoRATING.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTOClass.dtoUSER">
+    <Position X="3.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAgAABAAAAAAABAAAAAAACAAAAIAAAAAg=</HashCode>
+      <FileName>dtoUSER.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

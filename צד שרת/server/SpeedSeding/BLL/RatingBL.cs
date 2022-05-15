@@ -13,10 +13,10 @@ namespace BLL
         public static long CalculatePoint(long tz)
         {
             long point = 0;
-            List<RATING> AllRating =db.GetDbSet<RATING>().Where(m => m.IDOFDELIVER == tz).ToList();
+            List<RATING> AllRating = db.GetDbSet<RATING>().Where(m => m.IDOFDELIVER == tz).ToList();
             foreach (var i in AllRating)
             {
-                point +=(long) i.INTEGRITYDELIVER;
+                point += (long)i.INTEGRITYDELIVER;
                 point += (long)i.LATE;
                 point += (long)i.SERVISE;
                 point += (long)i.GENERAL;
