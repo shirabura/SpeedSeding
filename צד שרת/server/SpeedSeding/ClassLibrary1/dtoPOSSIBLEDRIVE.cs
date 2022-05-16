@@ -28,7 +28,7 @@ namespace DTOClass
             this.HOUR = (TimeSpan)p.HOUR;
             this.SOURSEADRESS = p.SOURSEADRESS;
             this.DESTINATIONADRESS = p.DESTINATIONADRESS;
-            this.CountOfDeliveries = p.CountOfDeliveries;
+            this.CountOfDeliveries = (int)p.CountOfDeliveries;
         }
         public  POSSIBLEDRIVE FromdtoToTable(dtoPOSSIBLEDRIVE p)
         {

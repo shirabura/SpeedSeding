@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CalculateDistanceBL.cs" />
     <Compile Include="DeliversBL.cs" />
+    <Compile Include="MainDelivery.cs" />
     <Compile Include="Max.cs" />
     <Compile Include="Min.cs" />
     <Compile Include="PossibleDriveBL.cs" />

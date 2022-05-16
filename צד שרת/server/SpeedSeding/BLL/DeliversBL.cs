@@ -108,12 +108,12 @@ namespace BLL
             }
             return maxrating.allratings[0];
         }
-        //פונקציית השיבוץ(מעדכנים אצל הבקשה את התז של המשלוחן המתאים)
+        //פונקציית השיבוץ(מעדכנים אצל הבקשה את הקוד נסיעה  של המשלוחן המתאים)
          public static void updatematch(dtoDELIVERy p, dtoPOSSIBLEDRIVE match)
         {
             DELIVERIES d = new DELIVERIES();
             d=p.FROMdtoToTable(p);
-            p.IDOFDELIVER =match.IDOFDELIVER;
+            p.IDOFDELIVER =match.KODOFDRIVE;
             db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
         }
     }
