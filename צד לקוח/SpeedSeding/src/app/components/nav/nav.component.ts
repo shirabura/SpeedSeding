@@ -10,6 +10,8 @@ export class NavComponent implements OnInit {
   about:boolean=false;
   customer:boolean=false;
 
+  home = "assets/11.png"
+
   constructor() { }
 
   ngOnInit(): void {

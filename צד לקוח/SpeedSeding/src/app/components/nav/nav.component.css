@@ -19,12 +19,12 @@
     direction: ltr;
 }
 button{
-    background-color: orangered;
+    background-color: rgb(240, 121, 25);
     color: white;
 }
 button:active{
     background-color: white;
-    color: orangered;
+    color: rgb(240, 121, 25);
 
 }
 .deliver{
