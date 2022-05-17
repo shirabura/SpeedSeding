@@ -8,9 +8,4 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class Min
-    {
-        public int counter { get; set; }
-        public List<dtoPOSSIBLEDRIVE> alldeliveries { get; set; }
-    }
 }

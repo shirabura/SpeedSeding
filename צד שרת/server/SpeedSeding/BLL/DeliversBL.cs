@@ -40,12 +40,7 @@ namespace BLL
                     //if() כאן תהיה פונקצייה של גוגל מפות שתבדוק את התאמת המקומות של כתובות המקור אל מול כתובות היעד
                         AllOpenRequest.Add(item);
             }
-            //if(AllOpenRequest.Count>1)
-            //    //הפעל פונקציית בדיקת הסתברות
-            //if(AllOpenRequest.Count==1)
-            //   //יתבצע השיבוץ
-            //if(AllOpenRequest.Count==0)
-            //   //הפעל פונקציית התאמה חלקית
+         
             return AllOpenRequest;
         }
         //שנית תתבצע בדיקת התאמה חלקית
