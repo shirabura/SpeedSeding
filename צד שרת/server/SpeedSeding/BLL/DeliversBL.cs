@@ -111,6 +111,10 @@ namespace BLL
             p.IDOFDELIVER =match.KODOFDRIVE;
             db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
         }
+        //המשתמש יכול להגיב על משלוח שנעשה לו
+        public static void Responsetodelivery()
+        {
+        }
     }
 } 
     
