@@ -27,7 +27,7 @@ namespace DTOClass
             this.Id = u.Id;
             this.FirsteName = u.FirsteName;
             this.LastName = u.LastName;
-            this.Phone = u.Phone;
+            this.Phone = u.phone;
             this.Status = u.Status;
             this.Password = u.Password;
         }
@@ -43,7 +43,7 @@ namespace DTOClass
             us.Id =Id;
             us.FirsteName =FirsteName;
             us.LastName =LastName;
-            us.Phone = Phone;
+            us.phone = Phone;
             us.Status = Status;
             us.Password = Password;
             return us;
