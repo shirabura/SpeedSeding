@@ -10,14 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './components/user/user.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
-import { DriverComponent } from './components/driver/driver.component'
-import { AboutTheCompanyComponent } from './components/about-the-company/about-the-company.component'
-import { ResponsComponent } from './components/respons/respons.component'
-import { EnterRequestComponent } from './components/enter-request/enter-request.component'
-import { HistoryComponent } from './components/history/history.component'
-import { PossibledriveComponent } from './components/possibledrive/possibledrive.component'
-import { HelpComponent } from './components/help/help.component'
-import { ViewRatingComponent } from './components/view-rating/view-rating.component'
+import { DriverComponent } from './components/driver/driver.component';
+import { AboutTheCompanyComponent } from './components/about-the-company/about-the-company.component';
+import { ResponsComponent } from './components/respons/respons.component';
+import { EnterRequestComponent } from './components/enter-request/enter-request.component';
+import { HistoryComponent } from './components/history/history.component';
+import { PossibledriveComponent } from './components/possibledrive/possibledrive.component';
+import { HelpComponent } from './components/help/help.component';
+import { ViewRatingComponent } from './components/view-rating/view-rating.component';
 
 @NgModule({
   declarations: [
