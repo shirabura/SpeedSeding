@@ -1,6 +1,15 @@
 
  <img [src]="home" style="margin-right: 25%; margin-top: 7%" alt="">
 
+ <!-- כדי לשים פקד של השלמת כתובת על ידי GOOGLEMAPS -->
+ <script type="text/javascript"
+ src="https://maps.googleapis.commaps/api/js?key=AIzaSyDN6hmLe4mB_RT43pToR3PtvXch2xeeBxQ&libraries=places,geometry,drawing&sensor=false&language=he"></script> 
+
+
+ <input ngx-google-places-autocomplete #placesRef="ngx-places"
+ (onAddressChange)="handleDestinationChange($event)" 
+ class="form-control" style="font-size: 13px;">
+<!-- עד כאן וגם מTS -->
 <div style="text-align: center; border: rgb(240, 121, 25) solid 2px; margin-top: 3%;">
 <p>
    <b>תודה שבחרתם בנו</b> 
@@ -10,5 +19,9 @@
     <br>  
     @שירה בורה
  </p>
+
+
+ 
+
 
 </div>
