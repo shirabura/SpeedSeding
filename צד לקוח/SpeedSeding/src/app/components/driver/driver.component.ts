@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Component({
   selector: 'app-driver',
@@ -12,11 +11,5 @@ export class DriverComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  myAddress: Address = new Address();
-  handleDestinationChange(a: Address) {
-    console.log(a)
-    this.myAddress = a;
-  }
-
 
 }

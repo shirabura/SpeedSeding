@@ -1,0 +1,26 @@
+#menu{
+
+    display: flex;
+ 
+}
+ label{
+    display: block;
+     display: flex; 
+
+ }
+ .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 50%;
+
+}
+.home{
+    display:flex;
+   text-align: center;
+   display: block;
+    width: 50%;
+
+}

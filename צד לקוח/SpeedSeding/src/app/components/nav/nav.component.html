@@ -48,11 +48,10 @@
       </li>
     </ul>
 
-<!-- </div> -->
 </nav>
 
 <ul *ngIf="deliver==true"  class="deliver"aria-labelledby="navbarDropdown" style="background-color: white;">
-<li><a class=" dropdown-item " href="#">הכנס נסיעה אפשרית</a></li>
+<li><a class=" dropdown-item " href="#" routerLink="possibledrive">הכנס נסיעה אפשרית</a></li>
 <li><a class="dropdown-item" href="#"> היסטורית המשלוחים שלי</a></li>
 <li><a class="dropdown-item" href="#">הרייטינג שלי</a></li>
 </ul>
@@ -62,5 +61,5 @@
 </ul>
 <ul *ngIf="about==true"class="deliver" aria-labelledby="navbarDropdown"style="background-color: white;">
 <li><a class="dropdown-item" href="#" routerLink="About">אודות החברה</a></li>
-<li><a class="dropdown-item" href="#"> איך זה עובד?</a></li>
+<li><a class="dropdown-item" href="#" routerLink="Help"> איך זה עובד?</a></li>
 </ul>

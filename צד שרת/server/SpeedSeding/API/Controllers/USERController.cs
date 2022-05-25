@@ -13,12 +13,12 @@ namespace API.Controllers
     public class USERController : ApiController
     {
         // GET: api/USER
-        //public List<dtoUSER> GetallUsers()
-        //{
+        public List<dtoUSER> GetallUsers()
+        {
 
-        //    List<dtoUSER> list = BLL.UserBL.GetallUsers();
-        //    return list;
-        //}
+            List<dtoUSER> list = BLL.UserBL.GetallUsers();
+            return list;
+        }
 
         // POST: api/USER
         public void Post([FromBody]string value)
