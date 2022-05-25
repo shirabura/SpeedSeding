@@ -4,6 +4,7 @@ import { AboutTheCompanyComponent } from './components/about-the-company/about-t
 import { DriverComponent } from './components/driver/driver.component';
 import { HelpComponent } from './components/help/help.component';
 import { HomeComponent } from './components/home/home.component';
+import { PossibledriveComponent } from './components/possibledrive/possibledrive.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SingInComponent } from './components/sing-in/sing-in.component';
 
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'SignUp', component: SignUpComponent },
   { path: 'About', component: AboutTheCompanyComponent },
   { path: 'Help', component: HelpComponent },
-  {path:'driver', component:DriverComponent}
+  {path:'driver', component:DriverComponent},
+  {path:'possibledrive', component:PossibledriveComponent}
+
 
 
 ];
