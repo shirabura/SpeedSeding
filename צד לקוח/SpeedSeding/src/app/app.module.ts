@@ -22,6 +22,7 @@ import { ViewRatingComponent } from './components/view-rating/view-rating.compon
 
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
+import { ResultsComponent } from './components/results/results.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
     HistoryComponent,
     ViewRatingComponent,
     EnterRequestComponent,
-    ResponsComponent
+    ResponsComponent,
+    ResultsComponent
 
   ],
   imports: [

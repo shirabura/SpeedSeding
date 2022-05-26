@@ -33,7 +33,12 @@
           data-bs-toggle="dropdown" aria-expanded="false">
           לקוח
         </div>
-      </li>
+        <li>
+          <div class="nav-link" style="color:white" href="#" id="navbarDropdown" role="button"
+          data-bs-toggle="dropdown"routerLink="Results" aria-expanded="false">
+          לתוצאות
+        </div>
+        </li>
       <li>
         <div style="width: 125vh"></div>
       </li>
@@ -56,7 +61,7 @@
 <li><a class="dropdown-item" href="#">הרייטינג שלי</a></li>
 </ul>
 <ul *ngIf="customer==true"  class="deliver" aria-labelledby="navbarDropdown" style="background-color: white;">
-<li><a class="dropdown-item" href="#">הכנס בקשה למשלוח</a></li>
+<li><a class="dropdown-item" href="#"  routerLink="enterreqwest">הכנס בקשה למשלוח</a></li>
 <li><a class="dropdown-item" href="#">הגב על משלוח </a></li>
 </ul>
 <ul *ngIf="about==true"class="deliver" aria-labelledby="navbarDropdown"style="background-color: white;">
