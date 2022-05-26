@@ -18,8 +18,6 @@ import { HistoryComponent } from './components/history/history.component'
 import { PossibledriveComponent } from './components/possibledrive/possibledrive.component'
 import { HelpComponent } from './components/help/help.component'
 import { ViewRatingComponent } from './components/view-rating/view-rating.component'
-
-
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 import { ResultsComponent } from './components/results/results.component';
@@ -48,18 +46,7 @@ import { ResultsComponent } from './components/results/results.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-
-
-    GooglePlaceModule,
-  NgxLoadingModule.forRoot({
-      animationType: ngxLoadingAnimationTypes.threeBounce,
-      backdropBackgroundColour: 'rgba(0,0,0,0)', 
-      backdropBorderRadius: '0.01px',
-      primaryColour: 'green', 
-      secondaryColour: 'green', 
-      tertiaryColour: 'green'
-    }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
