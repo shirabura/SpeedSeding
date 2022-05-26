@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './components/user/user.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
+<<<<<<< HEAD
 import { DriverComponent } from './components/driver/driver.component'
 import { AboutTheCompanyComponent } from './components/about-the-company/about-the-company.component'
 import { ResponsComponent } from './components/respons/respons.component'
@@ -18,9 +19,21 @@ import { HistoryComponent } from './components/history/history.component'
 import { PossibledriveComponent } from './components/possibledrive/possibledrive.component'
 import { HelpComponent } from './components/help/help.component'
 import { ViewRatingComponent } from './components/view-rating/view-rating.component'
+
+
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 import { ResultsComponent } from './components/results/results.component';
+=======
+import { DriverComponent } from './components/driver/driver.component';
+import { AboutTheCompanyComponent } from './components/about-the-company/about-the-company.component';
+import { ResponsComponent } from './components/respons/respons.component';
+import { EnterRequestComponent } from './components/enter-request/enter-request.component';
+import { HistoryComponent } from './components/history/history.component';
+import { PossibledriveComponent } from './components/possibledrive/possibledrive.component';
+import { HelpComponent } from './components/help/help.component';
+import { ViewRatingComponent } from './components/view-rating/view-rating.component';
+>>>>>>> c12093b2dca9ff7424456d1f00f9a79d2a21b174
 
 @NgModule({
   declarations: [
