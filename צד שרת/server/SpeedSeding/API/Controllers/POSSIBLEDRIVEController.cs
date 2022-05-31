@@ -7,6 +7,8 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     public class POSSIBLEDRIVEController : ApiController
     {
         // GET: api/POSSIBLEDRIVE

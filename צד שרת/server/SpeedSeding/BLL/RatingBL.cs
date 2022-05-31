@@ -7,31 +7,31 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-//    class RatingBL
-//    {
-//        static DBConection db = new DBConection();
-//        public static long CalculatePoint(long tz)
-//        {
-//            long point = 0;
-//            List<RATING> AllRating = db.GetDbSet<RATING>().Where(m => m.IDOFDELIVER == tz).ToList();
-//            foreach (var i in AllRating)
-//            {
-//                point += (long)i.INTEGRITYDELIVER;
-//                point += (long)i.LATE;
-//                point += (long)i.SERVISE;
-//                point += (long)i.GENERAL;
-//            }
+    class RatingBL
+    {
+        static DBConection db = new DBConection();
+        public static long CalculatePoint(long tz)
+        {
+            long point = 0;
+            List<RATING> AllRating = db.GetDbSet<RATING>().Where(m => m.IDOFDELIVER == tz).ToList();
+            foreach (var i in AllRating)
+            {
+                point += (long)i.INTEGRITYDELIVER;
+                point += (long)i.LATE;
+                point += (long)i.SERVISE;
+                point += (long)i.GENERAL;
+            }
 
-//            foreach (var i in AllRating)
-//            {
-//                i.SamPoint = point;
-//            }
+            foreach (var i in AllRating)
+            {
+                i.SamPoint = point;
+            }
 
-//            foreach (var i in AllRating)
-//            {
-//                db.Execute<RATING>(i, DBConection.ExecuteActions.Update);
-//            }
-//            return point;
+            foreach (var i in AllRating)
+            {
+                db.Execute<RATING>(i, DBConection.ExecuteActions.Update);
+            }
+            return point;
 //<<<<<<< Updated upstream
 
 //            //  ואז לשאול על העמודה הזאת מי המקסימום עי תור עדיפיות 
@@ -40,6 +40,6 @@ namespace BLL
 //            // איך מכניסים את שקלול הריטינג פויינט לטבלה ואז לשאול על העמודה הזאת מי המקסימום 
 //            //איך המשתמש מכניס נתוני ריטינג
 //>>>>>>> Stashed changes
-//        }
-//    }
+        }
+    }
 }

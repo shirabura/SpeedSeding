@@ -8,6 +8,8 @@ using System.Web.Http;
 namespace API.Controllers
 {
     public class DELIVERyController : ApiController
+            [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     {
         // GET: api/DELIVERy
         public IEnumerable<string> Get()

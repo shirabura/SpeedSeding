@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-sing-in',
-  templateUrl: './sign-in.component.html',
+  templateUrl: './sing-in.component.html',
   styleUrls: ['./sing-in.component.css']
 })
 export class SingInComponent implements OnInit {

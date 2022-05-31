@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Address } from 'ngx-google-places-autocomplete/objects/address';
+ import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 
 @Component({
