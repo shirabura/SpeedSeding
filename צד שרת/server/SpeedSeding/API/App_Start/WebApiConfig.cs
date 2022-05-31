@@ -11,6 +11,8 @@ namespace API
        
         public static void Register(HttpConfiguration config)
         {
+
+         int disInMinute=  BLL.DistanceAlgorithm.DistanceFrom2PointsInMinutes("32.987242, 35.445420", "הרב כהנמן, בני ברק");
             config.EnableCors();
             // Web API configuration and services
 
