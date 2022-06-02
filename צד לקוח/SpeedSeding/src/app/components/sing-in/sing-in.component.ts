@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { singin } from 'src/app/models/sing-in';
+import { DbService } from 'src/app/service/db.service';
 
 
 @Component({
@@ -10,7 +12,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class SingInComponent implements OnInit {
   SignInForm:any;
 
-  constructor() { }
+  constructor(private db: DbService) { }
 
   ngOnInit(): void {
      this.SignInForm = new FormGroup(
@@ -21,4 +23,27 @@ export class SingInComponent implements OnInit {
      )
   }
 
+  doSingin() {
+
+    console.log(this.SignInForm);
+    const login: singin = {
+      firstname: this.SignInForm.controls.firstname.value,
+      pass: this.SignInForm.controls.pass.value
+    }
+
+    console.log(login);
+    this.db.singin(login).subscribe(res => {
+      console.log(res)
+debugger
+      if (res == null)
+        alert("שגיאת שרת")
+      else
+        alert("כניסה למערכת")
+    }
+   
+    )
+  }
+
 }
+
+

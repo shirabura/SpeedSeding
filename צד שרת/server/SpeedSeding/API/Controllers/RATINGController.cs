@@ -8,7 +8,7 @@ using System.Web.Http.Cors;
 
 namespace API.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class RATINGController : ApiController
     {
         // GET: api/RATING

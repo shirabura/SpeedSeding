@@ -1,4 +1,5 @@
-﻿using DTOClass;
+﻿using BLL;
+using DTOClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace API.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class USERController : ApiController
     {
         // GET: api/USER
@@ -21,8 +22,13 @@ namespace API.Controllers
         //}
 
         // POST: api/USER
-        public void Post([FromBody]string value)
+        [Route("api/USER/LoginUser/{userName}/{password}")]
+        [HttpGet]
+        public long LoginUsers(string userName,string password)
         {
+
+            return    BLL.UserBL.LoginUser(userName,password);
+           
         }
 
         // PUT: api/USER/5
