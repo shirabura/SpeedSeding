@@ -25,7 +25,7 @@ export class PossibledriveComponent implements OnInit {
      )
   }
 
-  handleDestinationChange() {
+  handleDestinationChange(a: Address) {
     // console.log(a)
   }
 
