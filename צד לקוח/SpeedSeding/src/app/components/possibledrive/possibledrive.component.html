@@ -14,13 +14,13 @@
             <label for="sourceadress">כתובת מקור</label>
 
 
-            <input ngx-google-places-autocomplete (onAddressChange)="handleDestinationChange()"
+            <input ngx-google-places-autocomplete (onAddressChange)="handleDestinationChange($event)"
                  class="form-control" #placesRef="ngx-places"  style="font-size: 13px;">
                  <script type="text/javascript"
                  src="https://maps.googleapis.commaps/api/js?key=AIzaSyDN6hmLe4mB_RT43pToR3PtvXch2xeeBxQ&libraries=places,geometry,drawing&sensor=false&language=he"></script> 
                  
             <label for="destinationadress">כתובת יעד</label>
-            <input ngx-google-places-autocomplete class="form-control"  (onAddressChange)="handleDestinationChange()" 
+            <input ngx-google-places-autocomplete class="form-control"  (onAddressChange)="handleDestinationChange($event)" 
             #placesRef="ngx-places" style="font-size: 13px;">
                  
                  <script type="text/javascript"

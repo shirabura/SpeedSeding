@@ -47,7 +47,8 @@ import { ResultsComponent } from './components/results/results.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GooglePlaceModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
