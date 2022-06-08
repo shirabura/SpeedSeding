@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { possibledrive } from '../models/posibledrive';
 import { singin } from '../models/sing-in';
 import { Users } from '../models/users';
 
@@ -11,7 +12,7 @@ export class DbService {
 
   constructor(private httpClient:HttpClient) { }
   singin(login:singin):Observable<singin>{
-    return this.httpClient.get<singin>('https://localhost:44334/api/USER/LoginUser/'+login.firstname+'/'+login.pass);
+    return this.httpClient.post<singin>('https://localhost:44334/api/USER/LoginUser/',login);
   }
 
   getUserDetails():Observable<Users[]>{
@@ -22,4 +23,13 @@ export class DbService {
     return this.httpClient.post<Users>('https://localhost:44334/api/USER/GetallUsers',user);
 
   }
+  EnterPossibleDrive(enterpossibledrive:possibledrive):Observable<possibledrive>{
+    return this.httpClient.post<possibledrive>('https://localhost:44334/api/POSSIBLEDRIVE/enterpossibledrive',enterpossibledrive);
+
+  }
+  Enterreqwest(enterreqwest: possibledrive):Observable<possibledrive>{
+    return this.httpClient.post<possibledrive>('https://localhost:44334/api/DELIVERy/enterreqwest',enterreqwest);
+
+  }
+  
 }

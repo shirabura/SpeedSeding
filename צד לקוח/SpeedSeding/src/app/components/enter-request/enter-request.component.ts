@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
  import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { possibledrive } from 'src/app/models/posibledrive';
+import { DbService } from 'src/app/service/db.service';
 
 
 @Component({
@@ -10,7 +12,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class EnterRequestComponent implements OnInit {
 enterreqwestForm:any
-  constructor() { }
+  constructor(private db: DbService) { }
 
   ngOnInit(): void {
     this.enterreqwestForm = new FormGroup(
@@ -28,6 +30,24 @@ enterreqwestForm:any
   handleDestinationChange(a: Address) {
     console.log(a)
   }
-
-
+  Enterreqwest(){
+    console.log(this.enterreqwestForm);
+    const enterreqwest: possibledrive = {
+      tz: this.enterreqwestForm.controls.tz.value,
+      date: this.enterreqwestForm.controls.date.value,
+      hour: this.enterreqwestForm.controls.hour.value,
+      sourceadress: this.enterreqwestForm.controls.sourceadress.value,
+      destinationadress: this.enterreqwestForm.controls.destinationadress.value
+    }
+     console.log(enterreqwest);
+     this.db.EnterPossibleDrive(enterreqwest).subscribe(res => {
+     console.log(res)
+debugger
+      if (res == null)
+      alert("שגיאת שרת")
+       else
+      alert("כניסה למערכת")
+  }
+  )
+} 
 }

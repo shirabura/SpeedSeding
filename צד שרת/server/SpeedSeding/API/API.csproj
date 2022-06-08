@@ -401,6 +401,10 @@
       <Project>{4D13E4BA-2E4C-43DA-A0E5-B143C7E624FA}</Project>
       <Name>DTOclass</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{99770324-25b2-488c-ac1e-159fa812937b}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

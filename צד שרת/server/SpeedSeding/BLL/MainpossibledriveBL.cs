@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using BLL;
+using DAL;
+using DTOClass;
 namespace BLL
 {
     class MainpossibledriveBL
     {
+        public static void main(POSSIBLEDRIVE p)
+        { }
     }
+
 }
