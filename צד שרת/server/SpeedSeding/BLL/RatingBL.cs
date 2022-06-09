@@ -8,7 +8,7 @@ using DTOClass;
 
 namespace BLL
 {
-    class RatingBL
+   public class RatingBL
     {
         static DBConection db = new DBConection();
         public static long CalculatePoint(long tz)

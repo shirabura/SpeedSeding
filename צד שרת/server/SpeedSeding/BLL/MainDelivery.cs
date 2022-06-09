@@ -8,11 +8,11 @@ using DAL;
 using DTOClass;
 namespace BLL
 {
-    class MainDelivery
+  public  class MainDelivery
     {
-        public static void main(DELIVERIES d)
+        public static void main(dtoDELIVERy d)
         {   //הפונקציה קיבלה רשומה מסוג הטבלה והופכת לסוג תצוגה
-            dtoDELIVERy dtoDELIVERy = new dtoDELIVERy(d);
+            dtoDELIVERy dtoDELIVERy = new dtoDELIVERy();
             List<dtoPOSSIBLEDRIVE> reqest = new List<dtoPOSSIBLEDRIVE>();
             //מפעילה את פונקציית הסינון של כל מי שסרב לבקשה
             reqest = DeliversBL.GetAllOpenRequest(dtoDELIVERy);

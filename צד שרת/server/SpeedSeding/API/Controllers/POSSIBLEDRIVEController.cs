@@ -35,7 +35,9 @@ namespace API.Controllers
         [HttpGet]
         public long enterpossibledrive(long tz,DateTime date,TimeSpan hour,string sourceadress,string destinationadress)
         {
-            return  BLL.MainpossibledriveBL.main(tz, date, hour, sourceadress, destinationadress);
+            BLL.MainpossibledriveBL.main(new DAL.POSSIBLEDRIVE());
+            return 1;
+               
         }
 
         // PUT: api/POSSIBLEDRIVE/5

@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-
+using DTOClass;
 namespace API.Controllers
 {
     //[EnableCors(origins: "*", headers: "*", methods: "*")]
@@ -17,7 +17,9 @@ namespace API.Controllers
         [HttpGet]
         public long enterreqwest(long tz, DateTime date, TimeSpan hour, string sourceadress, string destinationadress)
         {
-            return BLL.MainDelivery.main(tz, date, hour, sourceadress, destinationadress);
+            dtoDELIVERy f = new dtoDELIVERy() { DELIVERID=tz};
+             BLL.MainDelivery.main(f);
+            return 1;
         }
 
         // GET: api/DELIVERy

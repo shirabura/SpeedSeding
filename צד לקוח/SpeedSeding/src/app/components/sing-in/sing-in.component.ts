@@ -34,7 +34,7 @@ export class SingInComponent implements OnInit {
     console.log(login);
     this.db.singin(login).subscribe(res => {
       console.log(res)
-debugger
+
       if (res == null)
         alert("שגיאת שרת")
       else

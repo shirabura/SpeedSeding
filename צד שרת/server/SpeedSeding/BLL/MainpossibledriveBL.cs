@@ -8,7 +8,7 @@ using DAL;
 using DTOClass;
 namespace BLL
 {
-    class MainpossibledriveBL
+   public class MainpossibledriveBL
     {
         public static void main(POSSIBLEDRIVE t)
         {

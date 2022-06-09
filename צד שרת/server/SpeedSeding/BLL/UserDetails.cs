@@ -9,7 +9,7 @@ namespace BLL
     public class UserDetails
     {
         public string firstname { get; set; }
-        public string Password { get; set; }
+        public string pass { get; set; }
 
         public UserDetails()
         {

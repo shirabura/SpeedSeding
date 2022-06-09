@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sedingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sedingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DELIVERIES">
           <Key>
             <PropertyRef Name="DELIVERID" />
@@ -12,7 +12,7 @@
           <Property Name="DELIVERID" Type="bigint" Nullable="false" />
           <Property Name="IDOFDELIVER" Type="bigint" />
           <Property Name="IDOFCUSTUMER" Type="bigint" />
-          <Property Name="DATE" Type="date" />
+          <Property Name="DATE" Type="datetime" />
           <Property Name="RESPOND" Type="bit" />
           <Property Name="SOURSEADRESS" Type="varchar" MaxLength="50" />
           <Property Name="DESTINATIONADRESS" Type="varchar" MaxLength="50" />
@@ -33,7 +33,7 @@
           </Key>
           <Property Name="KODOFDRIVE" Type="bigint" Nullable="false" />
           <Property Name="IDOFDELIVER" Type="bigint" />
-          <Property Name="DATE" Type="date" />
+          <Property Name="DATE" Type="datetime" />
           <Property Name="HOUR" Type="time" Precision="7" />
           <Property Name="SOURSEADRESS" Type="varchar" MaxLength="50" />
           <Property Name="DESTINATIONADRESS" Type="varchar" MaxLength="50" />
@@ -165,8 +165,7 @@
             <End Role="NOTCONFIRM" EntitySet="NOTCONFIRM" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sedingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -177,7 +176,7 @@
           <Property Name="DELIVERID" Type="Int64" Nullable="false" />
           <Property Name="IDOFDELIVER" Type="Int64" />
           <Property Name="IDOFCUSTUMER" Type="Int64" />
-          <Property Name="DATE" Type="DateTime" Precision="0" />
+          <Property Name="DATE" Type="DateTime" Precision="3" />
           <Property Name="RESPOND" Type="Boolean" />
           <Property Name="SOURSEADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DESTINATIONADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -204,7 +203,7 @@
           </Key>
           <Property Name="KODOFDRIVE" Type="Int64" Nullable="false" />
           <Property Name="IDOFDELIVER" Type="Int64" />
-          <Property Name="DATE" Type="DateTime" Precision="0" />
+          <Property Name="DATE" Type="DateTime" Precision="3" />
           <Property Name="HOUR" Type="Time" Precision="7" />
           <Property Name="SOURSEADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DESTINATIONADRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -346,73 +345,72 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="sedingModelStoreContainer" CdmEntityContainer="sedingEntities">
-          <EntitySetMapping Name="DELIVERIES">
-            <EntityTypeMapping TypeName="sedingModel.DELIVERIES">
-              <MappingFragment StoreEntitySet="DELIVERIES">
-                <ScalarProperty Name="DELIVERID" ColumnName="DELIVERID" />
-                <ScalarProperty Name="IDOFDELIVER" ColumnName="IDOFDELIVER" />
-                <ScalarProperty Name="IDOFCUSTUMER" ColumnName="IDOFCUSTUMER" />
-                <ScalarProperty Name="DATE" ColumnName="DATE" />
-                <ScalarProperty Name="RESPOND" ColumnName="RESPOND" />
-                <ScalarProperty Name="SOURSEADRESS" ColumnName="SOURSEADRESS" />
-                <ScalarProperty Name="DESTINATIONADRESS" ColumnName="DESTINATIONADRESS" />
-                <ScalarProperty Name="DONE" ColumnName="DONE" />
-                <ScalarProperty Name="HOUR" ColumnName="HOUR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NOTCONFIRM">
-            <EntityTypeMapping TypeName="sedingModel.NOTCONFIRM">
-              <MappingFragment StoreEntitySet="NOTCONFIRM">
-                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
-                <ScalarProperty Name="PossibleDriveId" ColumnName="PossibleDriveId" />
-                <ScalarProperty Name="NotConfirmID" ColumnName="NotConfirmID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="POSSIBLEDRIVE">
-            <EntityTypeMapping TypeName="sedingModel.POSSIBLEDRIVE">
-              <MappingFragment StoreEntitySet="POSSIBLEDRIVE">
-                <ScalarProperty Name="KODOFDRIVE" ColumnName="KODOFDRIVE" />
-                <ScalarProperty Name="IDOFDELIVER" ColumnName="IDOFDELIVER" />
-                <ScalarProperty Name="DATE" ColumnName="DATE" />
-                <ScalarProperty Name="HOUR" ColumnName="HOUR" />
-                <ScalarProperty Name="SOURSEADRESS" ColumnName="SOURSEADRESS" />
-                <ScalarProperty Name="DESTINATIONADRESS" ColumnName="DESTINATIONADRESS" />
-                <ScalarProperty Name="CountOfDeliveries" ColumnName="CountOfDeliveries" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RATING">
-            <EntityTypeMapping TypeName="sedingModel.RATING">
-              <MappingFragment StoreEntitySet="RATING">
-                <ScalarProperty Name="DELIVERYID" ColumnName="DELIVERYID" />
-                <ScalarProperty Name="IDOFDELIVER" ColumnName="IDOFDELIVER" />
-                <ScalarProperty Name="INTEGRITYDELIVER" ColumnName="INTEGRITYDELIVER" />
-                <ScalarProperty Name="LATE" ColumnName="LATE" />
-                <ScalarProperty Name="SERVISE" ColumnName="SERVISE" />
-                <ScalarProperty Name="GENERAL" ColumnName="GENERAL" />
-                <ScalarProperty Name="SamPoint" ColumnName="SamPoint" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USERS">
-            <EntityTypeMapping TypeName="sedingModel.USERS">
-              <MappingFragment StoreEntitySet="USERS">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirsteName" ColumnName="FirsteName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="sedingModelStoreContainer" CdmEntityContainer="sedingEntities">
+    <EntitySetMapping Name="DELIVERIES">
+      <EntityTypeMapping TypeName="IsTypeOf(sedingModel.DELIVERIES)">
+        <MappingFragment StoreEntitySet="DELIVERIES">
+          <ScalarProperty Name="DELIVERID" ColumnName="DELIVERID" />
+          <ScalarProperty Name="IDOFDELIVER" ColumnName="IDOFDELIVER" />
+          <ScalarProperty Name="IDOFCUSTUMER" ColumnName="IDOFCUSTUMER" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="RESPOND" ColumnName="RESPOND" />
+          <ScalarProperty Name="SOURSEADRESS" ColumnName="SOURSEADRESS" />
+          <ScalarProperty Name="DESTINATIONADRESS" ColumnName="DESTINATIONADRESS" />
+          <ScalarProperty Name="DONE" ColumnName="DONE" />
+          <ScalarProperty Name="HOUR" ColumnName="HOUR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTCONFIRM">
+      <EntityTypeMapping TypeName="IsTypeOf(sedingModel.NOTCONFIRM)">
+        <MappingFragment StoreEntitySet="NOTCONFIRM">
+          <ScalarProperty Name="NotConfirmID" ColumnName="NotConfirmID" />
+          <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+          <ScalarProperty Name="PossibleDriveId" ColumnName="PossibleDriveId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSSIBLEDRIVE">
+      <EntityTypeMapping TypeName="IsTypeOf(sedingModel.POSSIBLEDRIVE)">
+        <MappingFragment StoreEntitySet="POSSIBLEDRIVE">
+          <ScalarProperty Name="KODOFDRIVE" ColumnName="KODOFDRIVE" />
+          <ScalarProperty Name="IDOFDELIVER" ColumnName="IDOFDELIVER" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="HOUR" ColumnName="HOUR" />
+          <ScalarProperty Name="SOURSEADRESS" ColumnName="SOURSEADRESS" />
+          <ScalarProperty Name="DESTINATIONADRESS" ColumnName="DESTINATIONADRESS" />
+          <ScalarProperty Name="CountOfDeliveries" ColumnName="CountOfDeliveries" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RATING">
+      <EntityTypeMapping TypeName="IsTypeOf(sedingModel.RATING)">
+        <MappingFragment StoreEntitySet="RATING">
+          <ScalarProperty Name="DELIVERYID" ColumnName="DELIVERYID" />
+          <ScalarProperty Name="IDOFDELIVER" ColumnName="IDOFDELIVER" />
+          <ScalarProperty Name="INTEGRITYDELIVER" ColumnName="INTEGRITYDELIVER" />
+          <ScalarProperty Name="LATE" ColumnName="LATE" />
+          <ScalarProperty Name="SERVISE" ColumnName="SERVISE" />
+          <ScalarProperty Name="GENERAL" ColumnName="GENERAL" />
+          <ScalarProperty Name="SamPoint" ColumnName="SamPoint" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="IsTypeOf(sedingModel.USERS)">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirsteName" ColumnName="FirsteName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -426,7 +424,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

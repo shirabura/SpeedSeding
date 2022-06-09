@@ -29,7 +29,7 @@ debugger
       if (res == null)
         alert("שגיאת שרת")
       else
-        alert("כניסה למערכת")
+        alert(res)
     }
    
     )

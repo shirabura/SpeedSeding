@@ -22,12 +22,12 @@ namespace API.Controllers
         //}
 
         // POST: api/USER
-        [Route("api/USER/LoginUser/{userName}/{password}")]
-        [HttpGet]
-        public long LoginUsers(string userName,string password)
+        [Route("api/USER/LoginUser")]
+        [HttpPost]
+        public long LoginUsers(UserDetails userDetails)
         {
 
-            return    BLL.UserBL.LoginUser(userName,password);
+            return    BLL.UserBL.LoginUser(userDetails.firstname,userDetails.pass);
            
         }
 
