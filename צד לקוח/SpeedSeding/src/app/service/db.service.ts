@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { possibledrive } from '../models/posibledrive';
 import { singin } from '../models/sing-in';
 import { Users } from '../models/users';
+import { viewrating } from '../models/view-rating';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,10 @@ export class DbService {
   }
   Enterreqwest(enterreqwest: possibledrive):Observable<possibledrive>{
     return this.httpClient.post<possibledrive>('https://localhost:44334/api/DELIVERy/enterreqwest',enterreqwest);
+
+  }
+  Viewrating(Viewrating: viewrating):Observable<viewrating>{
+    return this.httpClient.post<viewrating>('https://localhost:44334/api/RATING/viewrating',Viewrating);
 
   }
   

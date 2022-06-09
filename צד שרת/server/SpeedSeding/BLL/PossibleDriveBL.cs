@@ -55,8 +55,22 @@ namespace BLL
             point = date + Sourceaddress + Destinationaddress;
             return point;
         }
+        //פונקצייה שמחזירה את היסטורית המשלוחים של משתמש מסוים
+        public static List<dtoDELIVERy> viewhistory(long tz)
+        {
+            List<dtoDELIVERy> history = new List<dtoDELIVERy>();
+            history = dtoDELIVERy.CreateDtoList(db.GetDbSet<DELIVERIES>().Where(r=>r.IDOFDELIVER==tz).ToList());
+            return history;
+        }
+        //פונקצייה שמעדכנת בדאטה בייס שהבקשה אושרה והמשלוח עתיד להתקיים
+        public static void UpdetConfirmation(dtoDELIVERy p)
+        {
+            DELIVERIES d = new DELIVERIES();
+            d = p.FROMdtoToTable(p);
+            d.DONE = true;
+            db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
 
-
-
+        }
     }
+
 }

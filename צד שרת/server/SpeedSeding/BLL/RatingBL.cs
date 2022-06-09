@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTOClass;
 
 namespace BLL
 {
@@ -32,14 +33,7 @@ namespace BLL
                 db.Execute<RATING>(i, DBConection.ExecuteActions.Update);
             }
             return point;
-//<<<<<<< Updated upstream
 
-//            //  ואז לשאול על העמודה הזאת מי המקסימום עי תור עדיפיות 
-
-//=======
-//            // איך מכניסים את שקלול הריטינג פויינט לטבלה ואז לשאול על העמודה הזאת מי המקסימום 
-//            //איך המשתמש מכניס נתוני ריטינג
-//>>>>>>> Stashed changes
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using DTOClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -12,18 +14,24 @@ namespace API.Controllers
     public class RATINGController : ApiController
     {
         // GET: api/RATING
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
-        // GET: api/RATING/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //// GET: api/RATING/5
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
-        // POST: api/RATING
+        //// POST: api/RATING
+        [Route("api/RATING/viewrating/{tz}")]
+        [HttpGet]
+        public long viewrating(long tz)
+        {
+            return BLL.RatingBL.CalculatePoint(tz);
+        }
         public void Post([FromBody]string value)
         {
         }

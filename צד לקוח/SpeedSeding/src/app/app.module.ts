@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './components/user/user.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
-import { DriverComponent } from './components/driver/driver.component'
 import { AboutTheCompanyComponent } from './components/about-the-company/about-the-company.component'
 import { ResponsComponent } from './components/respons/respons.component'
 import { EnterRequestComponent } from './components/enter-request/enter-request.component'
@@ -31,7 +30,6 @@ import { ResultsComponent } from './components/results/results.component';
     UserComponent,
     NavComponent,
     HomeComponent,
-    DriverComponent,
     AboutTheCompanyComponent,
     HelpComponent,
     PossibledriveComponent,
