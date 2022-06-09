@@ -17,12 +17,11 @@ export class PossibledriveComponent implements OnInit {
   ngOnInit(): void {
     this.possibledriveForm = new FormGroup(
       {
-        tz: new FormControl(''),
-        date: new FormControl(''),
-        hour: new FormControl(''),
-        sourceadress: new FormControl(''),
-        destinationadress: new FormControl(''),
-        
+        IDOFDELIVER: new FormControl(''),
+        DATE: new FormControl(''),
+        HOUR: new FormControl(''),
+        SOURSEADRESS: new FormControl(''),
+        DESTINATIONADRESS: new FormControl(''),
   
        }
      )
@@ -34,11 +33,11 @@ export class PossibledriveComponent implements OnInit {
   EnterPossibleDrive(){
     console.log(this.possibledriveForm);
     const enterpossibledrive: possibledrive = {
-      tz: this.possibledriveForm.controls.tz.value,
-      date: this.possibledriveForm.controls.date.value,
-      hour: this.possibledriveForm.controls.hour.value,
-      sourceadress: this.possibledriveForm.controls.sourceadress.value,
-      destinationadress: this.possibledriveForm.controls.destinationadress.value
+      IDOFDELIVER: this.possibledriveForm.controls.IDOFDELIVER.value,
+      DATE: this.possibledriveForm.controls.DATE.value,
+      HOUR: this.possibledriveForm.controls.HOUR.value,
+      SOURSEADRESS: this.possibledriveForm.controls.SOURSEADRESS.value,
+      DESTINATIONADRESS: this.possibledriveForm.controls.DESTINATIONADRESS.value
     }
     console.log(enterpossibledrive);
     this.db.EnterPossibleDrive(enterpossibledrive).subscribe(res => {

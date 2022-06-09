@@ -1,11 +1,11 @@
 
 export interface Users{
 
-    id: number;
+    Id: number;
     FirsteName:string;
     LastName:string;
     Status:string;
-    phone:string;
+    Phone:string;
     Password:string;
 
 

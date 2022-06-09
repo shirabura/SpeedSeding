@@ -17,11 +17,11 @@ enterreqwestForm:any
   ngOnInit(): void {
     this.enterreqwestForm = new FormGroup(
       {
-        tz: new FormControl(''),
-        date: new FormControl(''),
-        hour: new FormControl(''),
-        sourceadress: new FormControl(''),
-        destinationadress: new FormControl(''),
+        IDOFDELIVER: new FormControl(''),
+        DATE: new FormControl(''),
+        HOUR: new FormControl(''),
+        SOURSEADRESS: new FormControl(''),
+        DESTINATIONADRESS: new FormControl(''),
         
   
        }
@@ -33,16 +33,16 @@ enterreqwestForm:any
   Enterreqwest(){
     console.log(this.enterreqwestForm);
     const enterreqwest: possibledrive = {
-      tz: this.enterreqwestForm.controls.tz.value,
-      date: this.enterreqwestForm.controls.date.value,
-      hour: this.enterreqwestForm.controls.hour.value,
-      sourceadress: this.enterreqwestForm.controls.sourceadress.value,
-      destinationadress: this.enterreqwestForm.controls.destinationadress.value
+      IDOFDELIVER: this.enterreqwestForm.controls.IDOFDELIVER.value,
+      DATE: this.enterreqwestForm.controls.DATE.value,
+      HOUR: this.enterreqwestForm.controls.HOUR.value,
+      SOURSEADRESS: this.enterreqwestForm.controls.SOURSEADRESS.value,
+      DESTINATIONADRESS: this.enterreqwestForm.controls.DESTINATIONADRESS.value
     }
      console.log(enterreqwest);
-     this.db.EnterPossibleDrive(enterreqwest).subscribe(res => {
+     this.db.Enterreqwest(enterreqwest).subscribe(res => {
      console.log(res)
-debugger
+
       if (res == null)
       alert("שגיאת שרת")
        else

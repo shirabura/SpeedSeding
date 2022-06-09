@@ -1,4 +1,3 @@
 export interface viewrating{
-    tz:number;
-    
+    tz:string;
 }

@@ -16,12 +16,12 @@ namespace API.Controllers
       
         [Route("api/POSSIBLEDRIVE/enterpossibledrive")]
         [HttpPost]
-        public dtoDELIVERy enterpossibledrive(long tz,DateTime date,TimeSpan hour,string sourceadress,string destinationadress)
+        public dtoDELIVERy enterpossibledrive(dtoPOSSIBLEDRIVE z)
         {
-            dtoPOSSIBLEDRIVE p = new dtoPOSSIBLEDRIVE() {IDOFDELIVER= tz ,DATE= date ,HOUR= hour ,SOURSEADRESS= sourceadress ,DESTINATIONADRESS= destinationadress };
+            dtoPOSSIBLEDRIVE p = new dtoPOSSIBLEDRIVE() {IDOFDELIVER= z.IDOFDELIVER ,DATE= z.DATE ,HOUR= z.HOUR ,SOURSEADRESS= z.SOURSEADRESS ,DESTINATIONADRESS= z.DESTINATIONADRESS };
             return BLL.MainpossibledriveBL.main(p);
-             
-               
+            
+
         }
 
     

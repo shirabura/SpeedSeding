@@ -14,9 +14,9 @@ namespace API.Controllers
     {
         [Route("api/DELIVERy/enterreqwest")]
         [HttpPost]
-        public dtoPOSSIBLEDRIVE enterreqwest(long tz, DateTime date, TimeSpan hour, string sourceadress, string destinationadress)
+        public dtoPOSSIBLEDRIVE enterreqwest(dtoDELIVERy d)
         {
-            dtoDELIVERy f = new dtoDELIVERy() { DELIVERID=tz,DATE= date ,HOUR= hour ,SOURSEADRESS= sourceadress ,DESTINATIONADRESS= destinationadress };
+            dtoDELIVERy f = new dtoDELIVERy() { DELIVERID=d.DELIVERID,DATE= d.DATE ,HOUR= d.HOUR ,SOURSEADRESS= d.SOURSEADRESS ,DESTINATIONADRESS= d.DESTINATIONADRESS };
             return BLL.MainDelivery.main(f);
             
         }

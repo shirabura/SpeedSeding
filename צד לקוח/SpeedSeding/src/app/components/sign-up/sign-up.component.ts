@@ -17,24 +17,24 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
     this.SignUpForm = new FormGroup(
       {
-        tz: new FormControl(''),
-        firstname: new FormControl(''),
-        lastname: new FormControl(''),
-        status: new FormControl(''),
-        phone: new FormControl(''),
-        pass: new FormControl('')
+        Id: new FormControl(''),
+        FirsteName: new FormControl(''),
+        LastName: new FormControl(''),
+        Status: new FormControl(''),
+        Phone: new FormControl(''),
+        Password: new FormControl('')
   
        }
      )
    }
    DoSingUp(){
     const user:Users={
-     id:this.SignUpForm.controls.tz.value, 
-     FirsteName:this.SignUpForm.controls.firstname.value,
-     LastName:this.SignUpForm.controls.lastname.value,
-     Status:this.SignUpForm.controls.status.value,
-     phone:this.SignUpForm.controls.phone.value,
-     Password:this.SignUpForm.controls.pass.value
+      Id:this.SignUpForm.controls.tz.value, 
+      FirsteName:this.SignUpForm.controls.firstname.value,
+      LastName:this.SignUpForm.controls.lastname.value,
+      Status:this.SignUpForm.controls.status.value,
+      Phone:this.SignUpForm.controls.phone.value,
+      Password:this.SignUpForm.controls.pass.value
     }
     console.log(user);
     this.db.getUserSignUp(user).subscribe(res => {

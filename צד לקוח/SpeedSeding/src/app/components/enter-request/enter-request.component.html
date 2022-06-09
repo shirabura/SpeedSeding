@@ -5,13 +5,13 @@
     <form [formGroup]="enterreqwestForm" class="dropdown-menu p-4 row card fs-6 "
         style="border-color: rgb(240, 121, 25);">
         <div class="form control">
-            <label for="tz">תעודת זהות</label>
-            <input class="form-control" type="text" id="tz" placeholder="">
-            <label for="date"> תאריך </label>
-            <input class="form-control" type="text" id="date" placeholder="">
-            <label for="hour"> שעה </label>
-            <input class="form-control" type="text" id="hour" placeholder="">
-            <label for="sourceadress">כתובת מקור</label>
+            <label for="IDOFDELIVER">תעודת זהות</label>
+            <input class="form-control" type="text" id="IDOFDELIVER" placeholder="" formControlName="IDOFDELIVER">
+            <label for="DATE"> תאריך </label>
+            <input class="form-control" type="text" id="DATE" placeholder="">
+            <label for="HOUR"> שעה </label>
+            <input class="form-control" type="text" id="HOUR" placeholder="">
+            <label for="SOURSEADRESS">כתובת מקור</label>
 
             <script type="text/javascript"
                 src="https://maps.googleapis.commaps/api/js?sensor=true&libraries=places,geometry,drawing&key=AIzaSyDN6hmLe4mB_RT43pToR3PtvXch2xeeBxQ&language=he"></script>
@@ -24,7 +24,7 @@
            <script type="text/javascript"
            src="https://maps.googleapis.commaps/api/js?key=&libraries=places,geometry,drawing&sensor=false&language=he"></script> 
            
-            <label for="destinationadress">כתובת יעד</label>
+            <label for="DESTINATIONADRESS">כתובת יעד</label>
             <input ngx-google-places-autocomplete (onAddressChange)="handleDestinationChange($event)"
             class="form-control" style="font-size: 13px;">
             <br>
