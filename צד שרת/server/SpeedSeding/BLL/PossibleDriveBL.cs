@@ -20,7 +20,7 @@ namespace BLL
             return AllOpenRequest;
         }
         //הפונקצייה בודקת את סך הנקודות של הנסיעה החדשה אל מול הנסיעה הישנה
-        public static void match(List<dtoDELIVERy> AllOpenRequest, dtoPOSSIBLEDRIVE p)
+        public static dtoDELIVERy match(List<dtoDELIVERy> AllOpenRequest, dtoPOSSIBLEDRIVE p)
         {
             foreach (dtoDELIVERy d in AllOpenRequest)
             {
@@ -34,9 +34,12 @@ namespace BLL
                 //אם סכום הניקוד של הנסיעה הישנה יותר קטן אז הדאטה בייס יעודכן בפרטי הנסיעה החדשה
                 if (prepoint > newpoint)
                 {
-                    DeliversBL.updatematch(d, p);
+                    return updatematch(d, p);
+                    
                 }
+               
             }
+            return null;
         }
         //פונקצייה שמחשבת ניקוד למשלוחן בהתאם לבקשה מסוימת
         public static float checkpoint(dtoPOSSIBLEDRIVE p, dtoDELIVERy d)
@@ -61,6 +64,17 @@ namespace BLL
             List<dtoDELIVERy> history = new List<dtoDELIVERy>();
             history = dtoDELIVERy.CreateDtoList(db.GetDbSet<DELIVERIES>().Where(r=>r.IDOFDELIVER==tz).ToList());
             return history;
+        }
+        //פונקצייה שמעדכנת בדאטה בייס
+        //ומחזירה נסיעה מתאימה
+        public static dtoDELIVERy updatematch(dtoDELIVERy p, dtoPOSSIBLEDRIVE match)
+        {
+            DELIVERIES d = new DELIVERIES();
+            d = p.FROMdtoToTable(p);
+            p.IDOFDELIVER = match.KODOFDRIVE;
+            db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
+            dtoDELIVERy a = new dtoDELIVERy(d);
+            return a;
         }
         //פונקצייה שמעדכנת בדאטה בייס שהבקשה אושרה והמשלוח עתיד להתקיים
         public static void UpdetConfirmation(dtoDELIVERy p)

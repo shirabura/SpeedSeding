@@ -10,44 +10,20 @@ using System.Web.Http.Cors;
 
 namespace API.Controllers
 {
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
 
     public class POSSIBLEDRIVEController : ApiController
     {
-        // GET: api/POSSIBLEDRIVE
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        //// GET: api/POSSIBLEDRIVE/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        //// POST: api/POSSIBLEDRIVE
-       
-        //public void Post([FromBody]string value)
-        //{
-        //}
-        [Route("api/POSSIBLEDRIVE/enterpossibledrive/{tz}/{date}/{hour}/{sourceadress}/{destinationadress}")]
-        [HttpGet]
-        public long enterpossibledrive(long tz,DateTime date,TimeSpan hour,string sourceadress,string destinationadress)
+      
+        [Route("api/POSSIBLEDRIVE/enterpossibledrive")]
+        [HttpPost]
+        public dtoDELIVERy enterpossibledrive(long tz,DateTime date,TimeSpan hour,string sourceadress,string destinationadress)
         {
-            BLL.MainpossibledriveBL.main(new DAL.POSSIBLEDRIVE());
-            return 1;
+            dtoPOSSIBLEDRIVE p = new dtoPOSSIBLEDRIVE() {IDOFDELIVER= tz ,DATE= date ,HOUR= hour ,SOURSEADRESS= sourceadress ,DESTINATIONADRESS= destinationadress };
+            return BLL.MainpossibledriveBL.main(p);
+             
                
         }
 
-        // PUT: api/POSSIBLEDRIVE/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/POSSIBLEDRIVE/5
-        public void Delete(int id)
-        {
-        }
+    
     }
 }

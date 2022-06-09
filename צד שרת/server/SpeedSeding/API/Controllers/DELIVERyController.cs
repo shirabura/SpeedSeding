@@ -8,45 +8,18 @@ using System.Web.Http.Cors;
 using DTOClass;
 namespace API.Controllers
 {
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class DELIVERyController : ApiController
            
 
     {
-        [Route("api/DELIVERy/enterreqwest/{tz}/{date}/{hour}/{sourceadress}/{destinationadress}")]
-        [HttpGet]
-        public long enterreqwest(long tz, DateTime date, TimeSpan hour, string sourceadress, string destinationadress)
+        [Route("api/DELIVERy/enterreqwest")]
+        [HttpPost]
+        public dtoPOSSIBLEDRIVE enterreqwest(long tz, DateTime date, TimeSpan hour, string sourceadress, string destinationadress)
         {
-            dtoDELIVERy f = new dtoDELIVERy() { DELIVERID=tz};
-             BLL.MainDelivery.main(f);
-            return 1;
+            dtoDELIVERy f = new dtoDELIVERy() { DELIVERID=tz,DATE= date ,HOUR= hour ,SOURSEADRESS= sourceadress ,DESTINATIONADRESS= destinationadress };
+            return BLL.MainDelivery.main(f);
+            
         }
 
-        // GET: api/DELIVERy
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        //// GET: api/DELIVERy/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        //// POST: api/DELIVERy
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/DELIVERy/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/DELIVERy/5
-        public void Delete(int id)
-        {
-        }
     }
 }

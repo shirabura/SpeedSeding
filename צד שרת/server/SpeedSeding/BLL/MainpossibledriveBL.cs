@@ -10,15 +10,15 @@ namespace BLL
 {
    public class MainpossibledriveBL
     {
-        public static void main(POSSIBLEDRIVE t)
+        public static dtoDELIVERy main(dtoPOSSIBLEDRIVE t)
         {
             //הופך סוג טבלה לתצוגה
-            dtoPOSSIBLEDRIVE p = new dtoPOSSIBLEDRIVE(t);
+            dtoPOSSIBLEDRIVE p = new dtoPOSSIBLEDRIVE();
             //מפעילה פונקצייה לחיפוש כל הבקשות המתאימות שהותאמו ולא אושרו עדיין
             List<dtoDELIVERy> AllOpenRequest = new List<dtoDELIVERy>();
             AllOpenRequest=PossibleDriveBL.GetAllOpenReqwest(p);
             //פונקצייה שבודקת את סך הנקודות של הנסיעה החדשה אל מול הנסיעה הישנה 
-            PossibleDriveBL.match(AllOpenRequest, p);
+            return PossibleDriveBL.match(AllOpenRequest, p);
 
         }
         

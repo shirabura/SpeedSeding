@@ -16,14 +16,6 @@ export class DbService {
     return this.httpClient.post<singin>('https://localhost:44334/api/USER/LoginUser/',login);
   }
 
-  getUserDetails():Observable<Users[]>{
-    return this.httpClient.get<Users[]>('https://localhost:44334/api/USER/GetallUsers');
-  }
-
-  getUserSignUp(user:Users):Observable<Users>{
-    return this.httpClient.post<Users>('https://localhost:44334/api/USER/GetallUsers',user);
-
-  }
   EnterPossibleDrive(enterpossibledrive:possibledrive):Observable<possibledrive>{
     return this.httpClient.post<possibledrive>('https://localhost:44334/api/POSSIBLEDRIVE/enterpossibledrive',enterpossibledrive);
 
@@ -37,4 +29,12 @@ export class DbService {
 
   }
   
+  getUserDetails():Observable<Users[]>{
+    return this.httpClient.get<Users[]>('https://localhost:44334/api/USER/GetallUsers');
+  }
+
+  getUserSignUp(user:Users):Observable<Users>{
+    return this.httpClient.post<Users>('https://localhost:44334/api/USER/GetallUsers',user);
+
+  }
 }

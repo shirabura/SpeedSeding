@@ -10,18 +10,10 @@ using System.Web.Http.Cors;
 
 namespace API.Controllers
 {
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+   
     public class USERController : ApiController
     {
-        // GET: api/USER
-        //public List<dtoUSER> GetallUsers()
-        //{
-
-        //    List<dtoUSER> list = BLL.UserBL.GetallUsers();
-        //    return list;
-        //}
-
-        // POST: api/USER
+        
         [Route("api/USER/LoginUser")]
         [HttpPost]
         public long LoginUsers(UserDetails userDetails)
@@ -31,14 +23,5 @@ namespace API.Controllers
            
         }
 
-        // PUT: api/USER/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/USER/5
-        public void Delete(int id)
-        {
-        }
     }
 }

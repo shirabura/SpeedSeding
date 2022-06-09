@@ -105,12 +105,14 @@ namespace BLL
             return maxrating.allratings[0];
         }
         //פונקציית השיבוץ(מעדכנים אצל הבקשה את הקוד נסיעה  של המשלוחן המתאים)
-        public static void updatematch(dtoDELIVERy p, dtoPOSSIBLEDRIVE match)
+        //ומחזירים את המשלוחן המתאים
+        public static dtoPOSSIBLEDRIVE updatematch(dtoDELIVERy p, dtoPOSSIBLEDRIVE match)
         {
             DELIVERIES d = new DELIVERIES();
             d = p.FROMdtoToTable(p);
             p.IDOFDELIVER = match.KODOFDRIVE;
             db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
+            return match;
         }
         //המשתמש יכול להגיב על משלוח שנעשה לו
         public static List<dtoDELIVERy> Responsetodelivery(long tz)
