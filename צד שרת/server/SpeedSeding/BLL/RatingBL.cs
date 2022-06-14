@@ -15,7 +15,7 @@ namespace BLL
         {
             long point = 0;
             List<RATING> AllRating = db.GetDbSet<RATING>().Where(m => m.IDOFDELIVER == tz).ToList();
-            foreach (var i in AllRating)
+            foreach (var i in AllRating) 
             {
                 point += (long)i.INTEGRITYDELIVER;
                 point += (long)i.LATE;

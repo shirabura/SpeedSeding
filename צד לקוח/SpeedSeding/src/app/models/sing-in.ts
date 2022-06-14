@@ -1,4 +1,4 @@
 export interface singin{
-    firstname:string;
+    id:number;
     pass:string;
 }

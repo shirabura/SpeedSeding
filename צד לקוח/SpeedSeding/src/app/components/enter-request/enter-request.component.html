@@ -6,17 +6,15 @@
         style="border-color: rgb(240, 121, 25);">
         <div class="form control">
             <label for="IDOFDELIVER">תעודת זהות</label>
-            <input class="form-control" type="text" id="IDOFDELIVER" placeholder="" formControlName="IDOFDELIVER">
+            <input class="form-control"formControlName="IDOFDELIVER" type="text" id="IDOFDELIVER" placeholder="" formControlName="IDOFDELIVER">
             <label for="DATE"> תאריך </label>
-            <input class="form-control" type="text" id="DATE" placeholder="">
+            <input class="form-control"formControlName="DATE" type="text" id="DATE" placeholder="">
             <label for="HOUR"> שעה </label>
-            <input class="form-control" type="text" id="HOUR" placeholder="">
+            <input class="form-control" formControlName="HOUR"type="text" id="HOUR" placeholder="">
             <label for="SOURSEADRESS">כתובת מקור</label>
 
             <script type="text/javascript"
                 src="https://maps.googleapis.commaps/api/js?sensor=true&libraries=places,geometry,drawing&key=AIzaSyDN6hmLe4mB_RT43pToR3PtvXch2xeeBxQ&language=he"></script>
-
-
             <input ngx-google-places-autocomplete #placesRef="ngx-places"
                 (onAddressChange)="handleDestinationChange($event)" 
                 formControlName="address" class="form-control"
@@ -26,7 +24,7 @@
            
             <label for="DESTINATIONADRESS">כתובת יעד</label>
             <input ngx-google-places-autocomplete (onAddressChange)="handleDestinationChange($event)"
-            class="form-control" style="font-size: 13px;">
+            class="form-control"formControlName="address" style="font-size: 13px;">
             <br>
             <input class="btn  form-control" style="background-color:rgba(0, 0, 0, 0.836);color :white" type="submit"
             (click)="Enterreqwest()" value="אישור">

@@ -20,7 +20,6 @@ export class SignUpComponent implements OnInit {
         Id: new FormControl(''),
         FirsteName: new FormControl(''),
         LastName: new FormControl(''),
-        Status: new FormControl(''),
         Phone: new FormControl(''),
         Password: new FormControl('')
   
@@ -29,15 +28,14 @@ export class SignUpComponent implements OnInit {
    }
    DoSingUp(){
     const user:Users={
-      Id:this.SignUpForm.controls.tz.value, 
-      FirsteName:this.SignUpForm.controls.firstname.value,
-      LastName:this.SignUpForm.controls.lastname.value,
-      Status:this.SignUpForm.controls.status.value,
-      Phone:this.SignUpForm.controls.phone.value,
-      Password:this.SignUpForm.controls.pass.value
+      Id:this.SignUpForm.controls.Id.value, 
+      FirsteName:this.SignUpForm.controls.FirsteName.value,
+      LastName:this.SignUpForm.controls.LastName.value,
+      Phone:this.SignUpForm.controls.Phone.value,
+      Password:this.SignUpForm.controls.Password.value
     }
     console.log(user);
-    this.db.getUserSignUp(user).subscribe(res => {
+    this.db.DoSingUp(user).subscribe(res => {
       console.log(res)
 
       if (res == null)

@@ -6,22 +6,20 @@
         style="border-color: rgb(240, 121, 25);">
         <div class="form control">
             <label for="IDOFDELIVER">תעודת זהות</label>
-            <input class="form-control" type="text" id="IDOFDELIVER" placeholder="">
+            <input class="form-control" formControlName="IDOFDELIVER"  type="text" id="IDOFDELIVER" placeholder="">
             <label for="DATE"> תאריך </label>
-            <input class="form-control" type="text" id="DATE" placeholder="">
+            <input class="form-control" formControlName="DATE"type="text" id="DATE" placeholder="">
             <label for="HOUR"> שעה </label>
-            <input class="form-control" type="text" id="HOUR" placeholder="">
+            <input class="form-control" formControlName="HOUR"type="text" id="HOUR" placeholder="">
             <label for="SOURSEADRESS">כתובת מקור</label>
-
-
             <input ngx-google-places-autocomplete (onAddressChange)="handleDestinationChange($event)"
-                 class="form-control" #placesRef="ngx-places"  style="font-size: 13px;">
+                 class="form-control"formControlName="address" #placesRef="ngx-places"  style="font-size: 13px;">
                  <script type="text/javascript"
                  src="https://maps.googleapis.commaps/api/js?key=AIzaSyDN6hmLe4mB_RT43pToR3PtvXch2xeeBxQ&libraries=places,geometry,drawing&sensor=false&language=he"></script> 
                  
             <label for="DESTINATIONADRESS">כתובת יעד</label>
             <input ngx-google-places-autocomplete class="form-control"  (onAddressChange)="handleDestinationChange($event)" 
-            #placesRef="ngx-places" style="font-size: 13px;">
+            #placesRef="ngx-places"formControlName="address" style="font-size: 13px;">
                  
                  <script type="text/javascript"
                  src="https://maps.googleapis.commaps/api/js?key=AIzaSyDN6hmLe4mB_RT43pToR3PtvXch2xeeBxQ&libraries=places,geometry,drawing&sensor=false&language=he"></script> 

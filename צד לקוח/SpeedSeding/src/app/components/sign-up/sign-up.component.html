@@ -3,25 +3,18 @@
 </h3>
     <form [formGroup]="SignUpForm"  class="dropdown-menu p-4 row card fs-6">
        <div class="form control">
-           <label for="tz">תעודת זהות</label>
-           <input class="form-control" type="text" id="tz" placeholder="">
-           <label for="firstname">שם פרטי </label>
-           <input class="form-control" type="text" id="firstname" placeholder="">
-           <label for="lastname">שם משפחה </label>
-           <input class="form-control" type="text" id="LastName" placeholder="">
-           <label for="status">סטטוס</label>
-           <select class="form-select" aria-label="סוג משתמש" placeholder="סטטוס">
-       
-            <option value="1">משלוחן</option>
-            <option value="2">לקוח</option>
-           
-          </select>
-           <label for="phone">מספר טלפון </label>
-           <input class="form-control" type="text" id="phone">
-           <label for="pass">סיסמא</label>
-           <input class="form-control" type="password" id="pass" placeholder="">
-           <label for="validationpass">אימות סיסמא</label>
-           <input class="form-control" type="password" id="validationpass" placeholder="">
+           <label for="Id">תעודת זהות</label>
+           <input class="form-control" formControlName="Id" type="text" id="Id" placeholder="">
+           <label for="FirsteName">שם פרטי </label>
+           <input class="form-control" formControlName="FirsteName" type="text" id="FirsteName" placeholder="">
+           <label for="LastName">שם משפחה </label>
+           <input class="form-control" formControlName="LastName" type="text" id="LastName" placeholder="">
+           <label for="Phone">מספר טלפון </label>
+           <input class="form-control" formControlName="Phone" type="text" id="Phone">
+           <label for="Password">סיסמא</label>
+           <input class="form-control"  formControlName="Password"type="Password" id="Password" placeholder="">
+           <!-- <label for="validationpass">אימות סיסמא</label>
+           <input class="form-control"formControlName="validationpass" type="password" id="validationpass" placeholder=""> -->
            <br>
            <input class="btn  form-control" style="background-color:rgba(0, 0, 0, 0.836);color :white" type="submit" (click)="DoSingUp()" value="אישור">
        </div>

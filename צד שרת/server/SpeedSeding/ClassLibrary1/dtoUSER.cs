@@ -32,10 +32,7 @@ namespace DTOClass
             this.Password = u.Password;
         }
 
-        public USERS FromdtoToTable()
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public USERS FromdtoToTable(dtoUSER u)
         {

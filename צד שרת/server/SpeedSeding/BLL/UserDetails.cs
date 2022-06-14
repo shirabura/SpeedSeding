@@ -8,7 +8,7 @@ namespace BLL
 {
     public class UserDetails
     {
-        public string firstname { get; set; }
+        public long id { get; set; }
         public string pass { get; set; }
 
         public UserDetails()

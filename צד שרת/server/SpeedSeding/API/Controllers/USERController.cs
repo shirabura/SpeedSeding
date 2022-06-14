@@ -19,8 +19,22 @@ namespace API.Controllers
         public long LoginUsers(UserDetails userDetails)
         {
 
-            return    BLL.UserBL.LoginUser(userDetails.firstname,userDetails.pass);
+            return    BLL.UserBL.LoginUser(userDetails.id, userDetails.pass);
            
+        }
+        [Route("api/USER/singup")]
+        [HttpPost]
+        public Object singup(dtoUSER u)
+        {
+           
+            return BLL.UserBL.SignUp(u);
+        }
+        [Route("api/USER/GetallUsers")]
+        [HttpGet]
+        public List<dtoUSER> GetallUsers()
+        {
+
+            return BLL.UserBL.GetallUsers();
         }
 
     }

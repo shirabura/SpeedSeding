@@ -18,19 +18,6 @@ using System;
 public partial class USERS
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public USERS()
-    {
-
-        this.DELIVERIES = new HashSet<DELIVERIES>();
-
-        this.DELIVERIES1 = new HashSet<DELIVERIES>();
-
-        this.POSSIBLEDRIVE = new HashSet<POSSIBLEDRIVE>();
-
-    }
-
-
     public long Id { get; set; }
 
     public string FirsteName { get; set; }

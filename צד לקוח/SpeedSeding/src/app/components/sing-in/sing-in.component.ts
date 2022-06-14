@@ -17,7 +17,7 @@ export class SingInComponent implements OnInit {
   ngOnInit(): void {
      this.SignInForm = new FormGroup(
        {
-         firstname: new FormControl(''),
+         id: new FormControl(''),
          pass: new FormControl('')
        }
      )
@@ -27,7 +27,7 @@ export class SingInComponent implements OnInit {
 
     console.log(this.SignInForm);
     const login: singin = {
-      firstname: this.SignInForm.controls.firstname.value,
+      id: this.SignInForm.controls.id.value,
       pass: this.SignInForm.controls.pass.value
     }
 
@@ -37,6 +37,11 @@ export class SingInComponent implements OnInit {
 
       if (res == null)
         alert("שגיאת שרת")
+      else if(res.id==0)
+        alert("מצטערים, אך אחד או יותר מהנתונים שהכנסת שגויים ,נסה שנית")
+      else if(res.pass==null)
+        alert("מצטערים, אך אחד או יותר מהנתונים שהכנסת שגויים ,נסה שנית")
+      
       else
         alert("כניסה למערכת")
     }
