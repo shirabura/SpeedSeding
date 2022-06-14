@@ -16,10 +16,10 @@ namespace API.Controllers
         
         [Route("api/USER/LoginUser")]
         [HttpPost]
-        public long LoginUsers(UserDetails userDetails)
+        public dtoUSER LoginUsers(UserDetails userDetails)
         {
 
-            return    BLL.UserBL.LoginUser(userDetails.id, userDetails.pass);
+            return BLL.UserBL.LoginUser(userDetails.id, userDetails.pass);
            
         }
         [Route("api/USER/singup")]

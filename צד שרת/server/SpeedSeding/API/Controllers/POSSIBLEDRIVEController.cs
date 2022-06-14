@@ -23,7 +23,13 @@ namespace API.Controllers
             
 
         }
+        [Route("api/POSSIBLEDRIVE/viewhistory")]
+        [HttpPost]
+        public List<dtoDELIVERy> viewhistory(long tz)
+        {
+            return BLL.PossibleDriveBL.viewhistory(tz);
+        }
 
-    
+
     }
 }

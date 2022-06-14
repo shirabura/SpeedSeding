@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from 'src/app/service/db.service';
 
 @Component({
   selector: 'app-history',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
+  // history:Array<deliver>=new Array<deliver>()
 
-  constructor() { }
+  constructor(public db: DbService) { }
 
   ngOnInit(): void {
+    console.log(this.db.user.FirsteName);
+
+    this.db.viewhistory().subscribe(res => {
+      console.log(res)
+      if (res == null)
+        alert("שגיאת שרת")
+      else {
+        // history = res
+      }
+    })
+
   }
+
 
 }

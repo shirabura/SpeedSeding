@@ -32,16 +32,12 @@ namespace BLL
    
        
 
-        public static long LoginUser(long id, string password)
-        {
-
+        public static dtoUSER LoginUser(long id, string password)
+        { 
 
             List<dtoUSER> UserInDB = GetallUsers();
             dtoUSER us = UserInDB.FirstOrDefault(s => s.Id== id && s.Password==password);
-            if (us == null)
-                   return 0;
-                return us.Id;
-            
+            return us;   
         }
     }
 

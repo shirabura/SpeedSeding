@@ -1,11 +1,11 @@
 
-export interface Users{
-
-    Id: number;
-    FirsteName:string;
-    LastName:string;
-    Phone:string;
-    Password:string;
-
-
+export class Users{
+    constructor(
+        public Id?: number,
+        public FirsteName?:string,
+        public LastName?:string,
+        public Phone?:string,
+        public Password?:string
+    
+    ){}
 }

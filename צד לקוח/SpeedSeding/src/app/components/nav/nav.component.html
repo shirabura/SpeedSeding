@@ -1,62 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-light bg" style="background-color: rgb(240, 121, 25);color: white; direction: rtl;">
-  
-
+<nav class="navbar navbar-expand-lg navbar-light bg"
+  style="background-color: rgb(240, 121, 25);color: white; direction: rtl;">
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="Home">
       <img [src]="home" alt="" width="110px" height="70px" routerLink="Home">
     </a>
   </div>
-   
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li (click)="changeabout()" class="nav-item dropdown">
-        <div class="nav-link dropdown-toggle " style="color:white " href="#" id="navbarDropdown" role="button"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          אודות
-         </div>  
-      </li>
-      <li (click)="changedeliver()" class="nav-item dropdown">
-        <div class=" nav-link dropdown-toggle " style="color:white" href="#" id="navbarDropdown" role="button"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          משלוחן
-        </div>
-      </li>
-      <li  (click)="changecustomer()"class="nav-item dropdown">
-        <div class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDropdown" role="button"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          לקוח
-        </div>
-        <li>
-          <div class="nav-link" style="color:white" href="#" id="navbarDropdown" role="button"
-          data-bs-toggle="dropdown"routerLink="Results" aria-expanded="false">
-          לתוצאות
-        </div>
-        </li>
-      <li>
-        <div style="width: 125vh"></div>
-      </li>
-      <li>
-        <button type="button" class="btn btn-seconday nav-link-dark active" style="border-color: white;" href="#"
-          routerLink="SignIn">התחברות</button>
-      </li>
-      <div style="width:3vh;"></div>
-      <li>
-        <button type="button" class="btn btn-seconday nav-link-dark active" style="border-color: white;" href="#"
-          routerLink="SignUp">הרשמה</button>
-      </li>
-    </ul>
+
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+    <li (click)="changeabout()" class="nav-item dropdown">
+      <div class="nav-link dropdown-toggle " style="color:white " href="#" id="navbarDropdown" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        אודות
+      </div>
+    </li>
+    <li (click)="changedeliver()" class="nav-item dropdown">
+      <div class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDropdown" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        משלוחן
+      </div>
+    </li>
+    <li (click)="changecustomer()" class="nav-item dropdown">
+      <div class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDropdown" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        לקוח
+      </div>
+    <li>
+      <div class="nav-link" style="color:white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+        routerLink="Results" aria-expanded="false">
+        לתוצאות
+      </div>
+    </li>
+    <li>
+      <div style="width: 75rem;direction:rtl ;"></div>
+    </li>
+    <li>
+      <button type="button" class="btn btn-seconday nav-link-dark active" style="border-color: white;" href="#"
+        routerLink="SignIn">התחברות</button>
+    </li>
+    <div style="width:3vh;" dir="rtl"></div>
+    <li>
+      <button type="button" class="btn btn-seconday nav-link-dark active" style="border-color: white;" href="#"
+        routerLink="SignUp">הרשמה</button>
+    </li>
+  </ul>
 
 </nav>
 
-<ul *ngIf="deliver==true"  class="deliver"aria-labelledby="navbarDropdown" style="background-color: white;">
-<li><a class=" dropdown-item " href="#" routerLink="possibledrive">הכנס נסיעה אפשרית</a></li>
-<li><a class="dropdown-item" href="#"  routerLink="history"> היסטורית המשלוחים שלי</a></li>
-<li><a class="dropdown-item" href="#" routerLink="viewrating">הרייטינג שלי</a></li>
+<ul *ngIf="deliver==true" class="deliver" aria-labelledby="navbarDropdown" style="background-color: white;">
+  <li><a class=" dropdown-item " href="#" routerLink="possibledrive">הכנס נסיעה אפשרית</a></li>
+  <li><a class="dropdown-item" href="#" routerLink="history"> היסטורית המשלוחים שלי</a></li>
+  <li><a class="dropdown-item" href="#" routerLink="viewrating">הרייטינג שלי</a></li>
 </ul>
-<ul *ngIf="customer==true"  class="deliver" aria-labelledby="navbarDropdown" style="background-color: white;">
-<li><a class="dropdown-item" href="#"  routerLink="enterreqwest">הכנס בקשה למשלוח</a></li>
-<li><a class="dropdown-item" href="#" routerLink="respons">הגב על משלוח </a></li>
+<ul *ngIf="customer==true" class="deliver" aria-labelledby="navbarDropdown" style="background-color: white;">
+  <li><a class="dropdown-item" href="#" routerLink="enterreqwest">הכנס בקשה למשלוח</a></li>
+  <li><a class="dropdown-item" href="#" routerLink="respons">הגב על משלוח </a></li>
 </ul>
-<ul *ngIf="about==true"class="deliver" aria-labelledby="navbarDropdown"style="background-color: white;">
-<li><a class="dropdown-item" href="#" routerLink="About">אודות החברה</a></li>
-<li><a class="dropdown-item" href="#" routerLink="Help"> איך זה עובד?</a></li>
+<ul *ngIf="about==true" class="deliver" aria-labelledby="navbarDropdown" style="background-color: white;">
+  <li><a class="dropdown-item" href="#" routerLink="About">אודות החברה</a></li>
+  <li><a class="dropdown-item" href="#" routerLink="Help"> איך זה עובד?</a></li>
 </ul>
