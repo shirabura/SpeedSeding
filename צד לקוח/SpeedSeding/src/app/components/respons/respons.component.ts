@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from 'src/app/service/db.service';
 
 @Component({
   selector: 'app-respons',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResponsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public db: DbService) { }
 
   ngOnInit(): void {
   }

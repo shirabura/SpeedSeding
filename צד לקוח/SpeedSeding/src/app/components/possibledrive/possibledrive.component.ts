@@ -12,6 +12,8 @@ import { DbService } from 'src/app/service/db.service';
 })
 export class PossibledriveComponent implements OnInit {
   possibledriveForm:any
+  source?: Address;
+  destianation?: Address;
   constructor(private db: DbService) { }
 
   ngOnInit(): void {
@@ -26,18 +28,27 @@ export class PossibledriveComponent implements OnInit {
        }
      )
   }
+  handleDestinationChangeOfDESTINATIONADRESS(a: Address) {
+    this.destianation = a;
+    console.log(a)
+  }
+  handleDestinationChangeOfSOURSEADRESS(a: Address) {
+    this.source = a;
+    console.log(a)
+  }
 
   handleDestinationChange(a: Address) {
     console.log(a)
   }
   EnterPossibleDrive(){
+    if (this.source != undefined && this.destianation != undefined) {
     console.log(this.possibledriveForm);
     const enterpossibledrive: possibledrive = {
       IDOFDELIVER: this.possibledriveForm.controls.IDOFDELIVER.value,
       DATE: this.possibledriveForm.controls.DATE.value,
       HOUR: this.possibledriveForm.controls.HOUR.value,
-      SOURSEADRESS: this.possibledriveForm.controls.SOURSEADRESS.value,
-      DESTINATIONADRESS: this.possibledriveForm.controls.DESTINATIONADRESS.value
+      SOURSEADRESS: this.source!.formatted_address,// this.enterreqwestForm.controls.SOURSEADRESS.value,
+        DESTINATIONADRESS: this.destianation!.formatted_address //this.enterreqwestForm.controls.DESTINATIONADRESS.value
     }
     console.log(enterpossibledrive);
     this.db.EnterPossibleDrive(enterpossibledrive).subscribe(res => {
@@ -50,5 +61,10 @@ debugger
     }
     )
   }
+  
+       else{
+       alert("נא למלא מקור ויעד!")
+       }
 
+}
 }

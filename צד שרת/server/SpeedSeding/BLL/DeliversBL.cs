@@ -114,10 +114,6 @@ namespace BLL
             db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
             return match;
         }
-        //המשתמש יכול להגיב על משלוח שנעשה לו
-        public static List<dtoDELIVERy> Responsetodelivery(long tz)
-        {
-            return null;
-        }
+      
     }
 }

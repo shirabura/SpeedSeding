@@ -34,16 +34,16 @@ namespace DTOClass
 
 
         }
-        public RATING FROMdtoToTable(dtoRATING u)
+        public static RATING FROMdtoToTable(dtoRATING u)
         {
             RATING ra = new RATING();
-            ra.IDOFDELIVER = IDOFDELIVER;
-            ra.DELIVERYID = DELIVERYID;
-            ra.INTEGRITYDELIVER =INTEGRITYDELIVER;
-            ra.LATE = LATE;
-            ra.SERVISE =SERVISE;
-            ra.GENERAL = GENERAL;
-            ra.SamPoint = (long)SamPoint;
+            ra.IDOFDELIVER = u.IDOFDELIVER;
+            ra.DELIVERYID = u.DELIVERYID;
+            ra.INTEGRITYDELIVER =u.INTEGRITYDELIVER;
+            ra.LATE = u.LATE;
+            ra.SERVISE =u.SERVISE;
+            ra.GENERAL = u.GENERAL;
+            ra.SamPoint = (long)u.SamPoint;
             return ra;
         }
         public static List<dtoRATING> CreateDtoList(List<RATING> LIST)

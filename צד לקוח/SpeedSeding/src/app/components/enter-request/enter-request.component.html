@@ -16,15 +16,15 @@
             <script type="text/javascript"
                 src="https://maps.googleapis.commaps/api/js?sensor=true&libraries=places,geometry,drawing&key=AIzaSyDN6hmLe4mB_RT43pToR3PtvXch2xeeBxQ&language=he"></script>
             <input ngx-google-places-autocomplete #placesRef="ngx-places"
-                (onAddressChange)="handleDestinationChange($event)" 
-                formControlName="address" class="form-control"
+                (onAddressChange)="handleDestinationChangeOfSOURSEADRESS($event)" 
+                formControlName="SOURSEADRESS" class="form-control"
                 style="font-size: 13px;">
            <script type="text/javascript"
            src="https://maps.googleapis.commaps/api/js?key=&libraries=places,geometry,drawing&sensor=false&language=he"></script> 
            
             <label for="DESTINATIONADRESS">כתובת יעד</label>
-            <input ngx-google-places-autocomplete (onAddressChange)="handleDestinationChange($event)"
-            class="form-control"formControlName="address" style="font-size: 13px;">
+            <input ngx-google-places-autocomplete (onAddressChange)="handleDestinationChangeOfDESTINATIONADRESS($event)"
+            class="form-control" formControlName="DESTINATIONADRESS" style="font-size: 13px;">
             <br>
             <input class="btn  form-control" style="background-color:rgba(0, 0, 0, 0.836);color :white" type="submit"
             (click)="Enterreqwest()" value="אישור">

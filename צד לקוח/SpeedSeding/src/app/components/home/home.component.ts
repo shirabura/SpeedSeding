@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { DbService } from 'src/app/service/db.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,10 @@ import { Address } from 'ngx-google-places-autocomplete/objects/address';
 export class HomeComponent implements OnInit {
   home = "assets/11.png"
 
-  constructor() { }
+  constructor(private db:DbService) {
+    console.log(db.user);
+    
+   }
 
   ngOnInit(): void {
   }

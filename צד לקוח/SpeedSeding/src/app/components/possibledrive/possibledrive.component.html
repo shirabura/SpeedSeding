@@ -12,13 +12,13 @@
             <label for="HOUR"> שעה </label>
             <input class="form-control" formControlName="HOUR"type="text" id="HOUR" placeholder="">
             <label for="SOURSEADRESS">כתובת מקור</label>
-            <input ngx-google-places-autocomplete (onAddressChange)="handleDestinationChange($event)"
+            <input ngx-google-places-autocomplete (onAddressChange)="handleDestinationChangeOfSOURSEADRESS($event)"
                  class="form-control"formControlName="address" #placesRef="ngx-places"  style="font-size: 13px;">
                  <script type="text/javascript"
                  src="https://maps.googleapis.commaps/api/js?key=AIzaSyDN6hmLe4mB_RT43pToR3PtvXch2xeeBxQ&libraries=places,geometry,drawing&sensor=false&language=he"></script> 
                  
             <label for="DESTINATIONADRESS">כתובת יעד</label>
-            <input ngx-google-places-autocomplete class="form-control"  (onAddressChange)="handleDestinationChange($event)" 
+            <input ngx-google-places-autocomplete class="form-control"  (onAddressChange)="handleDestinationChangeOfDESTINATIONADRESS($event)" 
             #placesRef="ngx-places"formControlName="address" style="font-size: 13px;">
                  
                  <script type="text/javascript"

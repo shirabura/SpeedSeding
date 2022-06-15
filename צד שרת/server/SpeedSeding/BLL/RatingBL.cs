@@ -35,5 +35,17 @@ namespace BLL
             return point;
 
         }
+        //פונקציה שמעדכנת במסד הנתונים את  טופס התגובה
+        public static void Responsetodelivery(long tz, dtoRATING r, long deliverid)
+        {
+            RATING t = new RATING();
+            t = dtoRATING.FROMdtoToTable(r);
+            t.IDOFDELIVER = tz;
+            t.DELIVERYID = deliverid;
+            db.Execute<RATING>(t, DBConection.ExecuteActions.Insert);
+            t.SamPoint = RatingBL.CalculatePoint(tz);
+
+
+        }
     }
 }

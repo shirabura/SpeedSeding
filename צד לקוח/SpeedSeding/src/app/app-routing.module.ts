@@ -14,18 +14,18 @@ import { ResponsComponent } from './components/respons/respons.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'Home', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'Home', redirectTo:'' },
   { path: 'SignIn', component: SingInComponent },
   { path: 'SignUp', component: SignUpComponent },
   { path: 'About', component: AboutTheCompanyComponent },
   { path: 'Help', component: HelpComponent },
-  {path:'possibledrive', component:PossibledriveComponent},
-  {path:'enterreqwest', component:EnterRequestComponent},
-  {path:'Results', component:ResultsComponent},
-  {path:'viewrating', component:ViewRatingComponent},
-  {path:'history', component:HistoryComponent},
-  {path:'respons', component:ResponsComponent}
+  { path: 'possibledrive', component: PossibledriveComponent },
+  { path: 'enterreqwest', component: EnterRequestComponent },
+  { path: 'Results', component: ResultsComponent },
+  { path: 'viewrating', component: ViewRatingComponent },
+  { path: 'history', component: HistoryComponent },
+  { path: 'respons', component: ResponsComponent }
 ];
 
 @NgModule({

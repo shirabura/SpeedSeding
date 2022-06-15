@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
- import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { possibledrive } from 'src/app/models/posibledrive';
 import { DbService } from 'src/app/service/db.service';
 
@@ -11,7 +11,9 @@ import { DbService } from 'src/app/service/db.service';
   styleUrls: ['./enter-request.component.css']
 })
 export class EnterRequestComponent implements OnInit {
-enterreqwestForm:any
+  enterreqwestForm: any
+  source?: Address;
+  destianation?: Address;
   constructor(private db: DbService) { }
 
   ngOnInit(): void {
@@ -22,32 +24,49 @@ enterreqwestForm:any
         HOUR: new FormControl(''),
         SOURSEADRESS: new FormControl(''),
         DESTINATIONADRESS: new FormControl(''),
-        
-  
-       }
-     )
+
+
+      }
+    )
   }
-  handleDestinationChange(a: Address) {
+  handleDestinationChangeOfDESTINATIONADRESS(a: Address) {
+    this.destianation = a;
     console.log(a)
   }
-  Enterreqwest(){
-    console.log(this.enterreqwestForm);
-    const enterreqwest: possibledrive = {
-      IDOFDELIVER: this.enterreqwestForm.controls.IDOFDELIVER.value,
-      DATE: this.enterreqwestForm.controls.DATE.value,
-      HOUR: this.enterreqwestForm.controls.HOUR.value,
-      SOURSEADRESS: this.enterreqwestForm.controls.SOURSEADRESS.value,
-      DESTINATIONADRESS: this.enterreqwestForm.controls.DESTINATIONADRESS.value
-    }
-     console.log(enterreqwest);
-     this.db.Enterreqwest(enterreqwest).subscribe(res => {
-     console.log(res)
-
-      if (res == null)
-      alert("שגיאת שרת")
-       else
-      alert("כניסה למערכת")
+  handleDestinationChangeOfSOURSEADRESS(a: Address) {
+    this.source = a;
+    console.log(a)
   }
-  )
-} 
+
+
+  Enterreqwest() {
+
+    if (this.source != undefined && this.destianation != undefined) {
+      console.log(this.enterreqwestForm);
+      const enterreqwest: possibledrive = {
+        IDOFDELIVER: this.enterreqwestForm.controls.IDOFDELIVER.value,
+        DATE: this.enterreqwestForm.controls.DATE.value,
+        HOUR: this.enterreqwestForm.controls.HOUR.value,
+        SOURSEADRESS: this.source!.formatted_address,// this.enterreqwestForm.controls.SOURSEADRESS.value,
+        DESTINATIONADRESS: this.destianation!.formatted_address //this.enterreqwestForm.controls.DESTINATIONADRESS.value
+      }
+      console.log(enterreqwest);
+      this.db.Enterreqwest(enterreqwest).subscribe(res => {
+        console.log(res)
+
+        if (res == null)
+          alert("שגיאת שרת")
+        else
+          alert("כניסה למערכת")
+      }
+
+      )
+    }
+     else{
+      alert("נא למלא מקור ויעד!")
+     }
+  }
+ 
+
 }
+  
