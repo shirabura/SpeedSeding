@@ -14,6 +14,11 @@ namespace BLL
         //בשלב הראשון מתבצע סינון של המשלוחנים שכבר סירבו לבקשה ( אם קיימים)
         public static List<dtoPOSSIBLEDRIVE> GetAllOpenRequest(dtoDELIVERy p)
         {
+            //הכנסת הבקשה למסד הנתונים
+            DELIVERIES d = new DELIVERIES();
+            d = dtoDELIVERy.FROMdtoToTable(p);
+            db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Insert);
+            //שליפת כל הנסיעות ממסד הנתונים
             List<dtoPOSSIBLEDRIVE> AllOpenRequest = dtoPOSSIBLEDRIVE.CreateDtoList((db.GetDbSet<POSSIBLEDRIVE>().ToList()));
             List<NOTCONFIRM> NOTCONFIRMs = db.GetDbSet<NOTCONFIRM>();
             List<dtoPOSSIBLEDRIVE> reqest = new List<dtoPOSSIBLEDRIVE>();
@@ -38,26 +43,43 @@ namespace BLL
             foreach (var item in reqest)
             {
                 if (item.DATE == p.DATE && item.HOUR == p.HOUR)
-                    //if() כאן תהיה פונקצייה של גוגל מפות שתבדוק את התאמת המקומות של כתובות המקור אל מול כתובות היעד
-                    AllOpenRequest.Add(item);
+                    if (item.SOURSEADRESS == p.SOURSEADRESS && item.DESTINATIONADRESS == p.DESTINATIONADRESS)
+                        AllOpenRequest.Add(item);
             }
 
             return AllOpenRequest;
         }
-        //שנית תתבצע בדיקת התאמה חלקית
-        public static List<dtoPOSSIBLEDRIVE> Partialfit(List<dtoPOSSIBLEDRIVE> AllOpenRequest, dtoDELIVERy p)
+        //בדיקת התאמה חלקית
+        public static List<dtoPOSSIBLEDRIVE> Partialfit(List<dtoPOSSIBLEDRIVE> reqest, dtoDELIVERy p)
         {
             List<dtoPOSSIBLEDRIVE> Partialfitlist = new List<dtoPOSSIBLEDRIVE>();
-            foreach (var item in AllOpenRequest)
+            int DistanceBetweenSourceAddresses, DistanceBetweenDestinationAddresses;
+            Min min = new Min();
+            foreach (var item in reqest)
             {
                 //כאן תהיה פונקצצית חישוב מרחקים של גוגל מפות
-                //  נכניס לרשימה של Partialfitlist את כל הנסיעות המתאימות עם המרחק המינימלי
-            }
-            return Partialfitlist;
+                DistanceBetweenSourceAddresses = DistanceAlgorithm.DistanceFrom2PointsInMinutes(item.SOURSEADRESS, p.SOURSEADRESS);
+                DistanceBetweenDestinationAddresses = DistanceAlgorithm.DistanceFrom2PointsInMinutes(item.DESTINATIONADRESS, p.DESTINATIONADRESS);
+                if (DistanceBetweenSourceAddresses + DistanceBetweenDestinationAddresses < min.counter)
+                {
+                    Min newmin = new Min();
+                    newmin.counter = DistanceBetweenSourceAddresses + DistanceBetweenDestinationAddresses;
+                    min.counter = newmin.counter;
+                    newmin.alldeliveries.Add(item);
+                }
+                if (DistanceBetweenSourceAddresses + DistanceBetweenDestinationAddresses == min.counter)
+                {
+                    min.alldeliveries.Add(item);
+                }
 
+
+            }
+            Partialfitlist = min.alldeliveries;
+            return Partialfitlist;
         }
-        //במידה ולאחר ההתאמה המוחלטת או החלקית נשיג כמה משלוחנים באותה רמה -נבצע בדיקת הסתברות
-        //חיפוש כל הנסיעות עם מספר משלוחים מינימלי
+
+          //במידה ולאחר ההתאמה המוחלטת או החלקית נשיג כמה משלוחנים באותה רמה -נבצע בדיקת הסתברות
+           //חיפוש כל הנסיעות עם מספר משלוחים מינימלי
         public static List<dtoPOSSIBLEDRIVE> Minimumnumber(List<dtoPOSSIBLEDRIVE> Partialfitlist)
         {
             Min mincounter = new Min();
@@ -104,16 +126,21 @@ namespace BLL
             }
             return maxrating.allratings[0];
         }
-        //פונקציית השיבוץ(מעדכנים אצל הבקשה את הקוד נסיעה  של המשלוחן המתאים)
+        //פונקציית ההתאמה(מעדכנים אצל הבקשה את הקוד נסיעה  של המשלוחן המתאים)
         //ומחזירים את המשלוחן המתאים
         public static dtoPOSSIBLEDRIVE updatematch(dtoDELIVERy p, dtoPOSSIBLEDRIVE match)
         {
             DELIVERIES d = new DELIVERIES();
-            d = p.FROMdtoToTable(p);
+            d=dtoDELIVERy.FROMdtoToTable(p);
             p.IDOFDELIVER = match.KODOFDRIVE;
             db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
             return match;
         }
-      
+        //המשתמש יכול להגיב על משלוח שנעשה לו
+        public static List<dtoDELIVERy> Responsetodelivery(long tz)
+        {
+             return null;
+        }
+
     }
 }

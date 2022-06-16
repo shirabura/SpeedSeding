@@ -16,6 +16,11 @@ namespace BLL
         //מסננת בקשות שהותאמו ועוד לא אושרו
         public static List<dtoDELIVERy> GetAllOpenReqwest(dtoPOSSIBLEDRIVE p)
         {
+            //מכניסה את הנסיעה האפשרית למסד הנתונים
+            POSSIBLEDRIVE d = new POSSIBLEDRIVE();
+            d = dtoPOSSIBLEDRIVE.FromdtoToTable(p);
+            db.Execute<POSSIBLEDRIVE>(d, DBConection.ExecuteActions.Insert);
+            //שליפת הבקשות ממסד הנתונים
             List<dtoDELIVERy> AllOpenRequest = dtoDELIVERy.CreateDtoList((db.GetDbSet<DELIVERIES>().Where(r => r.IDOFDELIVER != null && r.DONE == false)).ToList()).ToList();
             return AllOpenRequest;
         }
@@ -44,17 +49,17 @@ namespace BLL
         //פונקצייה שמחשבת ניקוד למשלוחן בהתאם לבקשה מסוימת
         public static float checkpoint(dtoPOSSIBLEDRIVE p, dtoDELIVERy d)
         {
-            float point = 0;
-            float date = 0;
-            float hour = 0;
-            float Sourceaddress = 0;
-            float Destinationaddress = 0;
+            int point = 0;
+            int date = 0;
+            int hour = 0;
+            int Sourceaddress = 0;
+            int Destinationaddress = 0;
 
 
             TimeSpan diff = d.DATE - p.DATE;
             date = (int)Math.Ceiling(diff.TotalDays);
-            //Sourceaddress=חישוב גוגל מפות
-            //Destinationaddress=חישוב גוגל מפות
+            Sourceaddress = DistanceAlgorithm.DistanceFrom2PointsInMinutes(p.SOURSEADRESS, d.SOURSEADRESS);
+            Destinationaddress = DistanceAlgorithm.DistanceFrom2PointsInMinutes(p.DESTINATIONADRESS, d.DESTINATIONADRESS);
             point = date + Sourceaddress + Destinationaddress;
             return point;
         }
@@ -62,7 +67,7 @@ namespace BLL
         public static List<dtoDELIVERy> viewhistory(long tz)
         {
             List<dtoDELIVERy> history = new List<dtoDELIVERy>();
-            history = dtoDELIVERy.CreateDtoList(db.GetDbSet<DELIVERIES>().Where(r=>r.IDOFDELIVER==tz).ToList());
+            history = dtoDELIVERy.CreateDtoList(db.GetDbSet<DELIVERIES>().Where(r => r.IDOFDELIVER == tz).ToList());
             return history;
         }
         //פונקצייה שמעדכנת בדאטה בייס
@@ -70,21 +75,36 @@ namespace BLL
         public static dtoDELIVERy updatematch(dtoDELIVERy p, dtoPOSSIBLEDRIVE match)
         {
             DELIVERIES d = new DELIVERIES();
-            d = p.FROMdtoToTable(p);
+            d = dtoDELIVERy.FROMdtoToTable(p);
             p.IDOFDELIVER = match.KODOFDRIVE;
             db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
             dtoDELIVERy a = new dtoDELIVERy(d);
             return a;
         }
         //פונקצייה שמעדכנת בדאטה בייס שהבקשה אושרה והמשלוח עתיד להתקיים
-        public static void UpdetConfirmation(dtoDELIVERy p)
+        //ומחזירה את מספר הטלפון של הלקוח המתאים
+        public static string UpdetConfirmation(dtoDELIVERy p)
         {
+            string CustumerPhone;
             DELIVERIES d = new DELIVERIES();
-            d = p.FROMdtoToTable(p);
+            d = dtoDELIVERy.FROMdtoToTable(p);
             d.DONE = true;
             db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
+            USERS Custumer = new USERS();
+            Custumer = db.GetDbSet<USERS>().Where(r => r.Id == p.IDOFDELIVER).First();
+            CustumerPhone = Custumer.phone;
+            return CustumerPhone;
+        }
+        //החזרת המספר טלפון של המשלוחן המתאים
+        public static string returnphone(dtoPOSSIBLEDRIVE p)
+        {
+            string deliverPhone;
+            USERS deliver = new USERS();
+            deliver = db.GetDbSet<USERS>().Where(r => r.Id == p.IDOFDELIVER).First();
+            deliverPhone = deliver.phone;
+            return deliverPhone;
 
         }
     }
-
+       
 }

@@ -34,18 +34,18 @@ namespace DTOClass
             this.DONE = Convert.ToBoolean(d.DONE);
             this.HOUR = d.HOUR;
         }
-        public DELIVERIES FROMdtoToTable(dtoDELIVERy d)
+        public static DELIVERIES FROMdtoToTable(dtoDELIVERy d)
         {
             DELIVERIES del = new DELIVERIES();
-            del.DELIVERID = DELIVERID;
-            del.IDOFDELIVER = IDOFDELIVER;
-            del.IDOFCUSTUMER = IDOFCUSTUMER;
-            del.DATE = DATE;
-            del.RESPOND = RESPOND;
-            del.SOURSEADRESS =SOURSEADRESS;
-            del.DESTINATIONADRESS =DESTINATIONADRESS;
-            del.DONE = DONE;
-            del.HOUR = HOUR;
+            del.DELIVERID = d.DELIVERID;
+            del.IDOFDELIVER = d.IDOFDELIVER;
+            del.IDOFCUSTUMER = d.IDOFCUSTUMER;
+            del.DATE = d.DATE;
+            del.RESPOND = d.RESPOND;
+            del.SOURSEADRESS =d.SOURSEADRESS;
+            del.DESTINATIONADRESS =d.DESTINATIONADRESS;
+            del.DONE = d.DONE;
+            del.HOUR = d.HOUR;
             return del;
         }
             public static List<dtoDELIVERy> CreateDtoList(List<DELIVERIES> LIST)

@@ -13,7 +13,6 @@ namespace BLL
     {
 
 
-
         static DBConection db = new DBConection();
 
         public static List<dtoUSER> GetallUsers()

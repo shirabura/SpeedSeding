@@ -30,16 +30,16 @@ namespace DTOClass
             this.DESTINATIONADRESS = p.DESTINATIONADRESS;
             this.CountOfDeliveries = (int)p.CountOfDeliveries;
         }
-        public  POSSIBLEDRIVE FromdtoToTable(dtoPOSSIBLEDRIVE p)
+        public static POSSIBLEDRIVE FromdtoToTable(dtoPOSSIBLEDRIVE p)
         {
             POSSIBLEDRIVE pos = new POSSIBLEDRIVE();
-            pos.KODOFDRIVE = KODOFDRIVE;
-            pos.IDOFDELIVER =IDOFDELIVER;
-            pos.DATE =DATE;
-            pos.HOUR =HOUR;
-            pos.SOURSEADRESS =SOURSEADRESS;
-            pos.DESTINATIONADRESS =DESTINATIONADRESS;
-            pos.CountOfDeliveries = CountOfDeliveries;
+            pos.KODOFDRIVE = p.KODOFDRIVE;
+            pos.IDOFDELIVER =p.IDOFDELIVER;
+            pos.DATE =p.DATE;
+            pos.HOUR =p.HOUR;
+            pos.SOURSEADRESS =p.SOURSEADRESS;
+            pos.DESTINATIONADRESS =p.DESTINATIONADRESS;
+            pos.CountOfDeliveries = p.CountOfDeliveries;
             return pos;
 
         }
