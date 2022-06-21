@@ -128,17 +128,20 @@ namespace BLL
         }
         //פונקציית ההתאמה(מעדכנים אצל הבקשה את הקוד נסיעה  של המשלוחן המתאים)
         //ומחזירים את המשלוחן המתאים
-        public static dtoPOSSIBLEDRIVE updatematch(dtoDELIVERy p, dtoPOSSIBLEDRIVE match)
+        public static USERS updatematch(dtoDELIVERy p, dtoPOSSIBLEDRIVE match)
         {
             DELIVERIES d = new DELIVERIES();
             d=dtoDELIVERy.FROMdtoToTable(p);
             p.IDOFDELIVER = match.KODOFDRIVE;
+            USERS Custumer = new USERS();
+            Custumer = db.GetDbSet<USERS>().Where(r => r.Id == match.IDOFDELIVER).First();
             db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
-            return match;
+            return Custumer;
         }
         //המשתמש יכול להגיב על משלוח שנעשה לו
-        public static List<dtoDELIVERy> Responsetodelivery(long tz)
+        public static List<dtoDELIVERy> Responsetodelivery(long deliverId)
         {
+
              return null;
         }
 

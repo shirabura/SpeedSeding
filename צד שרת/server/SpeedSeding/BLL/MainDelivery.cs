@@ -10,7 +10,7 @@ namespace BLL
 {
   public  class MainDelivery
     {
-        public static dtoPOSSIBLEDRIVE main(dtoDELIVERy d)
+        public static USERS main(dtoDELIVERy d)
         {   //הפונקציה קיבלה רשומה מסוג הטבלה והופכת לסוג תצוגה
            
             dtoDELIVERy dtoDELIVERy = new dtoDELIVERy();

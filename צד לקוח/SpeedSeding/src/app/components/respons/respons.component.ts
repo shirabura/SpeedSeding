@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Rating } from 'src/app/models/rating';
 import { DbService } from 'src/app/service/db.service';
 
 @Component({
@@ -8,9 +9,15 @@ import { DbService } from 'src/app/service/db.service';
 })
 export class ResponsComponent implements OnInit {
 
+  rating: Rating = new Rating()
+
   constructor(public db: DbService) { }
 
   ngOnInit(): void {
-  }
 
+  }
+  EnterRespons() {
+    console.log("rating:" + this.rating.DELIVERYID);
+    
+  }
 }

@@ -25,8 +25,9 @@ namespace BLL
             return AllOpenRequest;
         }
         //הפונקצייה בודקת את סך הנקודות של הנסיעה החדשה אל מול הנסיעה הישנה
-        public static dtoDELIVERy match(List<dtoDELIVERy> AllOpenRequest, dtoPOSSIBLEDRIVE p)
+        public static List<USERS> match(List<dtoDELIVERy> AllOpenRequest, dtoPOSSIBLEDRIVE p)
         {
+            List<dtoDELIVERy> user = new List<dtoDELIVERy>();
             foreach (dtoDELIVERy d in AllOpenRequest)
             {
                 POSSIBLEDRIVE prevDrive = new POSSIBLEDRIVE();
@@ -39,11 +40,14 @@ namespace BLL
                 //אם סכום הניקוד של הנסיעה הישנה יותר קטן אז הדאטה בייס יעודכן בפרטי הנסיעה החדשה
                 if (prepoint > newpoint)
                 {
-                    return updatematch(d, p);
+  
+                    user.Add(d);
                     
                 }
                
             }
+            if (user != null)
+                return updatematch(user, p);
             return null;
         }
         //פונקצייה שמחשבת ניקוד למשלוחן בהתאם לבקשה מסוימת
@@ -72,28 +76,35 @@ namespace BLL
         }
         //פונקצייה שמעדכנת בדאטה בייס
         //ומחזירה נסיעה מתאימה
-        public static dtoDELIVERy updatematch(dtoDELIVERy p, dtoPOSSIBLEDRIVE match)
+        public static List<USERS> updatematch(List<dtoDELIVERy> user, dtoPOSSIBLEDRIVE match)
         {
             DELIVERIES d = new DELIVERIES();
-            d = dtoDELIVERy.FROMdtoToTable(p);
-            p.IDOFDELIVER = match.KODOFDRIVE;
-            db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
-            dtoDELIVERy a = new dtoDELIVERy(d);
-            return a;
+            USERS Custumer = new USERS();
+            List<USERS> users = new List<USERS>();
+            foreach (var i in user)
+            {
+                d = dtoDELIVERy.FROMdtoToTable(i);
+                i.IDOFDELIVER = match.KODOFDRIVE;
+                Custumer = db.GetDbSet<USERS>().Where(r => r.Id == i.IDOFDELIVER).First();
+                users.Add(Custumer);
+                db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
+            }
+           
+            return users;
         }
         //פונקצייה שמעדכנת בדאטה בייס שהבקשה אושרה והמשלוח עתיד להתקיים
         //ומחזירה את מספר הטלפון של הלקוח המתאים
         public static string UpdetConfirmation(dtoDELIVERy p)
         {
-            string CustumerPhone;
+            string customerphone;
             DELIVERIES d = new DELIVERIES();
             d = dtoDELIVERy.FROMdtoToTable(p);
             d.DONE = true;
             db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
             USERS Custumer = new USERS();
             Custumer = db.GetDbSet<USERS>().Where(r => r.Id == p.IDOFDELIVER).First();
-            CustumerPhone = Custumer.phone;
-            return CustumerPhone;
+            customerphone = Custumer.phone;
+            return customerphone;
         }
         //החזרת המספר טלפון של המשלוחן המתאים
         public static string returnphone(dtoPOSSIBLEDRIVE p)

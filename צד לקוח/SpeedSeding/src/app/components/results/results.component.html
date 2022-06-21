@@ -1,1 +1,12 @@
-<p>results works!</p>
+<div *ngIf="status==1">
+    <p>פלוני יקר!</p>
+    להלן תוצאות חיפוש המערכת:
+    <br>
+    שם:{{db.result.FirsteName}}
+    <br>
+    מספר טלפון:
+</div>
+
+<div *ngIf="status==2">
+
+</div>

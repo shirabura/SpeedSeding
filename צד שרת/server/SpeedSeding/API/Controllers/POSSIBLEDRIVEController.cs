@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DAL;
 using DTOClass;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,10 @@ namespace API.Controllers
       
         [Route("api/POSSIBLEDRIVE/enterpossibledrive")]
         [HttpPost]
-        public dtoDELIVERy enterpossibledrive(dtoPOSSIBLEDRIVE z)
+        public List<USERS> enterpossibledrive(dtoPOSSIBLEDRIVE z)
         {
             dtoPOSSIBLEDRIVE p = new dtoPOSSIBLEDRIVE() {IDOFDELIVER= z.IDOFDELIVER ,DATE= z.DATE ,HOUR= z.HOUR ,SOURSEADRESS= z.SOURSEADRESS ,DESTINATIONADRESS= z.DESTINATIONADRESS };
             return BLL.MainpossibledriveBL.main(p);
-            
-
         }
         [Route("api/POSSIBLEDRIVE/viewhistory")]
         [HttpPost]

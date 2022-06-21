@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { possibledrive } from 'src/app/models/posibledrive';
 import { DbService } from 'src/app/service/db.service';
@@ -14,7 +15,7 @@ export class PossibledriveComponent implements OnInit {
   possibledriveForm:any
   source?: Address;
   destianation?: Address;
-  constructor(private db: DbService) { }
+  constructor(private db: DbService, private router: Router) { }
 
   ngOnInit(): void {
     this.possibledriveForm = new FormGroup(
@@ -56,8 +57,10 @@ export class PossibledriveComponent implements OnInit {
 debugger
       if (res == null)
         alert("שגיאת שרת")
-      else
-        alert("כניסה למערכת")
+      else{
+       
+        this.router.navigate(["Results/2"])
+      }
     }
     )
   }

@@ -1,13 +1,19 @@
 <div style="text-align: center; ; margin-top: 7%;">
 <H2 style=" color:rgb(240, 121, 25);">שלום {{this.db.user.FirsteName}}</H2>
 <h3 style=" color:rgb(240, 121, 25);"> נשמח שתשתף אותנו בשירות שקיבלת</h3>
+<h4>הכנס את קוד המשלוח עליו תרצה להגיב</h4>
+<input type="text" name="DELIVERYID" ngModel="rating.DELIVERYID">
+<br>
 <p>דרג! (5 הכי גבוה 1 הכי נמוך)</p>
 <h4 >מה היה שלמות המשלוח?</h4>
-<input type="number" style="width: 3%;">
+<input type="number" id="INTEGRITYDELIVER"style="width: 3%;" name="INTEGRITYDELIVER" ngModel="rating.INTEGRITYDELIVER" #INTEGRITYDELIVER>
 <h4>האם המשלוחן הגיע בזמן?</h4>
-<input type="number" style="width: 3%">
+<input type="number"id="LATE" style="width: 3%" name="LATE" ngModel="rating.LATE" #LATE>
 <h4>דרג את השירות של המשלוחן</h4>
-<input type="number" style="width: 3%">
+<input type="number"id="SERVISE" style="width: 3%" name="SERVISE" ngModel="rating.SERVISE" #INTEGRITYDELIVER>
 <h4>מה הניקוד הכללי שהיית נותן למשלוחן?</h4>
-<input type="number" style="width: 3%">
+<input type="number"id="GENERAL" style="width: 3%" name="GENERAL" ngModel="rating.GENERAL" #INTEGRITYDELIVER>
+<br>
+<br>
+<input type="button" (click)="EnterRespons()">
 </div>

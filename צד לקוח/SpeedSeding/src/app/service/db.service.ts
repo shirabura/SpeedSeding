@@ -12,7 +12,9 @@ import { Users } from '../models/users';
 export class DbService {
 
   user: Users = new Users()
-  history:Array<deliver>=new Array<deliver>()
+  history: Array<deliver> = new Array<deliver>()
+  result: Users = new Users()
+  results: Array<Users> = new Array<Users>()
 
   constructor(private httpClient: HttpClient) { }
   singin(login: singin): Observable<Users> {
@@ -24,12 +26,12 @@ export class DbService {
     return this.httpClient.post<Users>('https://localhost:44334/api/USER/singup/', user);
   }
 
-  EnterPossibleDrive(enterpossibledrive: possibledrive): Observable<possibledrive> {
-    return this.httpClient.post<possibledrive>('https://localhost:44334/api/POSSIBLEDRIVE/enterpossibledrive', enterpossibledrive);
+  EnterPossibleDrive(enterpossibledrive: possibledrive): Observable<Users> {
+    return this.httpClient.post<Users>('https://localhost:44334/api/POSSIBLEDRIVE/enterpossibledrive', enterpossibledrive);
 
   }
-  Enterreqwest(enterreqwest: possibledrive): Observable<possibledrive> {
-    return this.httpClient.post<possibledrive>('https://localhost:44334/api/DELIVERy/enterreqwest', enterreqwest);
+  Enterreqwest(enterreqwest: possibledrive): Observable<Array<Users>> {
+    return this.httpClient.post<Array<Users>>('https://localhost:44334/api/DELIVERy/enterreqwest', enterreqwest);
 
   }
   Viewrating(): Observable<number> {
@@ -40,7 +42,7 @@ export class DbService {
     return this.httpClient.get<Users[]>('https://localhost:44334/api/USER/GetallUsers');
   }
   viewhistory(): Observable<deliver> {
-    return this.httpClient.post<deliver>('https://localhost:44334/api/POSSIBLEDRIVE/viewhistory',this.user.Id);
+    return this.httpClient.post<deliver>('https://localhost:44334/api/POSSIBLEDRIVE/viewhistory', this.user.Id);
 
   }
   // getUserSignUp(user:Users):Observable<Users>{

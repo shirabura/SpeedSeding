@@ -10,7 +10,7 @@ namespace BLL
 {
    public class MainpossibledriveBL
     {
-        public static dtoDELIVERy main(dtoPOSSIBLEDRIVE t)
+        public static List<USERS> main(dtoPOSSIBLEDRIVE t)
         {
             //הופך סוג טבלה לתצוגה
             dtoPOSSIBLEDRIVE p = new dtoPOSSIBLEDRIVE();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { possibledrive } from 'src/app/models/posibledrive';
 import { DbService } from 'src/app/service/db.service';
@@ -14,7 +15,7 @@ export class EnterRequestComponent implements OnInit {
   enterreqwestForm: any
   source?: Address;
   destianation?: Address;
-  constructor(private db: DbService) { }
+  constructor(private db: DbService, private router: Router) { }
 
   ngOnInit(): void {
     this.enterreqwestForm = new FormGroup(
@@ -56,17 +57,19 @@ export class EnterRequestComponent implements OnInit {
 
         if (res == null)
           alert("שגיאת שרת")
-        else
-          alert("כניסה למערכת")
+        else {
+          // this.db.result = res;
+          this.router.navigate(["Result/1"])
+        }
       }
 
       )
     }
-     else{
+    else {
       alert("נא למלא מקור ויעד!")
-     }
+    }
   }
- 
+
 
 }
-  
+

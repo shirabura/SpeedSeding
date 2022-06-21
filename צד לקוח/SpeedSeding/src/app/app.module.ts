@@ -46,7 +46,7 @@ import { ResultsComponent } from './components/results/results.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    GooglePlaceModule 
+    GooglePlaceModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

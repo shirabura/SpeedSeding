@@ -36,10 +36,12 @@ namespace BLL
 
         }
         //פונקציה שמעדכנת במסד הנתונים את  טופס התגובה
-        public static void Responsetodelivery(long tz, dtoRATING r, long deliverid)
+        public static void Responsetodelivery( dtoRATING r, long deliverid)
         {
+            long tz;
             RATING t = new RATING();
             t = dtoRATING.FROMdtoToTable(r);
+            tz = db.GetDbSet<RATING>().Where(pd => pd.DELIVERYID == deliverid).FirstOrDefault().DELIVERYID;
             t.IDOFDELIVER = tz;
             t.DELIVERYID = deliverid;
             db.Execute<RATING>(t, DBConection.ExecuteActions.Insert);
