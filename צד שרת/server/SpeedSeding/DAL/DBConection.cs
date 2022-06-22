@@ -25,7 +25,7 @@ namespace DAL
         {
             using (sedingEntities db = new sedingEntities())
             {
-                var model = db.Set<T>();
+                var model = db.GetDbSet<T>();
                 switch (exAction)
                 {
                     case ExecuteActions.Insert:

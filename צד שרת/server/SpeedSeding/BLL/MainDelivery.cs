@@ -16,7 +16,7 @@ namespace BLL
             dtoDELIVERy dtoDELIVERy = new dtoDELIVERy();
             List<dtoPOSSIBLEDRIVE> reqest = new List<dtoPOSSIBLEDRIVE>();
             //מפעילה את פונקציית הסינון של כל מי שסרב לבקשה
-            reqest = DeliversBL.GetAllOpenRequest(dtoDELIVERy);
+            reqest = DeliversBL.GetAllOpenRequest(d);
             //מפעילה את פונקציית בדיקת ההתאמה המוחלטת
             List<dtoPOSSIBLEDRIVE> Absolutefit = DeliversBL.Absolutefit(reqest, dtoDELIVERy);
             //אם חזר מהסינון רק רשומה אחת אז נעדכן את הנסיעה שהותאמה בדאטה בייס
