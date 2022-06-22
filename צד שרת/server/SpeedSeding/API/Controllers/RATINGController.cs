@@ -20,6 +20,12 @@ namespace API.Controllers
         {
             return BLL.RatingBL.CalculatePoint(tz);
         }
-       
+        [Route("api/RATING/EnterRespons")]
+        [HttpPost]
+        public void EnterRespons(dtoRATING r)
+        {
+            BLL.RatingBL.Responsetodelivery(r,r.DELIVERYID);
+        }
+
     }
 }

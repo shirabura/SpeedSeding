@@ -1,12 +1,24 @@
 <div *ngIf="status==1">
-    <p>פלוני יקר!</p>
-    להלן תוצאות חיפוש המערכת:
+    <h2>{{db.user.FirsteName}} יקר!</h2>
+    <h4>מצאנו לך משלוחן מתאים:</h4>
     <br>
     שם:{{db.result.FirsteName}}
     <br>
-    מספר טלפון:
+    מספר טלפון:{{db.result.Phone}}
+    <br>
+    צור איתו קשר, שמחנו לעזו😁
 </div>
 
 <div *ngIf="status==2">
-
+    <h2>{{db.user.FirsteName}} יקר!</h2>
+    <br>
+    <h4>להלן רשימת המשלוחים שהמערכת התאחמה לנסיעה שלך
+        <br>נא אשר את המשלוחים שברצונך לעשות:
+    </h4>
+    <ul>
+     <li *ngFor="results">
+        {{db.results}}
+      </li>
+    </ul>
+   
 </div>

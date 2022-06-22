@@ -41,7 +41,9 @@ namespace BLL
             long tz;
             RATING t = new RATING();
             t = dtoRATING.FROMdtoToTable(r);
-            tz = db.GetDbSet<RATING>().Where(pd => pd.DELIVERYID == deliverid).FirstOrDefault().DELIVERYID;
+            DELIVERIES del = new DELIVERIES();
+            del = db.GetDbSet<DELIVERIES>().Where(pd => pd.DELIVERID == deliverid).FirstOrDefault();
+            tz = (long)del.IDOFDELIVER;
             t.IDOFDELIVER = tz;
             t.DELIVERYID = deliverid;
             db.Execute<RATING>(t, DBConection.ExecuteActions.Insert);

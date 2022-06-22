@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { deliver } from '../models/deliver';
 import { possibledrive } from '../models/posibledrive';
+import { Rating } from '../models/rating';
 import { singin } from '../models/sing-in';
 import { Users } from '../models/users';
 
@@ -43,6 +44,10 @@ export class DbService {
   }
   viewhistory(): Observable<deliver> {
     return this.httpClient.post<deliver>('https://localhost:44334/api/POSSIBLEDRIVE/viewhistory', this.user.Id);
+
+  }
+  EnterRespons(){
+    return this.httpClient.post('https://localhost:44334/api/RATING/EnterRespons', Rating);
 
   }
   // getUserSignUp(user:Users):Observable<Users>{
