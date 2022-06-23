@@ -58,6 +58,7 @@ export class EnterRequestComponent implements OnInit {
         if (res == null)
           alert("שגיאת שרת")
         else {
+          alert(" נמצא משלוחן")
           // this.db.result = res;
           this.router.navigate(["Result/1"])
         }

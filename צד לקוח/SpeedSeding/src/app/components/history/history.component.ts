@@ -9,11 +9,12 @@ import { DbService } from 'src/app/service/db.service';
 export class HistoryComponent implements OnInit {
   // history:Array<deliver>=new Array<deliver>()
 
-  constructor(public db: DbService) { }
-
+   constructor(public db: DbService) { }
+  //  name: any;
+   
   ngOnInit(): void {
-    console.log(this.db.user.FirsteName);
-
+    // console.log(this.db.user.FirsteName);
+    // this.name=  this.db.user.FirsteName; 
     this.db.viewhistory().subscribe(res => {
       console.log(res)
       if (res == null)

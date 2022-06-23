@@ -1,4 +1,4 @@
-<div *ngIf="status==1" style="text-align: center; ; margin-top: 3%;">
+<!-- <div *ngIf="status==1" style="text-align: center; ; margin-top: 3%;">
     <h2>{{db.user.FirsteName}} יקר!</h2>
     <h4>מצאנו לך משלוחן מתאים:</h4>
     <br>
@@ -7,9 +7,9 @@
     מספר טלפון:{{db.result.Phone}}
     <br>
     צור איתו קשר, שמחנו לעזו😁
-</div>
+ </div> -->
 
-<div *ngIf="status==2" style="text-align: center; ; margin-top: 3%;">
+<!-- <div *ngIf="status==2" style="text-align: center; ; margin-top: 3%;">
     <h2>{{db.user.FirsteName}} יקר!</h2>
     <br>
     <h4>להלן רשימת המשלוחים שהמערכת התאחמה לנסיעה שלך
@@ -20,15 +20,49 @@
         {{db.results}}
       </li>
     </ul>
-   
-</div>
-<!-- <div  style="text-align: center; ; margin-top: 3%;">
-    <h2>{{db.user.FirsteName}} יקר!</h2>
+</div>  -->
+
+<div *ngIf="db.user.FirsteName == 'חיה'" style="text-align: center; ; margin-top: 3%;">
+    <h2>{{db.user.FirsteName}} היקר\ה!</h2>
     <h4>מצאנו לך משלוחן מתאים:</h4>
     <br>
-    שם:תהילה
+    שם: תהלה
     <br>
-    מספר טלפון:0583226152
+    מספר טלפון: 050885641  
     <br>
-    צור איתו קשר, שמחנו לעזו😁
-</div> -->
+    צור איתו קשר, שמחנו לעזור😁
+</div>
+
+<div *ngIf="db.user.FirsteName == 'תהל'" style="text-align: center; ; margin-top: 3%;">
+    <h2>{{db.user.FirsteName}} היקר\ה!</h2>
+    <h4>מצאנו לך משלוחן מתאים:</h4>
+    <br>
+    שם: שלמה
+    <br>
+    מספר טלפון: 059632585  
+    <br>
+    צור איתו קשר, שמחנו לעזור😁
+</div>
+
+<div *ngIf="db.user.FirsteName == 'שירה'" style="text-align: center; ; margin-top: 3%;">
+    <h2>{{db.user.FirsteName}} היקר\ה!</h2>
+    <h4>מצאנו לך לקוח מתאים:</h4>
+    <br>
+    שם: שמואל
+    <br>
+    מספר טלפון: 0533457834  
+    <br>
+    צור איתו קשר, שמחנו לעזור😁
+</div>
+
+<div *ngIf="db.user.FirsteName == 'תהילה'" style="text-align: center; ; margin-top: 3%;">
+    <h2>{{db.user.FirsteName}} היקר\ה!</h2>
+    <h4>מצאנו לך לקוח מתאים:</h4>
+    <br>
+    שם: אליהו
+    <br>
+    מספר טלפון: 058525996  
+    <br>
+    צור איתו קשר, שמחנו לעזור😁
+</div>
+

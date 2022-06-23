@@ -1,9 +1,51 @@
-
+<div *ngIf="db.user.FirsteName == 'שירה'">
 <div style="text-align: center; ; margin-top: 3%;">
     <h1>{{this.db.user.FirsteName}}</h1>
-    <h1>להלן רשימת הסטורית המשלוחים שלך</h1>
-    </div>
-    <!-- <div style="text-align: center; ; margin-top: 3%;">
+    <h3>להלן רשימת הסטורית המשלוחים שלך</h3>
+</div>
+<div style="text-align: center; ; margin-top: 3%;">
+    <br>תאריך:02\12\2022
+    <br>שעה:14:00
+    <br>כתובת מקור:נתניה, ישראל
+    <br>כתובת יעד:רעננה, ישראל
+</div>
+<div style="text-align: center; ; margin-top: 3%;">
+    <br>תאריך:15\02\2022
+    <br>שעה:20:00
+    <br>כתובת מקור:הרצליה,ישראל
+    <br>כתובת יעד:אילת,ישראל
+</div>
+</div>
+<div *ngIf="db.user.FirsteName == 'תהילה'">
+    <div style="text-align: center; ; margin-top: 3%;">
         <h1>{{this.db.user.FirsteName}}</h1>
-        <h1>לא נרשמו במערכת משלוחים שעשית</h1>
-        </div> -->
+        <h3>להלן רשימת הסטורית המשלוחים שלך</h3>
+    </div>
+    <div style="text-align: center; ; margin-top: 3%;">
+        <br>תאריך:2022\11\11
+        <br>שעה:12:00
+        <br>כתובת מקור:אשדוד, ישראל
+        <br>כתובת יעד:ירושלים, ישראל
+    </div>
+    <div style="text-align: center; ; margin-top: 3%;">
+        <br>תאריך:15\02\2021
+        <br>שעה:20:00
+        <br>כתובת מקור:תל אביב,ישראל
+        <br>כתובת יעד:חיפה,ישראל
+    </div>
+        <div style="text-align: center; ; margin-top: 3%;">
+            <br>תאריך:15\02\2011
+            <br>שעה:10:00
+            <br>כתובת מקור: חדרה,ישראל
+            <br>כתובת יעד:חיפה,ישראל
+    </div>
+        
+</div>
+
+<div *ngIf="db.user.FirsteName != 'תהילה' && db.user.FirsteName != 'שירה'">
+    <div style="text-align: center; ; margin-top: 3%;">
+<h1>
+אין נסיעות במערכת!!!😪
+</h1>
+</div>
+

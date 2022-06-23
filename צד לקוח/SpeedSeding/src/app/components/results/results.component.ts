@@ -11,19 +11,13 @@ import { DbService } from 'src/app/service/db.service';
 })
 export class ResultsComponent implements OnInit {
 
-  status: number = 0
+ 
 
-  constructor(public db:DbService, private activatedRoute: ActivatedRoute) { }
+  constructor(public db:DbService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(
-      data => {
-        this.status = data["status"];
-      },
-      err => {
-        console.log("error:" + err.message);
-      }
-    )
+    
+
   }
 
 }

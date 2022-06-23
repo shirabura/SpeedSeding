@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'Help', component: HelpComponent },
   { path: 'possibledrive', component: PossibledriveComponent },
   { path: 'enterreqwest', component: EnterRequestComponent },
-  { path: 'Results/:status', component: ResultsComponent },
+  { path: 'Results', component: ResultsComponent },
   { path: 'viewrating', component: ViewRatingComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'respons', component: ResponsComponent }
