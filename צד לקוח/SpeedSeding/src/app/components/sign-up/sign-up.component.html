@@ -16,7 +16,7 @@
            <!-- <label for="validationpass">אימות סיסמא</label>
            <input class="form-control"formControlName="validationpass" type="password" id="validationpass" placeholder=""> -->
            <br>
-           <input class="btn  form-control" style="background-color:rgba(0, 0, 0, 0.836);color :white" type="submit" (click)="DoSingUp()" value="אישור">
+           <input class="btn  form-control" style="background-color:rgba(0, 0, 0, 0.836);color :white" type="submit" [disabled]="!SignUpForm.valid" (click)="DoSingUp()" value="אישור">
        </div>
    </form> 
    </div>

@@ -2,7 +2,8 @@
 <H2 style=" color:rgb(240, 121, 25);">שלום {{this.db.user.FirsteName}}</H2>
 <h3 style=" color:rgb(240, 121, 25);"> נשמח שתשתף אותנו בשירות שקיבלת</h3>
 <h4>הכנס את קוד המשלוח עליו תרצה להגיב</h4>
-<input type="text" name="DELIVERYID" ngModel="rating.DELIVERYID">
+<input type="text" name="DELIVERYID" ngModel="">
+<!-- rating.DELIVERYID -->
 <br>
 <p>דרג! (5 הכי גבוה 1 הכי נמוך)</p>
 <h4 >מה היה שלמות המשלוח?</h4>
@@ -15,5 +16,5 @@
 <input type="number"id="GENERAL" style="width: 3%" name="GENERAL" ngModel="rating.GENERAL" #INTEGRITYDELIVER>
 <br>
 <br>
-<input type="button" (click)="EnterRespons()">
+<input type="button" style="width :200px;background-color: black;color: white;"   value="אישור" (click)="EnterRespons()">
 </div>

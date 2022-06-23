@@ -18,10 +18,10 @@ namespace BLL
             //מפעילה את פונקציית הסינון של כל מי שסרב לבקשה
             reqest = DeliversBL.GetAllOpenRequest(d);
             //מפעילה את פונקציית בדיקת ההתאמה המוחלטת
-            List<dtoPOSSIBLEDRIVE> Absolutefit = DeliversBL.Absolutefit(reqest, dtoDELIVERy);
+            List<dtoPOSSIBLEDRIVE> Absolutefit = DeliversBL.Absolutefit(reqest, d);
             //אם חזר מהסינון רק רשומה אחת אז נעדכן את הנסיעה שהותאמה בדאטה בייס
             if (Absolutefit.Count == 1)
-                return DeliversBL.updatematch(dtoDELIVERy, Absolutefit[0]);
+                return DeliversBL.updatematch(d, Absolutefit[0]);
             //אם חזר מהסינון יותר מרשומה אחת אז נפעיל שקלולי רייטנג ומספר משלוחים
             if (Absolutefit.Count > 1)
             {

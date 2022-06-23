@@ -135,6 +135,7 @@ namespace BLL
             p.IDOFDELIVER = match.KODOFDRIVE;
             USERS Custumer = new USERS();
             Custumer = db.GetDbSet<USERS>().Where(r => r.Id == match.IDOFDELIVER).First();
+            d.IDOFDELIVER = Custumer.Id;
             db.Execute<DELIVERIES>(d, DBConection.ExecuteActions.Update);
             return Custumer;
         }

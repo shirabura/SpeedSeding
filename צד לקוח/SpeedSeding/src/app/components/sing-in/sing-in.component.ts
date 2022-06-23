@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { singin } from 'src/app/models/sing-in';
 import { DbService } from 'src/app/service/db.service';
@@ -18,8 +18,8 @@ export class SingInComponent implements OnInit {
   ngOnInit(): void {
     this.SignInForm = new FormGroup(
       {
-        id: new FormControl(''),
-        pass: new FormControl('')
+        id: new FormControl('', [Validators.required, Validators.maxLength(9), Validators.minLength(9)]),
+        pass: new FormControl('', [Validators.required])
       }
     )
   }

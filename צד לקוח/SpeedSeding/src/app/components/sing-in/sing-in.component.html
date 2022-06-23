@@ -18,7 +18,7 @@
       <div>
         <input class="btn btn-seconday nav-link- active form-control"
           style="background-color:rgba(0, 0, 0, 0.836) ; color: white;border-color: rgba(0, 0, 0, 0.836);"
-          (click)="doSingin()" type="button" value="אישור">
+          (click)="doSingin()" type="button" [disabled]="!SignInForm.valid" value="אישור">
       </div>
     </div>
   </form>

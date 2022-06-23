@@ -19,7 +19,10 @@ namespace DAL
             : base("name=sedingEntities")
         {
         }
-    
+        public DbSet<T> GetDbSet<T>() where T : class
+        {
+            return this.Set<T>();
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -30,11 +33,5 @@ namespace DAL
         public virtual DbSet<POSSIBLEDRIVE> POSSIBLEDRIVE { get; set; }
         public virtual DbSet<RATING> RATING { get; set; }
         public virtual DbSet<USERS> USERS { get; set; }
-
-        public DbSet<T> GetDbSet<T>() where T : class
-        {
-            return this.Set<T>();
-        }
-
     }
 }

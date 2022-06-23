@@ -17,7 +17,7 @@ namespace API.Controllers
         [HttpPost]
         public USERS enterreqwest(dtoDELIVERy d)
         {
-            dtoDELIVERy f = new dtoDELIVERy() { DELIVERID=d.DELIVERID,DATE= d.DATE ,HOUR= d.HOUR ,SOURSEADRESS= d.SOURSEADRESS ,DESTINATIONADRESS= d.DESTINATIONADRESS };
+            dtoDELIVERy f = new dtoDELIVERy() { IDOFCUSTUMER=d.IDOFDELIVER,DATE= d.DATE ,HOUR= d.HOUR ,SOURSEADRESS= d.SOURSEADRESS ,DESTINATIONADRESS= d.DESTINATIONADRESS };
             return BLL.MainDelivery.main(f);
             
         }
